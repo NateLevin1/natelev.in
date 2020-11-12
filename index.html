@@ -28,54 +28,77 @@
                 <div class="notch"></div>
             </div>
             <div class="browser-bar">
-                <div class="browser-website-container">
+                <button id="browser-left" class="browser-button"><div class="browser-arrow"></div></button>
+                <button id="browser-right" class="browser-button"><div class="browser-arrow"></div></button>
+                <but class="browser-website-container">
                     <div class="browser-website">natelev.in</div>
-                </div>
+                </button>
             </div>
+            <div id="loading-bar"></div>
             <div class="browser-content">
-                <h2 class="slide-title">Web Development</h2>
-                <div class="slide-img-container">
-                    <img src="images/websystem.png" class="slide-img" alt="A screenshot of the websystem desktop.">
+                <div class="slide">
+                    <h2 class="slide-title">Web Development</h2>
+                    <div class="slide-img-container">
+                        <img src="images/websystem.png" class="slide-img" alt="A screenshot of the websystem desktop.">
+                    </div>
+                    <a href="#web" class="more">see more <div class="arrow"></div></a>
                 </div>
-                <a href="#about" class="more">see more <div class="arrow"></div></a>
+                <div class="slide" style="display: none;">
+                    <h2 class="slide-title">Game Development</h2>
+                    <div class="slide-img-container">
+                        <img src="images/slime2.png" class="slide-img" alt="A screenshot of the websystem desktop.">
+                    </div>
+                    <a href="#game" class="more">see more <div class="arrow"></div></a>
+                </div>
             </div>
         </div>
     </section>
     <section class="about" id="about">
-        <h4 class="i-am">I am a</h4>
-        <h2 id="current-role">Web Developer</h2>
-        <p class="role-info">When I’m not working on creating custom online experiences,
-            I’m working on improving open source libraries. I’ve just completed work on WebSystem,
-            and I’m currently working on creating the JSQL library.
-            <br><br>
-            Technologies I know:</p>
-        <div class="technologies-container">
-            <div class="technologies">
-                <div class="technology" id="react">
-                    <img src="images/react.png" alt="The React logo" class="technology-logo">
-                    <h5 class="technology-name">React</h5>
-                </div>
-                <div class="technology" id="typescript">
-                    <img src="images/typescript.png" alt="The Typescript logo" class="technology-logo">
-                    <h5 class="technology-name">Typescript</h5>
-                </div>
-                <div class="technology" id="jest">
-                    <img src="images/jest.png" alt="The Jest logo" class="technology-logo">
-                    <h5 class="technology-name">Jest Testing</h5>
-                </div>
-                <div class="technology" id="responsive">
-                    <img src="images/responsive.png" alt="A responsive design graphic" class="technology-logo">
-                    <h5 class="technology-name">Responsive Design</h5>
-                </div>
-                <div class="technology" id="css">
-                    <img src="images/css.png" alt="A CSS3 logo" class="technology-logo">
-                    <h5 class="technology-name">CSS3</h5>
-                </div>
-                <div class="technology" id="git">
-                    <img src="images/git.png" alt="The Git logo" class="technology-logo">
-                    <h5 class="technology-name">Git</h5>
+        <div id="web">
+            <h4 class="i-am">I am a</h4>
+            <h2 class="current-role">Web Developer</h2>
+            <p class="role-info">When I’m not working on creating custom online experiences,
+                I’m working on improving open source libraries. I’ve just completed work on WebSystem,
+                and I’m currently working on creating the JSQL library.
+                <br><br>
+                Technologies I know:</p>
+            <div class="technologies-container">
+                <div class="technologies">
+                    <div class="technology" id="react">
+                        <img src="images/react.png" alt="The React logo" class="technology-logo">
+                        <h5 class="technology-name">React</h5>
+                    </div>
+                    <div class="technology" id="typescript">
+                        <img src="images/typescript.png" alt="The Typescript logo" class="technology-logo">
+                        <h5 class="technology-name">Typescript</h5>
+                    </div>
+                    <div class="technology" id="jest">
+                        <img src="images/jest.png" alt="The Jest logo" class="technology-logo">
+                        <h5 class="technology-name">Jest Testing</h5>
+                    </div>
+                    <div class="technology" id="responsive">
+                        <img src="images/responsive.png" alt="A responsive design graphic" class="technology-logo">
+                        <h5 class="technology-name">Responsive Design</h5>
+                    </div>
+                    <div class="technology" id="css">
+                        <img src="images/css.png" alt="A CSS3 logo" class="technology-logo">
+                        <h5 class="technology-name">CSS3</h5>
+                    </div>
+                    <div class="technology" id="git">
+                        <img src="images/git.png" alt="The Git logo" class="technology-logo">
+                        <h5 class="technology-name">Git</h5>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <div id="game">
+            <h4 class="i-am">I am a</h4>
+            <h2 class="current-role">Game Developer</h2>
+            <p class="role-info">I love making games. I have in depth knowledge with the Unity Game Engine and PhaserJS.
+                I also do game jams, and you can see the games I've made <a href="https://ultimateprogrammer.itch.io" target="_blank">on my itch.io page</a>.
+                My specialty is the game's programming, and I love implementing cool mechanics.
+            </p>
         </div>
         
     </section>
@@ -83,5 +106,8 @@
         <a href="#" class="back-to-top">back to top</a>
         <i class="copyright">© Nate Levin 2020</i>
     </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/slide.js"></script>
 </body>
 </html>
