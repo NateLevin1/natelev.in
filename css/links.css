@@ -1,0 +1,14 @@
+.ud {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.1s; /* Not supported in safari. oh well */
+    text-decoration-thickness: 3px; /* Only supported in safari & firefox; already 3px in chrome */
+
+    background-position: 0 0.97em;
+    background-repeat: repeat-x;
+    background-size: 3px 9px;
+}
+a.custom-color .ud {
+    color: inherit;
+}

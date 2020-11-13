@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>natelev.in</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/links.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
@@ -14,9 +15,9 @@
     <label for="hamburger-check" class="hamburger-container" role="button"><div class="hamburger"></div></label>
     <div class="open-hamburger">
         <div class="hamburger-content">
-            <a href="/portfolio/" class="hamburger-link">portfolio</a>
-            <a href="/blog/" class="hamburger-link">blog</a>
-            <a href="/contact/" class="hamburger-link">contact</a>
+            <a href="/portfolio/" class="hamburger-link custom-color">portfolio</a>
+            <a href="/blog/" class="hamburger-link custom-color">blog</a>
+            <a href="/contact/" class="hamburger-link custom-color">contact</a>
         </div>
     </div>
     
@@ -41,14 +42,14 @@
                     <div class="slide-img-container">
                         <img src="images/websystem.png" class="slide-img" alt="A screenshot of the websystem desktop.">
                     </div>
-                    <a href="#web" class="more">see more <div class="arrow"></div></a>
+                    <a href="#web" class="more no-underline">see more <div class="arrow"></div></a>
                 </div>
                 <div class="slide" style="display: none;">
                     <h2 class="slide-title">Game Development</h2>
                     <div class="slide-img-container">
                         <img src="images/slime2.png" class="slide-img" alt="A screenshot of the websystem desktop.">
                     </div>
-                    <a href="#game" class="more">see more <div class="arrow"></div></a>
+                    <a href="#game" class="more no-underline" data-no-underline="true">see more <div class="arrow"></div></a>
                 </div>
             </div>
         </div>
@@ -108,6 +109,7 @@
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="js/slide.js"></script>
+    <script src="js/slide.js" defer></script>
+    <script src="js/links.js" defer></script>
 </body>
 </html>

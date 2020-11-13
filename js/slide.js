@@ -1,3 +1,4 @@
+(function() {
 const slides = document.getElementsByClassName("slide");
 const timeouts = new Array(slides.length);
 const bar = document.getElementById("loading-bar");
@@ -91,3 +92,4 @@ left.onclick = ()=>{
     clearInterval(interval);
     interval = setInterval(intervalFunc, 8000);
 }
+})()

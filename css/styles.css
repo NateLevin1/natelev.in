@@ -3,7 +3,8 @@ body {
     scroll-behavior: smooth;
     --accent: #FB3640;
     --dark-accent: #D6020D;
-    --accent-2: #FD652B;
+    --accent-2: #fd2bc8;
+    --accent-3: #36b3fb;
     --font-title: 'Lato', sans-serif;
     --font-regular: 'Noto Sans', sans-serif;
     font-family: sans-serif;
@@ -247,7 +248,8 @@ body {
     overflow: hidden;
 }
 .slide-img {
-    height:100%;
+    max-height:100%;
+    min-width:104%;
     position: relative;
     left: -4%;
     top: -0.1em;
@@ -375,19 +377,21 @@ body {
     margin-top:0;
     margin-bottom: 2.5rem;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow-x: hidden;
+    padding: 1rem 0;
 }
 .current-role::after {
     content: "";
     width:120%;
-    height:40%;
-    background-color: var(--accent-2);
+    height:90%;
+    background-color: var(--accent-3);
     opacity: 0.1;
     position: absolute;
-    top:-10%;
+    top:6%;
     left:-10%;
     z-index:-1;
-    transform: rotate(-5deg);
+    transform: rotate(-2deg);
 }
 .role-info {
     font-weight: lighter;
