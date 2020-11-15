@@ -34,11 +34,12 @@
                 <div class="maximize"></div>
             </div>
             <div class="browser-bar">
-                <button id="browser-left" class="browser-button"><div class="browser-arrow"></div></button>
-                <button id="browser-right" class="browser-button"><div class="browser-arrow"></div></button>
-                <but class="browser-website-container">
+                <!-- In theory these would be real buttons but on IOS safari using real buttons cuts off the arrows  -->
+                <div id="browser-left" class="browser-button" role="button"><div class="browser-arrow"></div></div>
+                <div id="browser-right" class="browser-button" role="button"><div class="browser-arrow"></div></div>
+                <div class="browser-website-container">
                     <div class="browser-website">natelev.in</div>
-                </button>
+                </div>
             </div>
             <div id="loading-bar"></div>
             <div class="browser-content">
