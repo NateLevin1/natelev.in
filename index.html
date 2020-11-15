@@ -21,12 +21,17 @@
         </div>
     </div>
     
-    <h1 class="title">nate levin</h1>
+    <h1 class="title"><a href="/" class="custom-color">nate levin</a></h1>
     <div class="red-bg"></div>
     <section class="device-container">
         <div class="device">
             <div class="notch-container">
                 <div class="notch"></div>
+            </div>
+            <div class="buttons">
+                <div class="close"></div>
+                <div class="minimize"></div>
+                <div class="maximize"></div>
             </div>
             <div class="browser-bar">
                 <button id="browser-left" class="browser-button"><div class="browser-arrow"></div></button>
@@ -38,14 +43,14 @@
             <div id="loading-bar"></div>
             <div class="browser-content">
                 <div class="slide">
-                    <h2 class="slide-title">Web Development</h2>
+                    <h2 class="slide-title">Web<br>Development</h2>
                     <div class="slide-img-container">
                         <img src="images/websystem.png" class="slide-img" alt="A screenshot of the websystem desktop.">
                     </div>
                     <a href="#web" class="more no-underline">see more <div class="arrow"></div></a>
                 </div>
                 <div class="slide" style="display: none;">
-                    <h2 class="slide-title">Game Development</h2>
+                    <h2 class="slide-title">Game<br>Development</h2>
                     <div class="slide-img-container">
                         <img src="images/slime2.png" class="slide-img" alt="A screenshot of the websystem desktop.">
                     </div>
@@ -55,7 +60,7 @@
         </div>
     </section>
     <section class="about" id="about">
-        <div id="web">
+        <div id="web" class="skill">
             <h4 class="i-am">I am a</h4>
             <h2 class="current-role">Web Developer</h2>
             <p class="role-info">When I’m not working on creating custom online experiences,
@@ -93,12 +98,23 @@
             </div>
         </div>
 
-        <div id="game">
+        <div id="game" class="skill">
             <h4 class="i-am">I am a</h4>
             <h2 class="current-role">Game Developer</h2>
             <p class="role-info">I love making games. I have in depth knowledge with the Unity Game Engine and PhaserJS.
                 I also do game jams, and you can see the games I've made <a href="https://ultimateprogrammer.itch.io" target="_blank">on my itch.io page</a>.
                 My specialty is the game's programming, and I love implementing cool mechanics.
+
+                <!-- ITCH IFRAMES -->
+                <h3 class="latest-games">Latest games <a href="https://ultimateprogrammer.itch.io">(see more)</a></h3>
+                <div class="games-container">
+                    <div class="games">
+                        <iframe class="game" frameborder="0" src="https://itch.io/embed/710524?link_color=FB3640" width="552" height="167"><a href="https://ultimateprogrammer.itch.io/laser-world">Laser World by UltimateProGrammer</a></iframe>
+                        <iframe class="game" frameborder="0" src="https://itch.io/embed/698499?link_color=FB3640" width="552" height="167"><a href="https://ultimateprogrammer.itch.io/slime-rocket">Slime Rocket by UltimateProGrammer</a></iframe>
+                        <iframe class="game" frameborder="0" src="https://itch.io/embed/692939?link_color=FB3640" width="552" height="167"><a href="https://ultimateprogrammer.itch.io/mage-master">Mage Master by UltimateProGrammer</a></iframe>
+                    </div>
+                </div>
+
             </p>
         </div>
         

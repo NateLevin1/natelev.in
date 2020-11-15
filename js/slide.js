@@ -21,7 +21,7 @@ const showCorrectSlide = (goForwards=true)=>{
             } else {
                 element.style.animation = "slide-right-from-left 2s";
             }
-            element.style.display = "block";
+            element.style.display = "";
         } else {
             if(goForwards && index == (curSlide - 1 < 0 ? slides.length - 1 : curSlide - 1)) {
                 element.style.animation = "slide-left-from-middle 2.1s";
@@ -52,7 +52,7 @@ const showCorrectSlide = (goForwards=true)=>{
 }
 
 // so that not having javascript still works
-Array.from(slides).forEach((element)=>element.style.display = "block");
+Array.from(slides).forEach((element)=>element.style.display = "");
 
 showCorrectSlide();
 
