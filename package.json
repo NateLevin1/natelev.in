@@ -1,0 +1,23 @@
+{
+  "name": "natelev.in",
+  "version": "0.1.0",
+  "description": "Nate Levin's personal website.",
+  "scripts": {
+    "help:build-article": "echo 'Use: npm run build-article articles/markdown_dir/ -- --out articles/article_dir/index.html'",
+    "build-article": "node scripts/buildArticle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UltimatePro-Grammer/natelev.in.git"
+  },
+  "author": "UltimateProGrammer",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/UltimatePro-Grammer/natelev.in/issues"
+  },
+  "homepage": "https://github.com/UltimatePro-Grammer/natelev.in#readme",
+  "dependencies": {
+    "marked": "^1.2.5",
+    "prismjs": "^1.22.0"
+  }
+}
