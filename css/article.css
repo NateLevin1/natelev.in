@@ -73,11 +73,6 @@
         height:52vh;
     }
 }
-.lazy {
-    filter: blur(4px);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .header-image {
     min-width:100%;
     max-width:140%;

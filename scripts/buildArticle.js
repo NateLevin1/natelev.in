@@ -115,6 +115,7 @@ fs.readFile(fileLocation, 'utf8' , (err, markdown) => {
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/article.css">
     <link rel="stylesheet" href="/css/links.css">
+    <link rel="stylesheet" href="/css/lazy-images.css">
     <!-- Async-ly Loaded Code Block CSS -->
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css"
