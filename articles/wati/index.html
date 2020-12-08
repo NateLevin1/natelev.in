@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introducing WATI: WebAssembly Text Format Improved! on natelev.in</title>
-    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam elementum id duis. Eu molestie vel
-                nulla eleifend donec pretium scelerisque gravida id. Dolor interdum morbi leo ullamcorper vel. Aliquam nam aliquam
-                in neque non. Risus eu eget dolor odio.">
+    <title>Introducing WATI: WebAssembly Text Format Improved!</title>
+    <meta name="description" content="How do I start this article? Probably finish WATI first.">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/article.css">
     <link rel="stylesheet" href="/css/links.css">
+    <link rel="stylesheet" href="/css/lazy-images.css">
+    <!-- Async-ly Loaded Code Block CSS -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css"
+      media="print"
+      onload="this.media='all'; this.onload=null;">
     <noscript>
+        <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css">
+
         <style>
             .lazy {
                 filter: unset;
@@ -22,6 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -39,57 +47,85 @@
     <div class="red-bg"></div>
 
     <article class="main-article">
-        <!-- Article title -->
-        <div class="article-title-bg">
-            <h1 class="article-title">Introducing WATI: WebAssembly Text Format Improved!</h1>
-        </div>
-        <!-- Header image -->
-        <div class="header-image-container">
-            <img src="images/header.jpg" style="background-image: url(images/header-low.jpg);" alt="Photo by Emile Perron on Unsplash." class="header-image lazy">
-        </div>
-        <!-- Article content -->
-        <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam elementum id duis. Eu molestie vel
-                nulla eleifend donec pretium scelerisque gravida id. Dolor interdum morbi leo ullamcorper vel. Aliquam nam aliquam
-                in neque non. Risus eu eget dolor odio.</p>
-            <h2>What is WebAssembly anyway?</h2>
-            <img src="images/wat.png" class="bleed" alt="alt-text">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam elementum id duis. Eu molestie vel
-                nulla eleifend donec pretium scelerisque gravida id. Dolor interdum morbi leo ullamcorper vel. Aliquam nam aliquam
-                in neque non. Risus eu eget dolor odio.</p>
-            <pre class="code wat"><code>function isEqual(a, b) {
-    return a === b;
-}
-isEqual(1, 1) // true
-isEqual(1, 2) // false</code></pre>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed etiam elementum id duis. Eu molestie vel
-                nulla eleifend donec pretium scelerisque gravida id. Dolor interdum morbi leo ullamcorper vel. Aliquam nam aliquam
-                in neque non. Risus eu eget dolor odio.</p>
-            <div class="torm">
-                <h3>Talk about this article <a href="">on Github</a></h3>
+        
+            <div class="article-title-bg">
+                <h1 class="article-title" name="title">Introducing WATI: WebAssembly Text Format Improved!</h1>
+            </div>
+            
+                <div class="header-image-container">
+                    <img src="images/header.jpg" style="background-image: url(images/header-low.jpg);" alt="A computer with code written on it." class="header-image lazy">
+                </div>
+                <div class="content"> 
+                
+            <p>How do I start this article? Probably finish WATI first.</p>
+            <img src="images/wati.png" alt="The WATI logo" class="bleed lazy" style="background-image: url(images/wati-low.png);">
+            <p>At its core, WATI (<strong>W</strong>eb<strong>A</strong>ssembly <strong>T</strong>ext <strong>I</strong>mproved) is syntactic sugar for writing WAT code. WATI makes it easier to write and read WebAssembly, and is especially useful when writing long, complex functions.</p>
+            
+            <p>Here&#39;s some of the excellent features WATI provides:</p>
+            <ul>
+<li>Inline function arguments: <code>call $fn(1i32, 2i32)</code></li>
+<li>Get variables without <code>.get</code>: <code>$a</code></li>
+<li>Set variables without <code>.set</code>: <code>$a = $b</code></li>
+<li>Make constants without <code>.const</code>: <code>10i32</code>, <code>1.5f32</code></li>
+<li>Make parameters without <code>(param</code>: <code>($a i32)</code></li>
+</ul>
+
+            <p>WATI also provides excellent VSCode editing and intellisense support <strong>plus</strong> a documentation generator!</p>
+            
+            <h2 name="examples">
+                Examples
+            </h2>
+            
+            <p>Lets look at some real world examples of how WATI can simplify the code you write.</p>
+            
+            <p>NOTE: Many of these examples are from my <a href="https://github.com/UltimatePro-Grammer/helpful-webassembly">Helpful WebAssembly</a> repository, which provides example implementations of common features found in other languages. Make sure to check it out if you are interested!</p>
+            
+            <h3 name="example-1-indexing-an-array">
+                Example 1: Indexing an Array
+            </h3>
+            
+            <p>Here&#39;s the code in WAT:</p>
+            <pre class="code"><code class="language-wat"><span class="token punctuation">(</span><span class="token keyword">func</span> <span class="token variable">$getIndexI32</span> <span class="token punctuation">(</span><span class="token keyword">param</span> <span class="token variable">$arrayOffset</span> <span class="token keyword">i32</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">param</span> <span class="token variable">$index</span> <span class="token keyword">i32</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">result</span> <span class="token keyword">i32</span><span class="token punctuation">)</span>
+    <span class="token keyword">local</span>.get <span class="token variable">$arrayOffset</span>
+    <span class="token keyword">local</span>.get <span class="token variable">$index</span>
+    <span class="token keyword">i32<span class="token punctuation">.</span>const</span> <span class="token number">4</span> <span class="token comment">;; the number of bytes in an i32</span>
+    <span class="token keyword">call</span> <span class="token variable">$getPointerToIndexOfArray</span> <span class="token comment">;; get the index</span>
+    <span class="token keyword">i32<span class="token punctuation">.</span>load</span> <span class="token comment">;; push the number at the index on to the stack</span>
+<span class="token punctuation">)</span></code></pre>
+            <p>and here&#39;s the equivalent in WATI:</p>
+            <pre class="code"><code class="language-wat"><span class="token punctuation">(</span><span class="token keyword">func</span> <span class="token variable">$getIndexI32</span> <span class="token punctuation">(</span><span class="token variable">$arrayOffset</span> <span class="token keyword">i32</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token variable">$index</span> <span class="token keyword">i32</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">result</span> <span class="token keyword">i32</span><span class="token punctuation">)</span>
+    <span class="token keyword">call</span> <span class="token variable">$getPointerToIndexOfArray</span><span class="token punctuation">(</span><span class="token variable">$arrayOffset</span>, <span class="token variable">$index</span>, 4i32<span class="token punctuation">)</span>
+    <span class="token keyword">i32<span class="token punctuation">.</span>load</span> <span class="token comment">;; push the number at the index on to the stack</span>
+<span class="token punctuation">)</span></code></pre>
+            <p>Anyways, that is all there&#39;s left in this article. I hope you learned something new and use WATI in a future project!</p>
+            
+            <p><a href="https://github.com/UltimatePro-Grammer/wati">Interested in WATI&#39;s GitHub repo? Click here</a>.</p>
+            
+        <div class="torm">
+                <h3>Talk about this article <a href="https://github.com/UltimatePro-Grammer/natelev.in/issues/1">on Github</a></h3>
                 <span>or</span>
                 <h3>Read more like this</h3>
-            </div>
         </div>
+        </div> 
         <div class="similar" id="similar">
-            <article>
-                <a href="a1" class="no-underline article-anchor">
-                    <img src="images/header.jpg" style="background-image: url(images/header-low.jpg);" alt="photo by emile perron on unsplash." class="similar-thumb lazy">
-                    <h1 class="similar-title">can there be low level programming on the web?</h1>
-                </a>
-            </article>
-            <article>
-                <a href="a2" class="no-underline article-anchor">
-                    <img src="images/header.jpg" style="background-image: url(images/header-low.jpg);" alt="photo by emile perron on unsplash." class="similar-thumb lazy">
-                    <h1 class="similar-title">some other article that i have written</h1>
-                </a>
-            </article>
-            <article>
-                <a href="a3" class="no-underline article-anchor">
-                    <img src="images/header.jpg" style="background-image: url(images/header-low.jpg);" alt="Photo by Emile Perron on Unsplash." class="similar-thumb lazy">
-                    <h1 class="similar-title">Testing in Production</h1>
-                </a>
-            </article>
+                    <article>
+                    <a href="/articles/wati/" class="no-underline article-anchor">
+                        <img src="/articles/wati/images/header.jpg" style="background-image: url(/articles/wati/images/header-low.jpg);" alt="Article thumbnail" class="similar-thumb lazy">
+                        <h1 class="similar-title">TODO</h1>
+                    </a>
+                </article>
+                    <article>
+                    <a href="/articles/wati/" class="no-underline article-anchor">
+                        <img src="/articles/wati/images/header.jpg" style="background-image: url(/articles/wati/images/header-low.jpg);" alt="Article thumbnail" class="similar-thumb lazy">
+                        <h1 class="similar-title">TODO</h1>
+                    </a>
+                </article>
+                    <article>
+                    <a href="/articles/wati/" class="no-underline article-anchor">
+                        <img src="/articles/wati/images/header.jpg" style="background-image: url(/articles/wati/images/header-low.jpg);" alt="Article thumbnail" class="similar-thumb lazy">
+                        <h1 class="similar-title">TODO</h1>
+                    </a>
+                </article>
         </div>
         <div class="connect">
             <h2>Connect with me</h2>
@@ -120,3 +156,4 @@ isEqual(1, 2) // false</code></pre>
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 </body>
 </html>
+    

@@ -94,7 +94,7 @@ const renderer = {
             highlighted = prism.highlight(code, prism.languages.markup, "html");
         }
         // make links clickable
-        highlighted = highlighted.replace(/(?:https?:\/\/)?(\w+)\.(\w+)(?:\/(.+))?/g, (link)=>`<a href="${link}" class="custom-color" target="_blank" rel="noopener noreferrer">${link}</a>`)
+        highlighted = highlighted.replace(/(?:https?:\/\/)(\w+)\.(\w+)(?:\/(.+))?/g, (link)=>`<a href="${link}" class="custom-color" target="_blank" rel="noopener noreferrer">${link}</a>`)
         return `<pre class="code"><code class="language-${lang}">${highlighted}</code></pre>`;
     }
 };
@@ -111,7 +111,7 @@ fs.readFile(fileLocation, 'utf8' , (err, markdown) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
-    <meta name="description" content="${desc}">
+    <meta name="description" content="${desc.replace(/<(\w+)[^>]*>(.+)<\/\1>/g, (match, tag, inside)=>inside)}">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/article.css">
     <link rel="stylesheet" href="/css/links.css">
