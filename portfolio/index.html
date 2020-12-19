@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nate Levin's online portfolio. See all the projects he's working on and has finished.">
+    <title>nate levin's articles</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/portfolio.css">
+    <link rel="stylesheet" href="/css/links.css">
+    <link rel="stylesheet" href="/css/lazy-images.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+
+    <noscript>
+        <style>
+            .lazy {
+                filter: unset;
+            }
+        </style>
+    </noscript>
+</head>
+<body>
+    <!-- Header -->
+    <input type="checkbox" id="hamburger-check">
+    <label for="hamburger-check" class="hamburger-container" role="button" aria-label="Open/Close navigation menu"><div class="hamburger"></div></label>
+    <div class="open-hamburger">
+        <div class="hamburger-content">
+            <a href="/portfolio/" class="hamburger-link custom-color">portfolio</a>
+            <a href="/articles/" class="hamburger-link custom-color">articles</a>
+            <a href="/contact/" class="hamburger-link custom-color">contact</a>
+        </div>
+    </div>
+    
+    <h1 class="title"><a href="/" class="custom-color" style="text-decoration: unset;">nate levin</a></h1>
+    <div class="red-bg"></div>
+
+    <main class="content">
+        <div class="item-container">
+            <a href="https://websystem.io" class="no-underline item">
+                <img src="images/websystem.png" alt="WebSystem Screenshot" class="item-image">
+                <p class="item-text"><span>WebSystem</span><span class="tagline">Try it online!</span></p>
+            </a>
+            <a href="https://github.com/UltimatePro-Grammer/JSQL" class="no-underline item">
+                <img src="images/jsql.png" alt="JSQL Gif" class="item-image">
+                <p class="item-text"><span>JSQL</span><span class="tagline">View on GitHub</span></p>
+            </a>
+            <a href="https://github.com/UltimatePro-Grammer/helpful-webassembly" class="no-underline item">
+                <img src="images/helpful-wasm.png" alt="Helpful WebAssembly Logo" class="item-image">
+                <p class="item-text"><span>Helpful WebAssembly</span><span class="tagline">View on GitHub</span></p>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#" class="back-to-top custom-color">back to top</a>
+        <i class="copyright">© Nate Levin 2020</i>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="/js/lazy-images.js" defer></script>
+    <script src="/js/links.js" defer></script>
+    <script>
+        // Scroll effect on mobile
+        let cannotHover = window.matchMedia("(hover: none)").matches;
+        if(cannotHover) {
+            var lastScroll = 101; // without var it breaks on mobile safari. bruh
+
+            function handleScroll() {
+                let scrollAmount = document.documentElement.scrollTop || document.body.scrollTop;
+                if (Math.abs(scrollAmount - lastScroll) > 100) {
+                    document.querySelectorAll(".item-text").forEach((item) => {
+                        item.classList.remove("hover");
+                    });
+                    if (document.body.clientWidth < 600) {
+                        // determine what element is in the middle
+                        let el = document.elementFromPoint(document.body.clientWidth / 2, window.innerHeight / 2 - 50);
+                        if (el && el.classList.contains("item")) {
+                            // el should be shown hover styles
+                            el.querySelector("p").classList.add("hover");
+                        }
+                    }
+
+                    lastScroll = scrollAmount;
+                }
+            }
+            window.onscroll = handleScroll;
+
+            // start out by showing
+            handleScroll();
+        }
+    </script>
+</body>
+</html>

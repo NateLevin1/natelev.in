@@ -3,8 +3,8 @@ body {
     scroll-behavior: smooth;
     --accent: #FB3640;
     --dark-accent: #D6020D;
-    --accent-2: #fd2bc8;
-    --accent-3: #36b3fb;
+    --accent-2: #07beb8;
+    --accent-3: #3e53f4;
     --font-title: 'Lato', sans-serif;
     --font-regular: 'Noto Sans', sans-serif;
     font-family: var(--font-regular);
