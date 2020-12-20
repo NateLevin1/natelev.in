@@ -13,7 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js" defer></script>
     <noscript>
         <style>
             .lazy {
@@ -41,7 +42,7 @@
     </div>
 
     <main class="content">
-        <form action="" method="post" class="form">
+        <form action="" method="post" class="form" id="form">
             <label for="email" class="input-label">Email Address</label>
             <input type="email" class="input" id="email" name="email">
 
@@ -63,7 +64,9 @@
                 }
             </script>
 
-            <button class="submit g-recaptcha">Send</button>
+            <div class="g-recaptcha" data-sitekey="6LdHOA4aAAAAADK1mhxq22E8LyKuG6UEwEAaUUYT" id="captcha"></div>
+
+            <button class="submit" formaction="/api/message.php">Send</button>
         </form>
 
         <div class="options-container">
@@ -102,6 +105,58 @@
     <!-- SCRIPTS -->
     <script src="/js/lazy-images.js" defer></script>
     <script src="/js/links.js" defer></script>
-    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js" defer></script>
+    <script>
+        // validate/invalidate the form
+        const email = document.getElementById("email");
+        const subject = document.getElementById("subject");
+        const message = document.getElementById("message");
+        const captcha = document.getElementById("captcha");
+        
+        function validate(el, regex, meaning, canBeEmpty = true) {
+            if(!(regex.test(el.value) || (canBeEmpty && el.value.length === 0))) {
+                el.classList.add("invalid");
+                el.setCustomValidity(meaning);
+                if(canBeEmpty === true) { // a hack since this is not true when submitting
+                    form.reportValidity();
+                }
+                return false;
+            } else {
+                el.classList.remove("invalid");
+                el.setCustomValidity("");
+                return true;
+            }
+        }
+
+        // email regex from https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email
+        // email is onblur since otherwise it would show as wrong when typing
+        email.onblur = ()=>validate(email, /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/, "Must be a valid email");
+        subject.onkeyup = ()=>validate(subject, /\S/g, "Must contain non-whitespace text");
+        message.onkeyup = ()=>validate(message, /\S/g, "Must contain non-whitespace text");
+        subject.onblur = ()=>validate(subject, /\S/g, "Must contain non-whitespace text");
+        message.onblur = ()=>validate(message, /\S/g, "Must contain non-whitespace text");
+
+        const form = document.getElementById("form");
+        form.onsubmit = validateAll;
+
+        function validateAll() {
+            // this forces things to not be nothing, since at submit time everything must be filled in
+            const isAllValidated = [
+                validate(email, /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/, "Must be a valid email", false),
+                validate(subject, /\S/g, "Must contain non-whitespace text", false),
+                validate(message, /\S/g, "Must contain non-whitespace text", false),
+                (()=>{if(grecaptcha.getResponse().length === 0){captcha.classList.add("invalid"); return false} else {return true}})()
+            ];
+            if(isAllValidated.includes(false)) {
+                // uh oh! something is filled in wrong. don't let it submit!
+                form.reportValidity();
+                return false;
+            } else {
+                // everything is filled in correctly. let's submit!
+                return true;
+            }
+        }
+
+
+    </script>
 </body>
 </html>

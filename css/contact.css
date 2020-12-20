@@ -28,6 +28,20 @@
     border-bottom-color: var(--accent);
     outline: 0;
 }
+.input.invalid, .textarea-input.invalid {
+    outline: 2px solid red;
+    border-bottom-color: transparent;
+    background-color: rgb(255, 234, 234);
+}
+.g-recaptcha.invalid div div iframe {
+    outline: 2px solid rgba(255, 0, 0, 0.479);
+}
+.g-recaptcha.invalid:after {
+    content: "Prove you are not a robot to submit.";
+    margin-top: 0.2rem;
+    display: block;
+    color: red;
+}
 .textarea-input {
     resize: none;
     font-family: var(--font-regular);
@@ -44,6 +58,7 @@
     border-radius: 9px;
     width: calc(90% + 1rem);
     cursor: pointer;
+    transition: background-color 0.4s;
 }
 
 .btn {
