@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact nate levin</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/tranform-header.css">
+    <link rel="stylesheet" href="/css/links.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <link rel="stylesheet" href="/css/lazy-images.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+
+    <noscript>
+        <style>
+            .lazy {
+                filter: unset;
+            }
+        </style>
+    </noscript>
+</head>
+<body>
+    <!-- Header -->
+    <input type="checkbox" id="hamburger-check">
+    <label for="hamburger-check" class="hamburger-container" role="button" aria-label="Open/Close navigation menu"><div class="hamburger"></div></label>
+    <div class="open-hamburger">
+        <div class="hamburger-content">
+            <a href="/portfolio/" class="hamburger-link custom-color">portfolio</a>
+            <a href="/articles/" class="hamburger-link custom-color">articles</a>
+            <a href="/contact/" class="hamburger-link custom-color">contact</a>
+        </div>
+    </div>
+    
+    <h1 class="title"><a href="/" class="custom-color" style="text-decoration: unset;">nate levin</a></h1>
+    <div class="red-bg"></div>
+    <div class="header">
+        <h1>Contact</h1>
+    </div>
+
+    <main class="content">
+        <form action="" method="post" class="form">
+            <label for="email" class="input-label">Email Address</label>
+            <input type="email" class="input" id="email" name="email">
+
+            <label for="subject" class="input-label">Subject</label>
+            <input type="text" class="input" id="subject" name="subject">
+
+            <label for="message" class="input-label">Message</label>
+            <textarea class="textarea-input" id="message" name="message"></textarea>
+            <script>
+                // resize the textarea automatically
+                // this solution is from https://stackoverflow.com/a/25621277
+                var content = document.getElementById("message");
+                content.setAttribute('style', 'height:' + (content.scrollHeight) + 'px;overflow-y:hidden;');
+                content.addEventListener("input", OnInput, false);
+
+                function OnInput() {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px';
+                }
+            </script>
+
+            <button class="submit g-recaptcha">Send</button>
+        </form>
+
+        <div class="options-container">
+            <h2 class="other-options">Other options</h2>
+            <div class="btn-container">
+                <a href="mailto:natelevindev@gmail.com" class="email-btn btn no-underline">
+                    <div class="icon-container">
+                        <span class="iconify" data-inline="false" data-icon="clarity:email-line"
+                            style="color: white; font-size: 4.125em;"></span>
+                    </div>
+                    <span class="btn-text" aria-hidden="false">Email Me</span>
+                </a>
+                <a href="https://twitter.com/NateLevin1" class="twitter-btn btn no-underline" rel="noreferrer noopener">
+                    <div class="icon-container">
+                        <span class="iconify" data-inline="false" data-icon="ant-design:twitter-circle-filled"
+                            style="color: white; font-size: 4.125em;"></span>
+                    </div>
+                    <span class="btn-text" aria-hidden="false">Connect with me</span>
+                </a>
+                <a href="https://github.com/UltimatePro-Grammer" class="github-btn btn no-underline" rel="noreferrer noopener">
+                    <div class="icon-container">
+                        <span class="iconify" data-inline="false" data-icon="ant-design:github-filled"
+                            style="color: white; font-size: 4.125em;"></span>
+                    </div>
+                    <span class="btn-text" aria-hidden="false">File an issue</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#" class="back-to-top custom-color">back to top</a>
+        <i class="copyright">© Nate Levin 2020</i>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="/js/lazy-images.js" defer></script>
+    <script src="/js/links.js" defer></script>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js" defer></script>
+</body>
+</html>

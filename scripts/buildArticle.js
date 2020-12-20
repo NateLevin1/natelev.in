@@ -197,7 +197,7 @@ ${suggested.map(([path, title])=>{
     <!-- SCRIPTS -->
     <script src="/js/lazy-images.js" defer></script>
     <script src="/js/links.js" defer></script>
-    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js" defer></script>
 </body>
 </html>
     `;
