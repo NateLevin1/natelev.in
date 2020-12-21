@@ -178,11 +178,11 @@ ${suggested.map(([path, title])=>{
                     <span class="iconify" data-inline="false" data-icon="ant-design:message-outlined"
                         style="color: #fb3640; font-size: 4.125em;"></span>
                 </a>
-                <a href="twitter" class="no-underline" aria-label="Twitter">
+                <a href="https://twitter.com/NateLevin1" class="no-underline" aria-label="Twitter">
                     <span class="iconify" data-inline="false" data-icon="ant-design:twitter-circle-filled"
                         style="color: #1da1f2; font-size: 4.125em;"></span>
                 </a>
-                <a href="github" class="no-underline" aria-label="Github">
+                <a href="https://github.com/UltimatePro-Grammer" class="no-underline" aria-label="Github">
                     <span class="iconify" data-inline="false" data-icon="ant-design:github-filled"
                         style="color: black; font-size: 4.125em;"></span>
                 </a>
