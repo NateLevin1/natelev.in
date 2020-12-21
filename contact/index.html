@@ -48,7 +48,7 @@
             <input type="email" class="input" id="email" name="email">
 
             <label for="subject" class="input-label">Subject</label>
-            <input type="text" class="input" id="subject" name="subject">
+            <input type="text" class="input" id="subject" name="subject" autocomplete="off">
 
             <label for="message" class="input-label">Message</label>
             <textarea class="textarea-input" id="message" name="message"></textarea>
@@ -67,7 +67,7 @@
 
             <div class="g-recaptcha" data-sitekey="6LdHOA4aAAAAADK1mhxq22E8LyKuG6UEwEAaUUYT" id="captcha"></div>
 
-            <button class="submit" formaction="/api/message.php">Send</button>
+            <button class="submit" type="button" id="submit">Send</button>
         </form>
 
         <div class="options-container">
@@ -112,7 +112,65 @@
         const subject = document.getElementById("subject");
         const message = document.getElementById("message");
         const captcha = document.getElementById("captcha");
+        const form = document.getElementById("form");
+        const submit = document.getElementById("submit");
         
+        function send() {
+            // first, validate
+            let canContinue = validateAll();
+            if(!canContinue) {
+                return null; // don't execute the rest of this function
+            }
+
+            // our form is valid, lets fetch
+            let numOfPeriods = 1;
+            const sendingInterval = setInterval(()=>{
+                numOfPeriods++;
+                if(numOfPeriods > 3) {
+                    numOfPeriods = 1;
+                }
+                submit.innerText = "Sending"+".".repeat(numOfPeriods);
+            }, 200);
+
+            fetch("/api/message.php", {
+                method: "POST",
+                body: new URLSearchParams(new FormData(form)),
+                cache: "no-cache",
+            })
+            .then(async response=>{
+                if(response.status !== 200) {
+                    return Promise.reject(await response.text());
+                }
+                return response.text()
+            })
+            .then((result)=>{
+                // reset the form so you can't just spam click
+                form.reset();
+                submit.innerText = "Sent!";
+                submit.style.backgroundColor = "green";
+                submit.disabled = true;
+                setTimeout(()=>{
+                    submit.disabled = false;
+                    submit.innerText = "Send";
+                    submit.style.backgroundColor = null;
+                }, 5000); // at least five secs; don't overload Pushover's servers!
+            })
+            .catch((err)=>{
+                console.error(err);
+                submit.innerText = "Error Sending";
+                submit.disabled = true;
+                setTimeout(()=>{
+                    submit.disabled = false;
+                    submit.innerText = "Send";
+                }, 2500);
+                grecaptcha.reset(); // since it will now be a duplicate
+            })
+            .finally(()=>{
+                clearInterval(sendingInterval);
+            });
+        }
+        submit.onclick = send;
+
         function validate(el, regex, meaning, canBeEmpty = true) {
             if(!(regex.test(el.value) || (canBeEmpty && el.value.length === 0))) {
                 el.classList.add("invalid");
@@ -135,9 +193,6 @@
         message.onkeyup = ()=>validate(message, /\S/g, "Must contain non-whitespace text");
         subject.onblur = ()=>validate(subject, /\S/g, "Must contain non-whitespace text");
         message.onblur = ()=>validate(message, /\S/g, "Must contain non-whitespace text");
-
-        const form = document.getElementById("form");
-        form.onsubmit = validateAll;
 
         function validateAll() {
             // this forces things to not be nothing, since at submit time everything must be filled in

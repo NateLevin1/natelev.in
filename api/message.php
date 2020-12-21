@@ -14,6 +14,11 @@
     $subject = $_POST["subject"];
     $message = $_POST["message"];
 
+    // Silence warnings. We have to do this since for some reason when PHP
+    // makes a warning, the status code can't be set to anything other than
+    // 200. ??? But this will do.
+    error_reporting(E_ERROR | E_PARSE);
+
     // check if the captcha key is valid; see https://developers.google.com/recaptcha/docs/verify
     $captcha_key = $_POST["g-recaptcha-response"];
     // make a post request; from https://stackoverflow.com/a/6609181

@@ -37,7 +37,7 @@
     outline: 2px solid rgba(255, 0, 0, 0.479);
 }
 .g-recaptcha.invalid:after {
-    content: "Prove you are not a robot to submit.";
+    content: "Prove you are not a robot to send.";
     margin-top: 0.2rem;
     display: block;
     color: red;
