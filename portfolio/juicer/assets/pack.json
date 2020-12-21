@@ -1,0 +1,70 @@
+{
+  "section1": {"files": [
+    {
+      "type": "sceneFile",
+      "key": "Scene1",
+      "url": "assets/scenes/Scene1.js"
+    },
+    {
+      "type": "tilemapTiledJSON",
+      "key": "tiledTest",
+      "url": "assets/tiledTest.json"
+    },
+    {
+      "type": "image",
+      "key": "tiles",
+      "url": "assets/tiles.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "box",
+      "url": "assets/box.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "orange",
+      "url": "assets/orange.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "player",
+      "url": "assets/player.png",
+      "normalMap": ""
+    },
+    {
+      "type": "script",
+      "key": "globals",
+      "url": "assets/globals.js"
+    },
+    {
+      "type": "image",
+      "key": "juicer",
+      "url": "assets/juicer.png"
+    },
+    {
+      "type": "image",
+      "key": "juicer2",
+      "url": "assets/juicer2.png"
+    },
+    {
+      "type": "image",
+      "key": "juicer4",
+      "url": "assets/juicer4.png"
+    },
+    {
+      "type": "image",
+      "key": "juice",
+      "url": "assets/juice.png"
+    }
+  ]},
+  "meta": {
+    "generated": "1586288878124",
+    "app": "Phaser Editor 2D - Asset Pack Editor - 2.1.6",
+    "contentType": "Phaser v3 Asset Pack",
+    "url": "https://phasereditor2d.com",
+    "version": "2"
+  }
+}
