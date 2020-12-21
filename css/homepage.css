@@ -45,7 +45,7 @@
     width:100%;
     position: absolute;
     top:0;
-    height:10%;
+    height: calc(4vh + 1.8rem);
     background-color: var(--browser-bar-color);
     z-index: 1;
     border-radius: 15px 15px 0px 0px;
@@ -132,6 +132,7 @@
     background-color: white;
     border-radius: 4px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.05em 0;
 }
 .browser-content {
     position: absolute;
@@ -219,7 +220,7 @@
     background-color: rgba(0, 153, 255, 0.5);
     position: absolute;
     z-index: 2;
-    top: 10%;
+    top: calc(4vh + 1.8rem);
     left:0;
     /* animation: 8s linear 8s infinite running load; */
 }
@@ -230,6 +231,8 @@
     width:100%;
     height:100%;
     display: block;
+    color: black;
+    text-decoration: none;
 }
 @keyframes slide-left-from-right {
     from {
@@ -357,6 +360,8 @@
 }
 .game {
     width: 75%;
+    /* This is the max width for an itch game iframe. without this black bars are shown */
+    max-width: 1104px;
 }
 
 /* MEDIA QUERIES */
@@ -371,10 +376,13 @@
         display: none;
     }
     .browser-website-container {
-        margin-top: 1.6vh;
+        margin-top: calc(1.6vh - 0.1em);
         font-size: 1.1rem;
         position: relative;
         left: clamp(3rem, 5rem, 10%);
+    }
+    .browser-website {
+        padding: 0.2% 0;
     }
     #browser-left {
         left: calc(3.3% + min(9%, 3.5rem));
@@ -443,6 +451,6 @@
         width: 100%;
     }
     .about {
-        margin-top:calc(90vh + 1em);
+        margin-top:calc(90vh + 1.5em);
     }
 }
