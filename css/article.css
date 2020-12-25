@@ -83,7 +83,9 @@
     position: absolute;
     bottom: 0;
     z-index: -1;
-    object-fit: cover;
+    object-fit: contain;
+    background-size: contain;
+    background-position: center;
 }
 .red-bg {
     /* Override the default gradient: looks weird with the drop shadows on mobile */
@@ -95,7 +97,7 @@
     }
 }
 
-p {
+p, ol {
     font-size: 1.1rem;
 }
 

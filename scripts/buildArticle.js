@@ -34,7 +34,7 @@ const renderer = {
             title = text;
             return `
             <div class="article-title-bg">
-                <h1 class="article-title" name="title">${text}</h1>
+                <h1 class="article-title" id="title">${text}</h1>
             </div>
             `;
         } else {
@@ -43,7 +43,7 @@ const renderer = {
             const uid = slugger.slug(escapedText);
 
             return `
-            <h${level} name="${uid}">
+            <h${level} id="${uid}">
                 ${text}
             </h${level}>
             `
@@ -113,9 +113,9 @@ fs.readFile(fileLocation, 'utf8' , (err, markdown) => {
     <title>${title}</title>
     <meta name="description" content="${desc.replace(/<(\w+)[^>]*>(.+)<\/\1>/g, (match, tag, inside)=>inside)}">
     <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/article.css">
     <link rel="stylesheet" href="/css/links.css">
     <link rel="stylesheet" href="/css/lazy-images.css">
+    <link rel="stylesheet" href="/css/article.css">
     <!-- Async-ly Loaded Code Block CSS -->
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css"
