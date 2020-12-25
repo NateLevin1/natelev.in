@@ -8,6 +8,12 @@
     .code {
         font-size: 0.8rem;
     }
+    .title {
+        font-size: calc(3.2 * 16px);
+    }
+    .hamburger-link {
+        font-size: calc(1.4 * 16px);
+    }
 }
 /* Make hamburger:
  - Not scroll if closed
