@@ -161,6 +161,8 @@ class Scene1 extends Phaser.Scene {
 		if(this.started === true) {
 			if(this.player.y>1100) {
 				this.lose();
+			} else if(this.player.y < -28000) {
+				alert("You win!");
 			}
 		}
 	}
