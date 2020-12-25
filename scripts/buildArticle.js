@@ -71,6 +71,8 @@ const renderer = {
         } else if(text.startsWith("ISSUE|")) {
             issueLink = issueLink + "/" + text.split("|")[1];
             return "";
+        } else if(text.startsWith("NOTE:")) {
+            return `<p class="note">${text.slice(6)}</p>`;
         } else {
             // paragraph - don't need custom behavior
             if(!desc) {
