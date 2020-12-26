@@ -26,6 +26,7 @@ if(outIndex !== -1) {
 let suggested = [];
 let title = "";
 let desc = "";
+let headerImg = "";
 let issueLink = "https://github.com/UltimatePro-Grammer/natelev.in/issues";
 const renderer = {
     heading(text, level, raw, slugger) {
@@ -55,6 +56,7 @@ const renderer = {
             const isHeader = text.match(/alt="HEADER\|([^"]+)"/);
             const [match, source, extension] = text.match(/src="([^".]+)\.(\w+)"/);
             if(isHeader) {
+                headerImg = `${source}.${extension}`;
                 // give it the special styles
                 return `
                 <div class="header-image-container">
@@ -107,17 +109,30 @@ fs.readFile(fileLocation, 'utf8' , (err, markdown) => {
         throw err;
     }
     const mdHTML = marked(markdown);
+    let txtDesc = desc.replace(/<(\w+)[^>]*>(.+)<\/\1>/g, (match, tag, inside)=>inside);
     let outHTML = `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
-    <meta name="description" content="${desc.replace(/<(\w+)[^>]*>(.+)<\/\1>/g, (match, tag, inside)=>inside)}">
+    <meta name="description" content="${txtDesc}">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/links.css">
     <link rel="stylesheet" href="/css/lazy-images.css">
     <link rel="stylesheet" href="/css/article.css">
+
+    <!-- meta tags for social media -->
+    <meta property="og:site_name" content="Nate Levin">
+    <meta property="og:url" content="http://natelev.in/${fileLocation.replace(".md", ".html")}">
+    <meta property="og:title" content="${title}">
+    <meta property="og:description" content="${txtDesc}">
+    <meta property="og:image" content="http://natelev.in/${(outFilePath || "").replace("index.html", "")}${headerImg}">
+    <meta property="og:type" content="article">
+    <meta name="theme-color" content="#FB3640">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@NateLevin1">
+
     <!-- Async-ly Loaded Code Block CSS -->
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css"
