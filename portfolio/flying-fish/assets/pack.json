@@ -1,0 +1,53 @@
+{
+  "section1": {"files": [
+    {
+      "type": "sceneFile",
+      "key": "Scene1",
+      "url": "assets/scenes/Scene1.js"
+    },
+    {
+      "type": "image",
+      "key": "fish",
+      "url": "assets/fish.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "waves",
+      "url": "assets/waves.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "wall",
+      "url": "assets/wall.png"
+    },
+    {
+      "type": "image",
+      "key": "win",
+      "url": "assets/win.png"
+    },
+    {
+      "type": "audio",
+      "key": "bubble",
+      "url": ["assets/bubble.mp3"]
+    },
+    {
+      "type": "audio",
+      "key": "flap",
+      "url": ["assets/flap.mp3"]
+    },
+    {
+      "type": "audio",
+      "key": "music",
+      "url": ["assets/music.mp3"]
+    }
+  ]},
+  "meta": {
+    "generated": "1586469787864",
+    "app": "Phaser Editor 2D - Asset Pack Editor - 2.1.6",
+    "contentType": "Phaser v3 Asset Pack",
+    "url": "https://phasereditor2d.com",
+    "version": "2"
+  }
+}

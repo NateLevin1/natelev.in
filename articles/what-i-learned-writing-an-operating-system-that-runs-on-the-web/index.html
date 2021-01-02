@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What I Learned Writing an Operating System That Runs on The Web</title>
+    <meta name="description" content="Over the summer, I created a fully-fledged operating system written in vanilla JavaScript. Here&#39;s what I learned about the state of the web today.">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/links.css">
+    <link rel="stylesheet" href="/css/lazy-images.css">
+    <link rel="stylesheet" href="/css/article.css">
+
+    <!-- meta tags for social media -->
+    <meta property="og:site_name" content="Nate Levin">
+    <meta property="og:url" content="http://natelev.in/articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/index.html">
+    <meta property="og:title" content="What I Learned Writing an Operating System That Runs on The Web">
+    <meta property="og:description" content="Over the summer, I created a fully-fledged operating system written in vanilla JavaScript. Here&#39;s what I learned about the state of the web today.">
+    <meta property="og:image" content="http://natelev.in/articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/images/header.jpg">
+    <meta property="og:type" content="article">
+    <meta name="theme-color" content="#FB3640">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@NateLevin1">
+
+    <!-- Async-ly Loaded Code Block CSS -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css"
+      media="print"
+      onload="this.media='all'; this.onload=null;">
+    <noscript>
+        <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css">
+
+        <style>
+            .lazy {
+                filter: unset;
+            }
+        </style>
+    </noscript>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <input type="checkbox" id="hamburger-check">
+    <label for="hamburger-check" class="hamburger-container" role="button" aria-label="Open/Close navigation menu"><div class="hamburger"></div></label>
+    <div class="open-hamburger">
+        <div class="hamburger-content">
+            <a href="/portfolio/" class="hamburger-link custom-color">portfolio</a>
+            <a href="/articles/" class="hamburger-link custom-color">articles</a>
+            <a href="/contact/" class="hamburger-link custom-color">contact</a>
+        </div>
+    </div>
+    
+    <h1 class="title"><a href="/" class="custom-color" style="text-decoration: unset;">nate levin</a></h1>
+    <div class="red-bg"></div>
+
+    <article class="main-article">
+        
+            <div class="article-title-bg">
+                <h1 class="article-title" id="title">What I Learned Writing an Operating System That Runs on The Web</h1>
+            </div>
+            
+                <div class="header-image-container">
+                    <img src="images/header.jpg" style="background-image: url(images/header-low.jpg);" alt="A screenshot of WebSystem" class="header-image lazy">
+                </div>
+                <div class="content"> 
+                
+            <p>Over the summer, I created a fully-fledged operating system written in vanilla JavaScript. Here&#39;s what I learned about the state of the web today.</p>
+            <p class="note">If you want to try out the OS for yourself, it&#39;s available online <a href="https://websystem.io">here</a>.</p>
+            <h2 id="don-39-t-use-framework-less-js-for-ui">
+                Don&#39;t use framework-less JS for UI
+            </h2>
+            
+            <p>The biggest thing I learned from this project was that vanilla JS is not remotely ideal for UI design. As you can imagine, needing to create hundreds of elements just to open a new window is annoying. All that exists to make complex UIs with JS is <code>document.createElement</code> (and Web Components, but I&#39;ll get to that later). This means that much of my code ended up looking pretty similar.</p>
+            <pre class="code"><code class="language-js"><span class="token keyword">const</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>foo <span class="token operator">=</span> <span class="token string">"..."</span><span class="token punctuation">;</span>
+el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>bar <span class="token operator">=</span> <span class="token string">"..."</span><span class="token punctuation">;</span>
+parent<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>All this is not to mention having to add event listeners to these elements and the many memory issues adding those event listeners causes. These memory issues constituted a significant portion to the high memory usage of WebSystem.</p>
+            
+            <p>However, recently the various spec groups have come out with a pretty useful feature: <a href="https://www.webcomponents.org/introduction">Web Components</a>. Since I haven&#39;t gotten a chance to use them I won&#39;t go over them in this article, but I am sure that this could solve many of the problems I faced.</p>
+            
+            <p>This is all to say that if you&#39;re looking to make a webapp, <strong>use a front-end framework!</strong> I certainly wasn&#39;t doing myself any favors trying to roll it on my own.</p>
+            
+            <h2 id="don-39-t-fear-the-backend">
+                Don&#39;t fear the backend
+            </h2>
+            
+            <p>When I originally started WebSystem I only had experience writing front-end code. Since I didn&#39;t want to have to deal with any backend programming I decided I would store all user data on the client through LocalStorage.</p>
+            
+            <p>As I got past the opening stages of development, I realized LocalStorage was way too limiting and slow for what I wanted to do. At this point, I had two options:</p>
+            <ol>
+<li>Write backend code that would store data in a proper database</li>
+<li>Store all the data on the client and use IndexedDB</li>
+</ol>
+
+            <p>I should have known that just using a backend database would be much simpler, but I had such an irrational fear of backend that I chose to store this data on the client. When I implemented user sign in and began storing data on the server, I had multiple sources for the same information which caused countless errors.</p>
+            
+            <h2 id="use-code-splitting-don-39-t-use-classes-when-you-don-39-t-need-to">
+                Use code splitting / Don&#39;t use classes when you don&#39;t need to
+            </h2>
+            
+            <p>In WebSystem, I took an object-oriented approach to writing apps and system tools. For example, here&#39;s what an app might have looked like.</p>
+            <pre class="code"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">AppName</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>window <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Window</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">someFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">someOtherFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>There are two problems with writing code this way.</p>
+            
+            <p>The first problem is that there was no reason for this to be a class. In my code, when opening an app is equivalent to just instantiating a class and doing nothing with it. This is <strong>not</strong> how classes should be used. Use classes when there is a clear use of the class besides just that it feels right with the <code>new</code> operator.</p>
+            
+            <p>The second problem is that this kind of class-based code is not testable. The way I wrote my code was so interdependent on other code I had written that I could not use unit or front end testing. In most cases I would have to manually check if something worked! This is why code splitting is important. If I had moved each method of the class into a separate function the code would be much more easily testable and readable.</p>
+            
+            <h2 id="bonus-lessons-">
+                Bonus lessons!
+            </h2>
+            <ul>
+<li>Don&#39;t use <code>&lt;script&gt;</code> tags. Use ES modules! Handling dependencies is far easier with ES modules and it makes code much easier to read.</li>
+<li>IndexedDB is awesome, but its actual API is terrible. Use <a href="https://dexie.org">DexieJS</a> for a JS api or if you already know SQL use my DexieJS wrapper <a href="https://github.com/UltimatePro-Grammer/JSQL">JSQL</a></li>
+<li>Use <a href="https://trello.com">Trello</a> or a similar service to keep track of your progress and what you have left to do. Trello also works great in teams!</li>
+</ul>
+<!-- Compile with "npm run build-article articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/ -- --out articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/index.html" -->
+        <div class="torm">
+                <h3>Talk about this article <a href="https://github.com/UltimatePro-Grammer/natelev.in/issues/1">on Github</a></h3>
+                <span>or</span>
+                <h3>Read more like this</h3>
+        </div>
+        </div> 
+        <div class="similar" id="similar">
+                    <article>
+                    <a href="/articles/wati/" class="no-underline article-anchor">
+                        <img src="/articles/wati/images/header.jpg" style="background-image: url(/articles/wati/images/header-low.jpg);" alt="Article thumbnail" class="similar-thumb lazy">
+                        <h1 class="similar-title">TODO</h1>
+                    </a>
+                </article>
+                    <article>
+                    <a href="/articles/wati/" class="no-underline article-anchor">
+                        <img src="/articles/wati/images/header.jpg" style="background-image: url(/articles/wati/images/header-low.jpg);" alt="Article thumbnail" class="similar-thumb lazy">
+                        <h1 class="similar-title">TODO</h1>
+                    </a>
+                </article>
+                    <article>
+                    <a href="/articles/wati/" class="no-underline article-anchor">
+                        <img src="/articles/wati/images/header.jpg" style="background-image: url(/articles/wati/images/header-low.jpg);" alt="Article thumbnail" class="similar-thumb lazy">
+                        <h1 class="similar-title">TODO</h1>
+                    </a>
+                </article>
+        </div>
+        <div class="connect">
+            <h2>Connect with me</h2>
+            <div class="logos">
+                <a href="/contact/" class="no-underline" aria-label="Contact">
+                    <span class="iconify" data-inline="false" data-icon="clarity:email-line"
+                        style="color: #fb3640; font-size: 4.125em;"></span>
+                </a>
+                <a href="https://twitter.com/NateLevin1" class="no-underline" aria-label="Twitter">
+                    <span class="iconify" data-inline="false" data-icon="ant-design:twitter-circle-filled"
+                        style="color: #1da1f2; font-size: 4.125em;"></span>
+                </a>
+                <a href="https://github.com/UltimatePro-Grammer" class="no-underline" aria-label="Github">
+                    <span class="iconify" data-inline="false" data-icon="ant-design:github-filled"
+                        style="color: black; font-size: 4.125em;"></span>
+                </a>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <a href="#" class="back-to-top custom-color">back to top</a>
+        <i class="copyright">© Nate Levin 2020</i>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="/js/lazy-images.js" defer></script>
+    <script src="/js/links.js" defer></script>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js" defer></script>
+</body>
+</html>
+    
