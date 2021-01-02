@@ -143,7 +143,7 @@
                 submit.innerText = "Sending"+".".repeat(numOfPeriods);
             }, 200);
 
-            fetch("/api/message.php", {
+            fetch("https://0jh3d06d1a.execute-api.us-east-1.amazonaws.com/default/contactNateLevin", {
                 method: "POST",
                 body: new URLSearchParams(new FormData(form)),
                 cache: "no-cache",
