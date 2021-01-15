@@ -62,8 +62,8 @@ The second problem is that this kind of class-based code is not testable. The wa
  - IndexedDB is awesome, but its actual API is terrible. Use [DexieJS](https://dexie.org) for a JS api or if you already know SQL use my DexieJS wrapper [JSQL](https://github.com/UltimatePro-Grammer/JSQL)
  - Use [Trello](https://trello.com) or a similar service to keep track of your progress and what you have left to do. Trello also works great in teams!
 
-SUGGESTED|/articles/wati/[t]TODO|/articles/wati/[t]TODO|/articles/wati/[t]TODO
+SUGGESTED|/articles/host-your-site-for-free-on-jamstack/[t]Host Your Site For Free On JAMstack
 
 ISSUE|1
 
-<!-- Compile with "npm run build-article articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/ -- --out articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/index.html" -->
+<!-- Compile with "npm run build-article src/articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/ -- --out src/articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/index.html" -->
