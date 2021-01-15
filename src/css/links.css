@@ -1,5 +1,7 @@
-.ud {
+a {
     color: var(--accent);
+}
+.ud {
     text-decoration: underline;
     text-decoration-color: transparent;
     transition: text-decoration-color 0.1s; /* Not supported in safari. oh well */
