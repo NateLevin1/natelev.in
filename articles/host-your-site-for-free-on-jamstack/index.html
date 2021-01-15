@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Your Site For Free On JAMstack</title>
+    <meta name="description" content="Over the weekend, I switched this site
+to a JAMstack hosting solution that is completely free and scalable.
+I got it set up in less than half an hour and I&#39;ll never 
+have to worry about traffic overloading my server!
+In this article we&#39;ll go over my exact setup, so you
+can host your very own site for absolutely free.">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/links.css">
+    <link rel="stylesheet" href="/css/lazy-images.css">
+    <link rel="stylesheet" href="/css/article.css">
+
+    <!-- meta tags for social media -->
+    <meta property="og:site_name" content="Nate Levin">
+    <meta property="og:url" content="http://natelev.in/src/articles/host-your-site-for-free-on-jamstack/index.html">
+    <meta property="og:title" content="Host Your Site For Free On JAMstack">
+    <meta property="og:description" content="Over the weekend, I switched this site
+to a JAMstack hosting solution that is completely free and scalable.
+I got it set up in less than half an hour and I&#39;ll never 
+have to worry about traffic overloading my server!
+In this article we&#39;ll go over my exact setup, so you
+can host your very own site for absolutely free.">
+    <meta property="og:image" content="http://natelev.in/src/articles/host-your-site-for-free-on-jamstack/images/header.jpg">
+    <meta property="og:type" content="article">
+    <meta name="theme-color" content="#FB3640">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@NateLevin1">
+
+    <!-- Async-ly Loaded Code Block CSS -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css"
+      media="print"
+      onload="this.media='all'; this.onload=null;">
+    <noscript>
+        <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css">
+
+        <style>
+            .lazy {
+                filter: unset;
+            }
+        </style>
+    </noscript>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <input type="checkbox" id="hamburger-check">
+    <label for="hamburger-check" class="hamburger-container" role="button" aria-label="Open/Close navigation menu"><div class="hamburger"></div></label>
+    <div class="open-hamburger">
+        <div class="hamburger-content">
+            <a href="/portfolio/" class="hamburger-link custom-color">portfolio</a>
+            <a href="/articles/" class="hamburger-link custom-color">articles</a>
+            <a href="/contact/" class="hamburger-link custom-color">contact</a>
+        </div>
+    </div>
+    
+    <h1 class="title"><a href="/" class="custom-color" style="text-decoration: unset;">nate levin</a></h1>
+    <div class="red-bg"></div>
+
+    <article class="main-article">
+        
+            <div class="article-title-bg">
+                <h1 class="article-title" id="title">Host Your Site For Free On JAMstack</h1>
+            </div>
+            
+                <div class="header-image-container">
+                    <img src="images/header.jpg" style="background-image: url(images/header-low.jpg);" alt="JAMstack graphic" class="header-image lazy">
+                </div>
+                <div class="content"> 
+                
+            <p>Over the weekend, I switched this site
+to a JAMstack hosting solution that is <strong>completely free and scalable</strong>.
+I got it set up in less than half an hour and I&#39;ll never 
+have to worry about traffic overloading my server!
+In this article we&#39;ll go over my exact setup, so you
+can host your very own site for absolutely free.</p>
+            
+            <h2 id="hosting-your-site">
+                Hosting your site
+            </h2>
+            <img src="images/hosting.jpg" alt="Choose your hosting provider! Netlify vs Github Pages" class="bleed lazy" style="background-image: url(images/hosting-low.jpg);">
+            <p>The first thing you will need to set up your site is a hosting provider.
+Here&#39;s a quick overview of your options.</p>
+            
+            <h3 id="-a-href-https-pages-github-com-github-pages-a-">
+                <a href="https://pages.github.com">Github Pages</a>
+            </h3>
+            
+            <p>The hosting solution I chose for this site was <a href="https://pages.github.com">GitHub Pages</a>.
+This is the best option if you already have your code open source
+and available on GitHub.
+It is super easy to integrate into an existing repository, and <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/creating-a-github-pages-site#creating-your-site">the documentation</a> is clear and helpful.</p>
+            
+            <p>Once you&#39;ve made a GitHub Pages website it will be auto-published under GitHub&#39;s <code>.github.io</code> domain. In order to use a custom domain, follow along with <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site">this</a> tutorial.</p>
+            
+            <h3 id="-a-href-https-www-netlify-com-netlify-a-">
+                <a href="https://www.netlify.com">Netlify</a>
+            </h3>
+            
+            <p>Netlify is a great all-in-one solution for hosting a site for free.
+For example, netlify supports builds out-of-the-box, while on GitHub Pages you have to set up a <a href="https://github.com/marketplace/actions/deploy-to-github-pages">deployment bot</a>.
+Netlify also supports private repositories, which on GitHub Pages you will have to pay a fee for.
+Netlify even includes 120k invocations of serverless functions for free!</p>
+            
+            <h2 id="adding-backend-functionality-to-your-site-with-serverless">
+                Adding backend functionality to your site with Serverless
+            </h2>
+            <img src="images/serverless.jpg" alt="Serverless! Graphic" class="bleed lazy" style="background-image: url(images/serverless-low.jpg);">
+            <p>&quot;Serverless&quot; is a bit of a buzzword these days, but it is a great option to add backend capabilities to your site for free.
+Serverless functions are easy to write, and are built to scale well.</p>
+            
+            <p>For this site I chose to use AWS Lambda, though some might find it easier to use Netlify or Google Cloud functions for their serverless needs.
+Most of the serverless providers will give you enough invocations for free, so you should choose the one that works best for your particular use case.</p>
+            
+            <p>I&#39;m currently using serverless to allow people to message me through a web interface. If you want to try it, you can message me <a href="https://natelev.in/contact/">here</a>.</p>
+            
+            <h2 id="securing-your-site-with-a-href-https-www-cloudflare-com-cloudflare-a-">
+                Securing your site with <a href="https://www.cloudflare.com">Cloudflare</a>
+            </h2>
+            <img src="images/security.jpg" alt="Security! Graphic" class="bleed lazy" style="background-image: url(images/security-low.jpg);">
+            <p>Many of the previously mentioned hosting options won&#39;t give you SSL support.
+This <a href="https://valveandmeter.com/ssl-seo-secure-website-impacts-search-traffic/">will lead to worse SEO</a> and will cause browsers to show your site as &quot;not secure&quot;.</p>
+            
+            <p>One easy way to fix this is to use <a href="https://www.cloudflare.com">Cloudflare</a>.
+Cloudflare gives your site free SSL encryption (including auto-upgrading insecure connections to SSL) and your site gains free DDOS and down time protection, so your site will almost never go offline.</p>
+            
+            <h2 id="bonus-where-should-i-get-my-domain-name-">
+                Bonus - Where should I get my domain name?
+            </h2>
+            
+            <p>If you want to be able to host your site on a custom domain you have to first buy a domain.
+For free, there is really only one option: <a href="https://www.freenom.com/">Freenom</a>.
+However, these domains won&#39;t be what you&#39;re probably thinking they will be.
+The TLDs (the <code>.com</code> part of <code>example.com</code>) are very limited, and commonly associated with scam sites.</p>
+            
+            <p>To get a domain with a <code>.com</code> or similar TLD you will need to pay for the domain.
+I&#39;ve found that <a href="https://www.namecheap.com">Namecheap</a> is consistently the cheapest, though you should look around to see if the domain you want is available at other registrars for cheaper.</p>
+            <!-- Compile with "npm run build-article src/articles/host-your-site-for-free-on-jamstack/ -- --out src/articles/host-your-site-for-free-on-jamstack/index.html" -->
+        <div class="torm">
+                <h3>Talk about this article <a href="https://github.com/UltimatePro-Grammer/natelev.in/issues/2">on Github</a></h3>
+                <span>or</span>
+                <h3>Read more like this</h3>
+        </div>
+        </div> 
+        <div class="similar" id="similar">
+                    <article>
+                    <a href="/articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/" class="no-underline article-anchor">
+                        <img src="/articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/images/header.jpg" style="background-image: url(/articles/what-i-learned-writing-an-operating-system-that-runs-on-the-web/images/header-low.jpg);" alt="Article thumbnail" class="similar-thumb lazy">
+                        <h1 class="similar-title">What I Learned Writing an Operating System That Runs on The Web</h1>
+                    </a>
+                </article>
+        </div>
+        <div class="connect">
+            <h2>Connect with me</h2>
+            <div class="logos">
+                <a href="/contact/" class="no-underline" aria-label="Contact">
+                    <span class="iconify" data-inline="false" data-icon="clarity:email-line"
+                        style="color: #fb3640; font-size: 4.125em;"></span>
+                </a>
+                <a href="https://twitter.com/NateLevin1" class="no-underline" aria-label="Twitter">
+                    <span class="iconify" data-inline="false" data-icon="ant-design:twitter-circle-filled"
+                        style="color: #1da1f2; font-size: 4.125em;"></span>
+                </a>
+                <a href="https://github.com/UltimatePro-Grammer" class="no-underline" aria-label="Github">
+                    <span class="iconify" data-inline="false" data-icon="ant-design:github-filled"
+                        style="color: black; font-size: 4.125em;"></span>
+                </a>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <a href="#" class="back-to-top custom-color">back to top</a>
+        <i class="copyright">© Nate Levin 2020</i>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="/js/lazy-images.js" defer></script>
+    <script src="/js/links.js" defer></script>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js" defer></script>
+</body>
+</html>
+    

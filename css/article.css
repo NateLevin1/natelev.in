@@ -64,31 +64,24 @@
         text-align: center;
         margin: 0.8rem auto;
         font-size: 3rem;
-        width: min(60rem, calc(100%));
+        width: min(60rem, 100%);
+        max-width:40rem;
     }
     .hamburger-content {
         width: 50%;
     }
 }
 .header-image-container {
-    height:45vh;
-    width: min(80ch, calc(100%));
     margin: 0 auto;
     overflow: hidden;
-    position: relative;
-}
-@media only screen and (min-width: 600px) {
-    .header-image-container {
-        height:52vh;
-    }
+    position:relative;
+    z-index: -1;
+    top: -4px;
 }
 .header-image {
-    min-width:100%;
-    max-width:140%;
-    height: 100%;
-    position: absolute;
-    bottom: 0;
-    z-index: -1;
+    width: 100%;
+    max-height: 45vh;
+    position: relative;
     object-fit: contain;
     background-size: contain;
     background-position: center;
@@ -105,6 +98,19 @@
 
 p, ol {
     font-size: 1.1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    left: -10px;
+}
+h3 {
+    font-size: 1.3rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.3rem;
 }
 
 /* Full bleed layout from https://www.joshwcomeau.com/css/full-bleed/ */
@@ -125,9 +131,10 @@ p, ol {
     max-height:70vh;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1rem;
 }
 img.bleed {
-    max-height: 50vh;
+    max-height: 40vh;
 }
 .code {
     background-color: rgb(248, 248, 248);
