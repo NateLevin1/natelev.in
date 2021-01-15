@@ -124,10 +124,10 @@ fs.readFile(fileLocation, 'utf8' , (err, markdown) => {
 
     <!-- meta tags for social media -->
     <meta property="og:site_name" content="Nate Levin">
-    <meta property="og:url" content="http://natelev.in/${fileLocation.replace(".md", ".html")}">
+    <meta property="og:url" content="http://natelev.in/${fileLocation.replace(".md", ".html").replace("src/", "")}">
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${txtDesc}">
-    <meta property="og:image" content="http://natelev.in/${(outFilePath || "").replace("index.html", "")}${headerImg}">
+    <meta property="og:image" content="http://natelev.in/${(outFilePath || "").replace("src/", "").replace("index.html", "")}${headerImg}">
     <meta property="og:type" content="article">
     <meta name="theme-color" content="#FB3640">
     <meta name="twitter:card" content="summary_large_image">
