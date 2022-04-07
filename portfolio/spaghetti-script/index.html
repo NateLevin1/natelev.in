@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SpaghettiScript Interpreter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="waves.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="main.js" type="module"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div id="content-container">
+        <div id="title"><h1>SpaghettiScript Interpreter</h1></div>
+        <div id="input-container">
+          <textarea id="editor" contenteditable="true" class="io">
+[0:o---≡1] [1:O-{o=0}===≡2 ---≡1] [2] ---≡0</textarea
+          >
+        </div>
+        <div id="output-container">
+          <output id="output" class="io"
+            ><span style="color: rgba(0, 0, 0, 0.5); user-select: none"
+              >Output appears here</span
+            ></output
+          >
+        </div>
+
+        <div id="left-buttons-container">
+          <button id="fork" class="hoverable" title="Ctrl+=">≡</button>
+          <button id="right" class="hoverable" title="Ctrl+.">⇢</button>
+          <button id="left" class="hoverable" title="Ctrl+,">⇠</button>
+          <select id="example" class="hoverable" title="Choose an example">
+            <option value="">Example</option>
+            <option value="helloWorld">Hello World</option>
+            <option value="countDown">Count Down</option>
+            <option value="addition">Addition</option>
+            <option value="multiplication">Multiplication</option>
+            <option value="fizzBuzz">FizzBuzz</option>
+            <option value="fizzBuzzCommented">FizzBuzz (Commented)</option>
+            <optgroup label="Cat Programs">
+              <option value="stringCat">String Cat</option>
+              <option value="multipleNumberCat">Multiple Number Cat</option>
+              <option value="singleNumberCat">Single Number Cat</option>
+            </optgroup>
+          </select>
+          <button id="load-button" class="hoverable">Load</button>
+          <button id="save-button" class="hoverable">Save</button>
+          <button id="clear" class="hoverable">Clear</button>
+          <a
+            id="info"
+            class="hoverable"
+            href="https://esolangs.org/wiki/SpaghettiScript"
+            target="_blank"
+            >Help</a
+          >
+        </div>
+        <div id="right-buttons-container">
+          <button id="interpret-button" class="hoverable">Interpret</button>
+        </div>
+      </div>
+
+      <!--Waves Container -->
+      <div>
+        <svg
+          class="waves"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 24 150 28"
+          preserveAspectRatio="none"
+          shape-rendering="auto"
+        >
+          <defs>
+            <path
+              id="gentle-wave"
+              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+            />
+          </defs>
+          <g class="parallax">
+            <use
+              xlink:href="#gentle-wave"
+              x="48"
+              y="0"
+              fill="rgba(255,255,255,0.7"
+            />
+            <use
+              xlink:href="#gentle-wave"
+              x="48"
+              y="3"
+              fill="rgba(255,255,255,0.5)"
+            />
+            <use
+              xlink:href="#gentle-wave"
+              x="48"
+              y="5"
+              fill="rgba(255,255,255,0.3)"
+            />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+          </g>
+        </svg>
+      </div>
+      <!--Waves end -->
+    </div>
+    <!--Header ends -->
+
+    <div class="credits">
+      <div class="credits-inner">
+        <p class="made-by">
+          Made with 🍝 by <a href="http://natelev.in">Nate Levin</a>
+        </p>
+        <p class="credit">CSS Waves by Daniel Osterman</p>
+      </div>
+    </div>
+  </body>
+</html>
