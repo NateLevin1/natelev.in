@@ -4,7 +4,8 @@
   "description": "Nate Levin's personal website.",
   "scripts": {
     "help:build-article": "echo 'Use: npm run build-article articles/markdown_dir/ -- --out articles/article_dir/index.html'",
-    "build-article": "node scripts/buildArticle.js"
+    "build-article": "node scripts/buildArticle.js",
+    "start": "live-server src"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/UltimatePro-Grammer/natelev.in#readme",
   "dependencies": {
+    "live-server": "^1.2.1",
     "marked": "^1.2.5",
     "prismjs": "^1.22.0"
   }
