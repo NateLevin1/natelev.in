@@ -17,6 +17,10 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Download Submodules 🚉
+        run: |
+          git submodule update --init --recursive
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
