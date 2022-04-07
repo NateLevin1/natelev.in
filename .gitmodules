@@ -1,0 +1,3 @@
+[submodule "src/portfolio/spaghetti-script"]
+	path = src/portfolio/spaghetti-script
+	url = https://github.com/UltimatePro-Grammer/spaghetti-script
