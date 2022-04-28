@@ -77,6 +77,7 @@ class Scene1 extends Phaser.Scene {
 		this.graphics = this.add.graphics();
 		this.graphics.lineStyle(1, 0x000000, 1);
 		this.draw = false;
+		this.drawStart = 0;
 		this.player = this.matter.add.sprite(60, 1100,'fish', null, {timeScale:0.5}).setScale(1.3).setOnCollide(()=>this.lose());
 		//this.matter.overlap(this.player, win, ()=>{alert("You Win!");});
 		this.started = false;
@@ -101,6 +102,7 @@ class Scene1 extends Phaser.Scene {
 			} else {
 				if(cursor.y<960) {
 					this.draw = true;
+					this.drawStart = Date.now();
 				}
 			}
 			
@@ -152,7 +154,7 @@ class Scene1 extends Phaser.Scene {
 		
 		this.mouse.x = this.input.activePointer.x + this.cameras.main.scrollX;
 		this.mouse.y = this.input.activePointer.y + this.cameras.main.scrollY;
-		if(this.draw === true) {
+		if(this.draw === true || Date.now() - this.drawStart < 50) {
 			this.graphics.lineStyle(5, 0x000000, 1);
 			this.graphics.lineBetween(this.mouse.x, this.mouse.y, this.player.x, this.player.y);
 			setTimeout(()=>{this.graphics.clear();}, 20);
