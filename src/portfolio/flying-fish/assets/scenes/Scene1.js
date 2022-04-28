@@ -42,6 +42,7 @@ class Scene1 extends Phaser.Scene {
 		this.scoreText = this.add.text(735, 955, this.score, {fontSize: '36px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(1,0).setDepth(100).setScrollFactor(0);
 		
 		this.startText = this.add.text(375, 500, "Tap to begin!", {fontSize: '30px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0.5,0.5).setDepth(100);
+		this.startTextScaleIncreasing = true;
 
 		this.matter.add.image(256.0, 128.0, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
 		this.matter.add.image(512, -256, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
@@ -172,6 +173,20 @@ class Scene1 extends Phaser.Scene {
 			}
 			if(this.player.x < -70) {
 				this.player.x = 820;
+			}
+		}
+
+		if(this.startText.visible) {
+			if(this.startTextScaleIncreasing) {
+				this.startText.setScale(this.startText.scaleX+0.002);
+				if(this.startText.scaleX > 1.15) {
+					this.startTextScaleIncreasing = false;
+				}
+			} else {
+				this.startText.setScale(this.startText.scaleX-0.002);
+				if(this.startText.scaleX < 1) {
+					this.startTextScaleIncreasing = true;
+				}
 			}
 		}
 	}
