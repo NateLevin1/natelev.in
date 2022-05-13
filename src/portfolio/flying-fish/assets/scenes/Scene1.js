@@ -123,7 +123,7 @@ class Scene1 extends Phaser.Scene {
 				this.player.thrustLeft(1); // up
 				this.player.thrust(0.3); // forward
 			} else {
-				if(cursor.y<960) {
+				if(cursor.y<960 || cursor.x > 140) {
 					this.draw = true;
 					this.drawStart = Date.now();
 				}
@@ -140,7 +140,7 @@ class Scene1 extends Phaser.Scene {
 		
 		this.input.on('pointerup', function(cursor) {
 			if(this.started === true && this.restartConfig.display === false) {
-				if(cursor.y<960) {
+				if(this.draw) {
 					this.draw = false;
 					this.player.rotation = Phaser.Math.Angle.BetweenPoints(this.player, this.mouse);
 					this.player.thrustBack(Phaser.Math.Distance.BetweenPoints(this.player, this.mouse)/800); // forward 0.3
