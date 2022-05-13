@@ -29,13 +29,13 @@ class Scene1 extends Phaser.Scene {
 		this.lastRateScore = 0;
 
 		death = "die";
-		this.deathEverEnabled = false;
+		this.deathEverDisabled = false;
 		this.add.text(10, 10, "Flying Fish 1.3\nClick and drag to launch\nthe fish. Avoid the walls!", {fontSize: '15px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0,0).setDepth(100);
 		const mode = this.add.text(10, 970, "Disable Death", {fontSize: '20px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0,0).setScrollFactor(0).setDepth(100).setInteractive().on('pointerdown', ()=>{
 			if(mode.text == 'Disable Death') {
 				mode.text = 'Enable Death'
 				death="nodie";
-				this.deathEverEnabled = true;
+				this.deathEverDisabled = true;
 			} else if(mode.text == 'Enable Death') {
 				mode.text = 'Disable Death'
 				death="die";
@@ -185,7 +185,7 @@ class Scene1 extends Phaser.Scene {
 				buttonColor, buttonWidth 
 			} = this.restartConfig;
 			this.add.text(735/2, 350, "Your Score:", {fontSize: '50px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 5 }).setOrigin(0.5).setDepth(100).setScrollFactor(0);
-			this.add.text(735/2, 400, (-this.score) + (this.deathEverEnabled ? "*" : ""), {fontSize: '100px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 10 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
+			this.add.text(735/2, 400, (-this.score) + (this.deathEverDisabled ? "*" : ""), {fontSize: '100px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 10 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
 			this.restartGraphics.fillStyle(bgColor, bgOpacity);
 			this.restartGraphics.fillRoundedRect(375-(width/2), 500-(height/2), width, height, 20).setScrollFactor(0);
 			
@@ -246,7 +246,7 @@ class Scene1 extends Phaser.Scene {
 				if(this.player.y>1100) {
 					this.lose(true);
 				} else if(this.player.y < -50000) {
-					alert("You win!");
+					alert("You win!" + (this.deathEverDisabled ? " (But, you disabled death!)" : ""));
 				}
 			}
 			
