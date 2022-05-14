@@ -31,7 +31,7 @@ class Scene1 extends Phaser.Scene {
 		death = "die";
 		this.deathEverDisabled = false;
 		this.add.text(10, 10, "Flying Fish 1.3\nClick and drag to launch\nthe fish. Avoid the walls!", {fontSize: '15px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0,0).setDepth(100);
-		const mode = this.add.text(10, 970, "Disable Death", {fontSize: '20px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0,0).setScrollFactor(0).setDepth(100).setInteractive().on('pointerdown', ()=>{
+		const mode = this.add.text(74, 970, "Disable Death", {fontSize: '20px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0.5,0).setScrollFactor(0).setDepth(100).setInteractive().on('pointerdown', ()=>{
 			if(mode.text == 'Disable Death') {
 				mode.text = 'Enable Death'
 				death="nodie";
@@ -84,7 +84,8 @@ class Scene1 extends Phaser.Scene {
 		this.lineGraphics.lineStyle(1, 0x000000, 1);
 		this.draw = false;
 		this.drawStart = 0;
-		this.player = this.matter.add.sprite(60, 1100,'fish', null, {timeScale:0.5}).setScale(1.3).setOnCollide(()=>{
+		this.playerSkin = "fish";
+		this.player = this.matter.add.sprite(60, 1100, this.playerSkin, null, {timeScale:0.5}).setScale(1.3).setOnCollide(()=>{
 			if(!this.restartConfig.display) this.lose();
 		});
 
@@ -157,6 +158,13 @@ class Scene1 extends Phaser.Scene {
 		this.input.keyboard.on("keydown-R", (event)=>{
 			if(this.restartConfig.display) {
 				this.restart();
+			}
+		});
+		this.input.keyboard.on("keydown-F", (event)=>{
+			if(this.player.texture.key === "fish") {
+				this.player.setTexture("shark");
+			} else {
+				this.player.setTexture("fish");
 			}
 		});
 
