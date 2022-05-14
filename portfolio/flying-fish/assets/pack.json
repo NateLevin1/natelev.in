@@ -13,6 +13,12 @@
     },
     {
       "type": "image",
+      "key": "shark",
+      "url": "assets/shark.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
       "key": "waves",
       "url": "assets/waves.png",
       "normalMap": ""
