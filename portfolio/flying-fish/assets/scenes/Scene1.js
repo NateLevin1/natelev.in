@@ -28,23 +28,52 @@ class Scene1 extends Phaser.Scene {
 		this.music = music;
 		this.lastRateScore = 0;
 
-		death = "die";
-		this.deathEverDisabled = false;
+		death = "die";		
+
+		this.gameEverInvalidated = false;
+		if(clickStrength != 1) {
+			this.gameEverInvalidated = true;
+		}
+
 		this.add.text(10, 10, "Flying Fish 1.3\nClick and drag to launch\nthe fish. Avoid the walls!", {fontSize: '15px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0,0).setDepth(100);
-		const mode = this.add.text(74, 970, "Disable Death", {fontSize: '20px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0.5,0).setScrollFactor(0).setDepth(100).setInteractive().on('pointerdown', ()=>{
-			if(mode.text == 'Disable Death') {
-				mode.text = 'Enable Death'
-				death="nodie";
-				this.deathEverDisabled = true;
-			} else if(mode.text == 'Enable Death') {
-				mode.text = 'Disable Death'
-				death="die";
-			}
-		});
-		mode.input.cursor = "pointer";
+		// const mode = this.add.text(74, 970, "Disable Death", {fontSize: '20px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0.5,0).setScrollFactor(0).setDepth(100).setInteractive().on('pointerdown', ()=>{
+		// 	if(mode.text == 'Disable Death') {
+		// 		mode.text = 'Enable Death'
+		// 		death="nodie";
+		// 		this.deathEverDisabled = true;
+		// 	} else if(mode.text == 'Enable Death') {
+		// 		mode.text = 'Disable Death'
+		// 		death="die";
+		// 	}
+		// });
+		// mode.input.cursor = "pointer";
+
+		this.settingsGraphics = this.add.graphics();
+		this.settingsShown = false;
+		this.settingsItems = [];
+		this.settings = this.add.image(5, 995, "settings", null, {isStatic: true}).setScale(0.3).setAlpha(0.6).setOrigin(0,1).setScrollFactor(0).setDepth(100)
+			.setInteractive().on('pointerdown', (cursor, x, y, event)=>{
+				if(this.restartConfig.display) {
+					return;
+				}
+				event.stopPropagation();
+				if(this.settingsShown) {
+					this.hideSettings();
+					return;
+				}
+				this.settingsShown = true;
+
+				this.matter.pause();
+				this.showSettings();
+			}).on('pointerup', (cursor, x, y, event)=>{
+				if(!this.draw) {
+					event.stopPropagation();
+				}
+			});
+		this.settings.input.cursor = "pointer";
 
 		this.score = 0;
-		this.scoreText = this.add.text(735, 955, this.score, {fontSize: '36px', fill: '#000', fontFamily: '"Arial"', stroke: "#ffffff90", strokeThickness: 5 }).setOrigin(1,0).setDepth(100).setScrollFactor(0);
+		this.scoreText = this.add.text(735, 995, this.score, {fontSize: 'calc(36px + 1.3vw)', fill: '#000', fontFamily: '"Arial"', stroke: "#ffffff90", strokeThickness: 5 }).setOrigin(1,1).setDepth(100).setScrollFactor(0);
 		
 		this.startText = this.add.text(375, 500, "Tap to begin!", {fontSize: '30px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0.5,0.5).setDepth(100);
 		this.startTextScaleIncreasing = true;
@@ -111,6 +140,9 @@ class Scene1 extends Phaser.Scene {
 		this.cameras.main.setBounds(0,-50000,450,51000);
 		this.input.on('pointerdown', (cursor)=>{
 			if(this.restartConfig.display === true) return;
+			if(this.settingsShown) {
+				return;
+			}
 			if(this.startText.visible) {
 				this.startText.visible = false;
 			}
@@ -123,6 +155,8 @@ class Scene1 extends Phaser.Scene {
 				this.player.setVelocityY(0);
 				this.player.thrustLeft(1); // up
 				this.player.thrust(0.3); // forward
+
+				this.settings.setAlpha(0.2);
 			} else {
 				if(cursor.y<960 || cursor.x > 140) {
 					this.draw = true;
@@ -140,11 +174,15 @@ class Scene1 extends Phaser.Scene {
 		
 		
 		this.input.on('pointerup', function(cursor) {
+			if(this.settingsShown) {
+				this.hideSettings();
+				return;
+			}
 			if(this.started === true && this.restartConfig.display === false) {
 				if(this.draw) {
 					this.draw = false;
 					this.player.rotation = Phaser.Math.Angle.BetweenPoints(this.player, this.mouse);
-					this.player.thrustBack(Phaser.Math.Distance.BetweenPoints(this.player, this.mouse)/800); // forward 0.3
+					this.player.thrustBack(Phaser.Math.Distance.BetweenPoints(this.player, this.mouse)/(800/clickStrength)); // forward 0.3
 					flap.setRate(Math.random()+0.8);
 					flap.play();
 				}
@@ -193,7 +231,7 @@ class Scene1 extends Phaser.Scene {
 				buttonColor, buttonWidth 
 			} = this.restartConfig;
 			this.add.text(735/2, 350, "Your Score:", {fontSize: '50px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 5 }).setOrigin(0.5).setDepth(100).setScrollFactor(0);
-			this.add.text(735/2, 400, (-this.score) + (this.deathEverDisabled ? "*" : ""), {fontSize: '100px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 10 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
+			this.add.text(735/2, 400, (-this.score) + (this.gameEverInvalidated ? "*" : ""), {fontSize: '100px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 10 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
 			this.restartGraphics.fillStyle(bgColor, bgOpacity);
 			this.restartGraphics.fillRoundedRect(375-(width/2), 500-(height/2), width, height, 20).setScrollFactor(0);
 			
@@ -254,7 +292,7 @@ class Scene1 extends Phaser.Scene {
 				if(this.player.y>1100) {
 					this.lose(true);
 				} else if(this.player.y < -50000) {
-					alert("You win!" + (this.deathEverDisabled ? " (But, you disabled death!)" : ""));
+					alert("You win!" + (this.gameEverInvalidated ? " (But, you disabled death!)" : ""));
 				}
 			}
 			
@@ -280,6 +318,124 @@ class Scene1 extends Phaser.Scene {
 				}
 			}
 		}
+	}
+
+	showSettings() {
+		const menuSound = this.sound.add("flap");
+		menuSound.setRate(4);
+		menuSound.play();
+
+		const bgColor = 0x178bff;
+		const bgOpacity = 1;
+		const width = 470;
+		const height = 510;
+		const boxLeft = 735/2-(width/2);
+		this.settingsGraphics.fillStyle(0x000000, 0.2);
+		this.settingsGraphics.fillRoundedRect(373-((width)/2), 504-((height+3)/2), width+4, height, 21).setScrollFactor(0).setDepth(101);
+		this.settingsGraphics.fillStyle(bgColor, bgOpacity);
+		this.settingsGraphics.fillRoundedRect(375-(width/2), 500-(height/2), width, height, 20).setScrollFactor(0).setDepth(101);
+
+		const deathEnabler = this.add.dom(735/2, 400, "div", "width: fit-content; height: 40px; color: white; font-size: 30px; user-select: none; -webkit-user-select: none; filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.75));").setOrigin(0.5, 0).setDepth(102).setScrollFactor(0);
+		deathEnabler.setHTML(`
+			<input id=deathEnabler class=settingsInput type=checkbox style='width: 25px; height: 25px; vertical-align: middle; cursor: pointer;' ${death == "die" ? "checked" : ""}></input>
+			<label for=deathEnabler style='vertical-align: middle; cursor: pointer;'>Death Enabled</label>
+		`);
+		deathEnabler.addListener("change");
+		deathEnabler.on("change", ()=>{
+			if(death == "die") {
+				this.gameEverInvalidated = true;
+				death = "nodie";
+			} else {
+				death = "die";
+			}
+		});
+
+		const clickDoubler = this.add.dom(735/2, 460, "div", "width: fit-content; height: 40px; color: white; font-size: 30px; user-select: none; -webkit-user-select: none; filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.75));").setOrigin(0.5, 0).setDepth(102).setScrollFactor(0);
+		clickDoubler.setHTML(`
+			<input id=clickDoubler class=settingsInput type=checkbox style='width: 25px; height: 25px; vertical-align: middle; cursor: pointer;' ${clickStrength != 1 ? "checked" : ""}></input>
+			<label for=clickDoubler style='vertical-align: middle; cursor: pointer;'>Increase Click Strength</label>
+		`);
+		clickDoubler.addListener("change");
+		clickDoubler.on("change", ()=>{
+			if(clickStrength == 1) {
+				this.gameEverInvalidated = true;
+				clickStrength = 2;
+			} else {
+				clickStrength = 1;
+			}
+		});
+
+		const x = this.add.text(boxLeft+22, 500-(height/2), "⤫", {fontSize: '65px', fill: '#f00', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 5 }).setOrigin(0, 0).setDepth(102).setScrollFactor(0).setInteractive();
+		x.input.cursor = "pointer";
+
+		// TODO: refactor this
+
+		const skins = [];
+		const updateSkin = (newSkin)=>{
+			this.playerSkin = newSkin;
+			this.player.setTexture(newSkin);
+			for(const skin of skins) {
+				const key = skin[0];
+				skin[1].clear();
+				if(newSkin === key) {
+					skin[1].fillStyle(0, 0.1);
+					skin[1].fillRect(boxLeft+60+skin[2], 580, 142, 162).setDepth(102);
+				}
+			}
+		}
+
+		const defaultButtonClickRect = this.add.rectangle(boxLeft+60, 580, 142, 162).setDepth(102).setScrollFactor(0).setOrigin(0);
+		const defaultButton = this.add.graphics().setDepth(102).setScrollFactor(0);
+		defaultButton.setInteractive(defaultButtonClickRect, (_clickRect, x, y)=>{
+			return x >= defaultButtonClickRect.getTopLeft().x && x <= defaultButtonClickRect.getTopRight().x
+					&& y <= defaultButtonClickRect.getBottomLeft().y && y >= defaultButtonClickRect.getTopLeft().y;
+		});
+		defaultButton.input.cursor = "pointer";
+		defaultButton.on("pointerup", (_p, _x, _y, event)=>{
+			updateSkin("fish");
+			event.stopPropagation();
+		});
+		skins.push(["fish", defaultButton, 0]);
+
+		const sharkButtonClickRect = this.add.rectangle(boxLeft+260, 580, 142, 162).setDepth(102).setScrollFactor(0).setOrigin(0);
+		const sharkButton = this.add.graphics().setDepth(102).setScrollFactor(0);
+		sharkButton.setInteractive(sharkButtonClickRect, (_clickRect, x, y)=>{
+			return x >= sharkButtonClickRect.getTopLeft().x && x <= sharkButtonClickRect.getTopRight().x
+					&& y <= sharkButtonClickRect.getBottomLeft().y && y >= sharkButtonClickRect.getTopLeft().y;
+		});
+		sharkButton.input.cursor = "pointer";
+		sharkButton.on("pointerup", (_p, _x, _y, event)=>{
+			updateSkin("shark");
+			event.stopPropagation();
+		});
+		skins.push(["shark", sharkButton, 200]);
+		
+		updateSkin(this.playerSkin);
+
+		this.settingsItems.push(
+			x,
+			this.add.text(735/2, 330, "Settings", {fontSize: '55px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 8 }).setOrigin(0.5).setDepth(102).setScrollFactor(0),
+			deathEnabler,
+			clickDoubler,
+			this.add.text(boxLeft+30, 530, "Choose Skin:", {fontSize: '33px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 4 }).setOrigin(0).setDepth(102).setScrollFactor(0),
+			this.add.image(boxLeft+130, 640, "fish").setScale(1.2).setAngle(-50).setOrigin(0.5).setDepth(102).setScrollFactor(0),
+			this.add.image(boxLeft+330, 640, "shark").setScale(1.2).setAngle(-50).setOrigin(0.5).setDepth(102).setScrollFactor(0),
+			this.add.text(boxLeft+126, 725, "Default", {fontSize: '25px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 3 }).setOrigin(0.5).setDepth(102).setScrollFactor(0),
+			this.add.text(boxLeft+330, 725, "Shark", {fontSize: '25px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 3 }).setOrigin(0.5).setDepth(102).setScrollFactor(0),
+			defaultButton,
+			defaultButtonClickRect,
+			sharkButton,
+			sharkButtonClickRect
+		);
+	}
+
+	hideSettings() {
+		this.settingsGraphics.clear();
+		for(const item of this.settingsItems) {
+			item.destroy();
+		}
+		this.matter.resume();
+		this.settingsShown = false;
 	}
 
 

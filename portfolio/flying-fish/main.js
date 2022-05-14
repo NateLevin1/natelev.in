@@ -1,18 +1,25 @@
 
 window.addEventListener('load', function() {
-
-	var game = new Phaser.Game({
-    "title": "Springer",
-    "width": 750,
-    "height": 1000,
-    "type": Phaser.AUTO,
-    "backgroundColor": "#b3ecff",
-    "parent": "game-container",
-    "physics": {"default": "matter", matter:{debug: false}},
-    "scale": {
-        "mode": Phaser.Scale.FIT,
-        "autoCenter": Phaser.Scale.CENTER_BOTH
-    }
+	const game = new Phaser.Game({
+        title: "Flying Fish",
+        width: 750,
+        height: 1000,
+        type: Phaser.AUTO,
+        backgroundColor: "#b3ecff",
+        parent: "game-container",
+        physics: {
+            default: "matter",
+            matter:{
+                debug: false
+            }
+        },
+        scale: {
+            mode: Phaser.Scale.FIT,
+            autoCenter: Phaser.Scale.CENTER_BOTH
+        },
+        dom: {
+            createContainer: true
+        }
 	});
 	game.scene.add("Boot", Boot, true);
 	
