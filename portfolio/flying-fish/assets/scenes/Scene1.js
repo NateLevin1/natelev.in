@@ -36,17 +36,6 @@ class Scene1 extends Phaser.Scene {
 		}
 
 		this.add.text(10, 10, "Flying Fish 1.3\nClick and drag to launch\nthe fish. Avoid the walls!", {fontSize: '15px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0,0).setDepth(100);
-		// const mode = this.add.text(74, 970, "Disable Death", {fontSize: '20px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0.5,0).setScrollFactor(0).setDepth(100).setInteractive().on('pointerdown', ()=>{
-		// 	if(mode.text == 'Disable Death') {
-		// 		mode.text = 'Enable Death'
-		// 		death="nodie";
-		// 		this.deathEverDisabled = true;
-		// 	} else if(mode.text == 'Enable Death') {
-		// 		mode.text = 'Disable Death'
-		// 		death="die";
-		// 	}
-		// });
-		// mode.input.cursor = "pointer";
 
 		this.settingsGraphics = this.add.graphics();
 		this.settingsShown = false;
@@ -213,11 +202,21 @@ class Scene1 extends Phaser.Scene {
 			}
 		});
 
+		this.highScore = parseInt(localStorage.getItem("highscore")) || 0;
+
 		this._create();
 	}
 	
 	lose(force = false) {
 		if((!force && death == "die") || force) {
+			let newHighScore = false;
+			const score = -this.score;
+			if(!this.gameEverInvalidated && (score) >= this.highScore && score > 0) {
+				newHighScore = true;
+				this.highScore = score;
+				localStorage.setItem("highscore", score);
+			}
+
 			const bubble = this.sound.add("bubble");
 			bubble.setRate(6);
 			bubble.play();
@@ -237,8 +236,9 @@ class Scene1 extends Phaser.Scene {
 				bgColor, bgOpacity, width, height,
 				buttonColor, buttonWidth 
 			} = this.restartConfig;
-			this.add.text(735/2, 350, "Your Score:", {fontSize: '50px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 5 }).setOrigin(0.5).setDepth(100).setScrollFactor(0);
-			this.add.text(735/2, 400, (-this.score) + (this.gameEverInvalidated ? "*" : ""), {fontSize: '100px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 10 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
+			this.add.text(735/2, 325, "Your Score:", {fontSize: '50px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 5 }).setOrigin(0.5).setDepth(100).setScrollFactor(0);
+			this.add.text(735/2, 370, (score) + (this.gameEverInvalidated ? "*" : ""), {fontSize: '100px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 10 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
+			this.add.text(735/2, 500, "High Score: "+(this.highScore == 0 ? "None" : this.highScore)+(newHighScore ? " (New PB!)" : ""), {fontSize: '25px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 1 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
 			this.restartGraphics.fillStyle(bgColor, bgOpacity);
 			this.restartGraphics.fillRoundedRect(375-(width/2), 500-(height/2), width, height, 20).setScrollFactor(0);
 			
