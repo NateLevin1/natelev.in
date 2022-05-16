@@ -113,7 +113,9 @@ class Scene1 extends Phaser.Scene {
 		this.lineGraphics.lineStyle(1, 0x000000, 1);
 		this.draw = false;
 		this.drawStart = 0;
-		this.playerSkin = "fish";
+		if(!this.playerSkin) {
+			this.playerSkin = "fish";
+		}
 		this.player = this.matter.add.sprite(60, 1100, this.playerSkin, null, {timeScale:0.5}).setScale(1.3).setOnCollide(()=>{
 			if(!this.restartConfig.display) this.lose();
 		});
