@@ -72,7 +72,10 @@ class Scene1 extends Phaser.Scene {
 			}
 		}
 		
-		var juiceText = this.add.text(188, 400, ((numOfJuicedOranges/6)*100).toFixed(0) + "%", {fontSize: '20px', fill: '#fff', fontFamily: '"Arial"'}).setOrigin(0,0).setDepth(100);
+		var juiceText = this.add.text(200, 400, ((numOfJuicedOranges/6)*100).toFixed(0) + "%", {fontSize: '20px', fill: '#fff', fontFamily: '"Arial"'}).setOrigin(0.5,0).setDepth(100);
+		this.startTimestamp = Date.now();
+		this.timer = this.add.text(200, 420, "0:00", {fontSize: '12px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 1 }).setOrigin(0.5,0).setDepth(100);
+
 		
 		path = this.add.path();
 		
@@ -226,6 +229,12 @@ class Scene1 extends Phaser.Scene {
 		} else {
 			previewOrange.x = player.x-10;	
 		}
+
+		const seconds = Math.floor((Date.now() - this.startTimestamp) / 1000);
+		const displaySeconds = seconds % 60;
+		const minutes = Math.floor(seconds / 60);
+		this.timer.text = `${minutes}:${displaySeconds < 10 ? "0" : ""}${displaySeconds}`;
+
 		
 	}
 
