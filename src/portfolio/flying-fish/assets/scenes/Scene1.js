@@ -78,6 +78,9 @@ class Scene1 extends Phaser.Scene {
 		this.startText = this.add.text(375, 500, "Tap to begin!", {fontSize: '30px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0.5,0.5).setDepth(100);
 		this.startTextScaleIncreasing = true;
 
+		this.timerText = this.add.text(740, 10, "0:00", {fontSize: '30px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 5 }).setOrigin(1,0).setDepth(100).setScrollFactor(0);
+		this.timerText.setAlpha(0);
+
 		this.matter.add.image(256.0, 128.0, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
 		this.matter.add.image(512, -256, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
 		
@@ -159,6 +162,8 @@ class Scene1 extends Phaser.Scene {
 				this.player.thrust(0.3); // forward
 
 				this.settings.setAlpha(0.2);
+				
+				this.startMillis = Date.now();
 			} else {
 				if(cursor.y<960 || cursor.x > 140) {
 					this.draw = true;
@@ -320,6 +325,18 @@ class Scene1 extends Phaser.Scene {
 				}
 			}
 		}
+
+		if(this.player.y < 300 && this.timerText.alpha < 1) {
+			this.timerText.setAlpha(Math.min((300-this.player.y)/400, 1));
+		}
+
+		if(!this.restartConfig.display) {
+			const seconds = Math.floor((Date.now() - this.startMillis) / 1000);
+			const displaySeconds = seconds % 60;
+			const minutes = Math.floor(seconds / 60);
+			this.timerText.text = `${minutes}:${displaySeconds < 10 ? "0" : ""}${displaySeconds}`;
+		}
+		
 	}
 
 	showSettings() {
