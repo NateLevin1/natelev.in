@@ -151,10 +151,8 @@ class Scene1 extends Phaser.Scene {
 				
 				this.startMillis = Date.now();
 			} else {
-				if(cursor.y<960 || cursor.x > 140) {
-					this.draw = true;
-					this.drawStart = Date.now();
-				}
+				this.draw = true;
+				this.drawStart = Date.now();
 			}
 			
 		}, this);
