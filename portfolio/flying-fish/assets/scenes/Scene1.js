@@ -83,10 +83,7 @@ class Scene1 extends Phaser.Scene {
 				this.matter.add.image(512, yPos, "wall", null, {isStatic: true}).setScale(2, 1).setAngle(90).setIgnoreGravity(true);
 				this.matter.add.image(0, yPos, "wall", null, {isStatic: true}).setScale(2, 1).setAngle(90).setIgnoreGravity(true);
 				this.matter.add.image(128, yPos, "wall", null, {isStatic: true}).setScale(2, 1).setAngle(90).setIgnoreGravity(true);
-				//this.matter.add.image(256, -1024, "wall", null, {isStatic: true}).setScale(2, 1).setAngle(90).setIgnoreGravity(true);
 				this.matter.add.image(384, yPos, "wall", null, {isStatic: true}).setScale(2, 1).setAngle(90).setIgnoreGravity(true);
-				//this.matter.add.image(640, -1024, "wall", null, {isStatic: true}).setScale(2, 1).setAngle(90).setIgnoreGravity(true);
-				this.matter.add.image(768, yPos, "wall", null, {isStatic: true}).setScale(2, 1).setAngle(90).setIgnoreGravity(true);
 			} else if(rand == 2) {
 				this.matter.add.image(512, yPos, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
 				this.matter.add.image(225, yPos-214, "wall", null, {isStatic: true}).setScale(1, 1).setIgnoreGravity(true);
@@ -154,10 +151,8 @@ class Scene1 extends Phaser.Scene {
 				
 				this.startMillis = Date.now();
 			} else {
-				if(cursor.y<960 || cursor.x > 140) {
-					this.draw = true;
-					this.drawStart = Date.now();
-				}
+				this.draw = true;
+				this.drawStart = Date.now();
 			}
 			
 		}, this);
