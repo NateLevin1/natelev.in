@@ -73,7 +73,6 @@ class Scene1 extends Phaser.Scene {
 		this.matter.add.image(256.0, 128.0, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
 		this.matter.add.image(512, -256, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
 
-		// TODO: is this good
 		for(var i = 0; i < 50; i++) {
 			yPos = i*2*-640 - 1064;
 			this.matter.add.image(Math.random() * 750, yPos + Math.random()*200, "cloud", null, {isStatic: true, collisionFilter: {group: -1, mask: 0} }).setIgnoreGravity(true).setAlpha(0.3).setScale(0.8+(Math.random() * 0.4));
@@ -356,7 +355,30 @@ class Scene1 extends Phaser.Scene {
 				}
 			}
 		}
+
 		
+		if(this.player.y < -15_000) {
+			let r = 179;
+			let g = 236;
+			let b = 255;
+
+			if(this.player.y < -30_000) {
+				let x = Math.round(Math.min(this.player.y+30_000, 0) / -200);
+				r = 189 + Math.round(x / 2);
+				g = 200 - Math.round(x / 25);
+				b = 255 - Math.round(x * 1.5);
+			} else if(this.player.y < -25_000) {
+				let x = Math.round(Math.min(this.player.y+25_000, 0) / -500);
+				r = 179+x;
+				g = 200;
+			} else if(this.player.y < -15_000) {
+				let x = Math.round(Math.min(this.player.y+15_000, 0) / -300);
+				g = 236 - x;
+			}
+			
+			let bgColor = `rgb(${r}, ${g}, ${b})`;
+			this.cameras.main.setBackgroundColor(bgColor);
+		}
 	}
 
 	showSettings() {
