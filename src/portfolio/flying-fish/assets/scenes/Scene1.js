@@ -234,7 +234,7 @@ class Scene1 extends Phaser.Scene {
 			} = this.restartConfig;
 			this.add.text(735/2, 325, "Your Score:", {fontSize: '50px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 5 }).setOrigin(0.5).setDepth(100).setScrollFactor(0);
 			this.add.text(735/2, 370, (score) + (this.gameEverInvalidated ? "*" : ""), {fontSize: '100px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 10 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
-			this.add.text(735/2, 500, "High Score: "+(this.highScore == 0 ? "None" : this.highScore)+(newHighScore ? " (New PB!)" : ""), {fontSize: '25px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 1 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
+			this.add.text(735/2, 500, "High Score: "+(this.highScore == 0 ? "None" : this.highScore)+(newHighScore ? " (New Record!)" : ""), {fontSize: '25px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 1 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
 			this.restartGraphics.fillStyle(bgColor, bgOpacity);
 			this.restartGraphics.fillRoundedRect(375-(width/2), 500-(height/2), width, height, 20).setScrollFactor(0);
 			
