@@ -339,7 +339,7 @@ class Scene1 extends Phaser.Scene {
 			for(const wave of this.waves) {
 				if(wave.increasing) {
 					wave.setY(wave.y - speed);
-					if(wave.y < 1040) {
+					if(wave.y < 1038) {
 						wave.increasing = false;
 					}
 				} else {
