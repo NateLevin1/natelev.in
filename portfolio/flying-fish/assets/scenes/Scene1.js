@@ -64,7 +64,7 @@ class Scene1 extends Phaser.Scene {
 		this.score = 0;
 		this.scoreText = this.add.text(735, 995, this.score, {fontSize: 'calc(36px + 1.3vw)', fill: '#000', fontFamily: '"Arial"', stroke: "#ffffff90", strokeThickness: 5 }).setOrigin(1,1).setDepth(100).setScrollFactor(0);
 		
-		this.startText = this.add.text(375, 500, "Tap to begin!", {fontSize: '30px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0.5,0.5).setDepth(100);
+		this.startText = this.add.text(375, 500, "Tap to begin!", {fontSize: '33px', fill: '#000', fontFamily: '"Arial"', stroke: "#ffffff", strokeThickness: 4}).setOrigin(0.5,0.5).setDepth(100);
 		this.startTextScaleIncreasing = true;
 
 		this.timerText = this.add.text(740, 10, "0:00", {fontSize: '30px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 5 }).setOrigin(1,0).setDepth(100).setScrollFactor(0);
@@ -156,12 +156,13 @@ class Scene1 extends Phaser.Scene {
 			}
 			
 		}, this);
-		this.add.sprite(95, 980,'waves').setScale(2);
-		this.add.sprite(287, 980,'waves').setScale(2);
-		this.add.sprite(479, 980,'waves').setScale(2);
-		this.add.sprite(671, 980,'waves').setScale(2);
-		//this.waves = this.matter.add.sprite(95, 980,'waves', null, {setImmovable: true}).setIgnoreGravity(true).setScale(2);
-		
+
+		this.waves = [];
+		let yHeight = 1050 + Math.random() * 3;
+		for(var i = 0; i <= 750; i += 128) {
+			yHeight = yHeight+ (Math.random() < 0.5 ? -1 : 1)*(Math.random()*1.5);
+			this.waves.push(this.add.sprite(i, yHeight, "waves2").setScale(1, 0.8).setOrigin(0, 1));
+		}
 		
 		
 		this.input.on('pointerup', function(cursor) {
@@ -330,6 +331,24 @@ class Scene1 extends Phaser.Scene {
 			const displaySeconds = seconds % 60;
 			const minutes = Math.floor(seconds / 60);
 			this.timerText.text = `${minutes}:${displaySeconds < 10 ? "0" : ""}${displaySeconds}`;
+		}
+
+		let speed = 0.13;
+		if(this.player.y > 200) {
+			// undulate waves
+			for(const wave of this.waves) {
+				if(wave.increasing) {
+					wave.setY(wave.y - speed);
+					if(wave.y < 1040) {
+						wave.increasing = false;
+					}
+				} else {
+					wave.setY(wave.y + speed);
+					if(wave.y > 1050) {
+						wave.increasing = true;
+					}
+				}
+			}
 		}
 		
 	}
