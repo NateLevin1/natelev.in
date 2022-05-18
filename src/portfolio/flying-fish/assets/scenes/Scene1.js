@@ -72,7 +72,13 @@ class Scene1 extends Phaser.Scene {
 
 		this.matter.add.image(256.0, 128.0, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
 		this.matter.add.image(512, -256, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
-		
+
+		// TODO: is this good
+		for(var i = 0; i < 50; i++) {
+			yPos = i*2*-640 - 1064;
+			this.matter.add.image(Math.random() * 750, yPos + Math.random()*200, "cloud", null, {isStatic: true, collisionFilter: {group: -1, mask: 0} }).setIgnoreGravity(true).setAlpha(0.3).setScale(0.8+(Math.random() * 0.4));
+		}
+
 		var rand = 0;
 		var yPos = 0;
 		for(var g = 0; g<100; g++) { // 99 rooms
