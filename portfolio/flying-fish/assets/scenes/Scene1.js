@@ -72,7 +72,13 @@ class Scene1 extends Phaser.Scene {
 
 		this.matter.add.image(256.0, 128.0, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
 		this.matter.add.image(512, -256, "wall", null, {isStatic: true}).setScale(2, 1).setIgnoreGravity(true);
-		
+
+		// TODO: is this good
+		for(var i = 0; i < 50; i++) {
+			yPos = i*2*-640 - 1064;
+			this.matter.add.image(Math.random() * 750, yPos + Math.random()*200, "cloud", null, {isStatic: true, collisionFilter: {group: -1, mask: 0} }).setIgnoreGravity(true).setAlpha(0.3).setScale(0.8+(Math.random() * 0.4));
+		}
+
 		var rand = 0;
 		var yPos = 0;
 		for(var g = 0; g<100; g++) { // 99 rooms
@@ -234,7 +240,7 @@ class Scene1 extends Phaser.Scene {
 			} = this.restartConfig;
 			this.add.text(735/2, 325, "Your Score:", {fontSize: '50px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 5 }).setOrigin(0.5).setDepth(100).setScrollFactor(0);
 			this.add.text(735/2, 370, (score) + (this.gameEverInvalidated ? "*" : ""), {fontSize: '100px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 10 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
-			this.add.text(735/2, 500, "High Score: "+(this.highScore == 0 ? "None" : this.highScore)+(newHighScore ? " (New PB!)" : ""), {fontSize: '25px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 1 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
+			this.add.text(735/2, 500, "High Score: "+(this.highScore == 0 ? "None" : this.highScore)+(newHighScore ? " (New Record!)" : ""), {fontSize: '25px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 1 }).setOrigin(0.5, 0).setDepth(100).setScrollFactor(0);
 			this.restartGraphics.fillStyle(bgColor, bgOpacity);
 			this.restartGraphics.fillRoundedRect(375-(width/2), 500-(height/2), width, height, 20).setScrollFactor(0);
 			
