@@ -156,12 +156,13 @@ class Scene1 extends Phaser.Scene {
 			}
 			
 		}, this);
-		this.add.sprite(95, 980,'waves').setScale(2);
-		this.add.sprite(287, 980,'waves').setScale(2);
-		this.add.sprite(479, 980,'waves').setScale(2);
-		this.add.sprite(671, 980,'waves').setScale(2);
-		//this.waves = this.matter.add.sprite(95, 980,'waves', null, {setImmovable: true}).setIgnoreGravity(true).setScale(2);
-		
+
+		this.waves = [];
+		let yHeight = 1050 + Math.random() * 3;
+		for(var i = 0; i <= 750; i += 128) {
+			yHeight = yHeight+ (Math.random() < 0.5 ? -1 : 1)*(Math.random()*1.5);
+			this.waves.push(this.add.sprite(i, yHeight, "waves2").setScale(1, 0.8).setOrigin(0, 1));
+		}
 		
 		
 		this.input.on('pointerup', function(cursor) {
@@ -330,6 +331,24 @@ class Scene1 extends Phaser.Scene {
 			const displaySeconds = seconds % 60;
 			const minutes = Math.floor(seconds / 60);
 			this.timerText.text = `${minutes}:${displaySeconds < 10 ? "0" : ""}${displaySeconds}`;
+		}
+
+		let speed = 0.13;
+		if(this.player.y > 200) {
+			// undulate waves
+			for(const wave of this.waves) {
+				if(wave.increasing) {
+					wave.setY(wave.y - speed);
+					if(wave.y < 1040) {
+						wave.increasing = false;
+					}
+				} else {
+					wave.setY(wave.y + speed);
+					if(wave.y > 1050) {
+						wave.increasing = true;
+					}
+				}
+			}
 		}
 		
 	}
