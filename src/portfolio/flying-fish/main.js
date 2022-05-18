@@ -5,7 +5,7 @@ window.addEventListener('load', function() {
         width: 750,
         height: 1000,
         type: Phaser.AUTO,
-        backgroundColor: "#b3ecff",
+        backgroundColor: "rgb(179, 236, 255)",
         parent: "game-container",
         physics: {
             default: "matter",
