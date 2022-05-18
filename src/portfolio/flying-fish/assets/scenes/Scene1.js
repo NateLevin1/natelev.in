@@ -64,7 +64,7 @@ class Scene1 extends Phaser.Scene {
 		this.score = 0;
 		this.scoreText = this.add.text(735, 995, this.score, {fontSize: 'calc(36px + 1.3vw)', fill: '#000', fontFamily: '"Arial"', stroke: "#ffffff90", strokeThickness: 5 }).setOrigin(1,1).setDepth(100).setScrollFactor(0);
 		
-		this.startText = this.add.text(375, 500, "Tap to begin!", {fontSize: '30px', fill: '#000', fontFamily: '"Arial"'}).setOrigin(0.5,0.5).setDepth(100);
+		this.startText = this.add.text(375, 500, "Tap to begin!", {fontSize: '33px', fill: '#000', fontFamily: '"Arial"', stroke: "#ffffff", strokeThickness: 4}).setOrigin(0.5,0.5).setDepth(100);
 		this.startTextScaleIncreasing = true;
 
 		this.timerText = this.add.text(740, 10, "0:00", {fontSize: '30px', fill: '#000', fontFamily: '"Arial"', stroke: "#fff", strokeThickness: 5 }).setOrigin(1,0).setDepth(100).setScrollFactor(0);
