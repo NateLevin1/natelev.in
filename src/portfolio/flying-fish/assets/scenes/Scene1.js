@@ -429,8 +429,6 @@ class Scene1 extends Phaser.Scene {
 		const x = this.add.text(boxLeft+22, 500-(height/2), "⤫", {fontSize: '65px', fill: '#f00', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 5 }).setOrigin(0, 0).setDepth(102).setScrollFactor(0).setInteractive();
 		x.input.cursor = "pointer";
 
-		// TODO: refactor this
-
 		const skins = [];
 		const updateSkin = (newSkin)=>{
 			this.playerSkin = newSkin;
@@ -445,31 +443,9 @@ class Scene1 extends Phaser.Scene {
 			}
 		}
 
-		const defaultButtonClickRect = this.add.rectangle(boxLeft+60, 580, 142, 162).setDepth(102).setScrollFactor(0).setOrigin(0);
-		const defaultButton = this.add.graphics().setDepth(102).setScrollFactor(0);
-		defaultButton.setInteractive(defaultButtonClickRect, (_clickRect, x, y)=>{
-			return x >= defaultButtonClickRect.getTopLeft().x && x <= defaultButtonClickRect.getTopRight().x
-					&& y <= defaultButtonClickRect.getBottomLeft().y && y >= defaultButtonClickRect.getTopLeft().y;
-		});
-		defaultButton.input.cursor = "pointer";
-		defaultButton.on("pointerup", (_p, _x, _y, event)=>{
-			updateSkin("fish");
-			event.stopPropagation();
-		});
-		skins.push(["fish", defaultButton, 0]);
-
-		const sharkButtonClickRect = this.add.rectangle(boxLeft+260, 580, 142, 162).setDepth(102).setScrollFactor(0).setOrigin(0);
-		const sharkButton = this.add.graphics().setDepth(102).setScrollFactor(0);
-		sharkButton.setInteractive(sharkButtonClickRect, (_clickRect, x, y)=>{
-			return x >= sharkButtonClickRect.getTopLeft().x && x <= sharkButtonClickRect.getTopRight().x
-					&& y <= sharkButtonClickRect.getBottomLeft().y && y >= sharkButtonClickRect.getTopLeft().y;
-		});
-		sharkButton.input.cursor = "pointer";
-		sharkButton.on("pointerup", (_p, _x, _y, event)=>{
-			updateSkin("shark");
-			event.stopPropagation();
-		});
-		skins.push(["shark", sharkButton, 200]);
+		this.addSkinButton("fish", "Default", 0, 580, skins, boxLeft, updateSkin);
+		this.addSkinButton("shark", "Shark", 200, 580, skins, boxLeft, updateSkin);
+		// this.addSkinButton("redfish", "Snapper", 200, 580, skins, boxLeft, updateSkin);
 		
 		updateSkin(this.playerSkin);
 
@@ -479,14 +455,6 @@ class Scene1 extends Phaser.Scene {
 			deathEnabler,
 			clickDoubler,
 			this.add.text(boxLeft+30, 530, "Choose Skin:", {fontSize: '33px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 4 }).setOrigin(0).setDepth(102).setScrollFactor(0),
-			this.add.image(boxLeft+130, 640, "fish").setScale(1.2).setAngle(-50).setOrigin(0.5).setDepth(102).setScrollFactor(0),
-			this.add.image(boxLeft+330, 640, "shark").setScale(1.2).setAngle(-50).setOrigin(0.5).setDepth(102).setScrollFactor(0),
-			this.add.text(boxLeft+126, 725, "Default", {fontSize: '25px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 3 }).setOrigin(0.5).setDepth(102).setScrollFactor(0),
-			this.add.text(boxLeft+330, 725, "Shark", {fontSize: '25px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 3 }).setOrigin(0.5).setDepth(102).setScrollFactor(0),
-			defaultButton,
-			defaultButtonClickRect,
-			sharkButton,
-			sharkButtonClickRect
 		);
 	}
 
@@ -497,6 +465,26 @@ class Scene1 extends Phaser.Scene {
 		}
 		this.matter.resume();
 		this.settingsShown = false;
+	}
+
+	addSkinButton(skinName, prettyName, x, y, skins, boxLeft, updateSkin) {
+		const defaultButtonClickRect = this.add.rectangle(boxLeft+60+x, y, 142, 162).setDepth(102).setScrollFactor(0).setOrigin(0);
+		const defaultButton = this.add.graphics().setDepth(102).setScrollFactor(0);
+		defaultButton.setInteractive(defaultButtonClickRect, (_clickRect, x, y)=>{
+			return x >= defaultButtonClickRect.getTopLeft().x && x <= defaultButtonClickRect.getTopRight().x
+					&& y <= defaultButtonClickRect.getBottomLeft().y && y >= defaultButtonClickRect.getTopLeft().y;
+		});
+		defaultButton.input.cursor = "pointer";
+		defaultButton.on("pointerup", (_p, _x, _y, event)=>{
+			updateSkin(skinName);
+			event.stopPropagation();
+		});
+		skins.push([skinName, defaultButton, x]);
+
+		const fishImg = this.add.image(boxLeft+130+x, y+60, skinName).setScale(1.2).setAngle(-50).setOrigin(0.5).setDepth(102).setScrollFactor(0);
+		const text = this.add.text(boxLeft+60+x+(142/2), y+129, prettyName, {fontSize: '25px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 3 }).setOrigin(0.5, 0).setDepth(102).setScrollFactor(0);
+
+		this.settingsItems.push(defaultButton, defaultButtonClickRect, fishImg, text);
 	}
 
 

@@ -8,20 +8,17 @@
     {
       "type": "image",
       "key": "fish",
-      "url": "assets/fish.png",
-      "normalMap": ""
+      "url": "assets/fish.png"
     },
     {
       "type": "image",
       "key": "shark",
-      "url": "assets/shark.png",
-      "normalMap": ""
+      "url": "assets/shark.png"
     },
     {
       "type": "image",
       "key": "waves",
-      "url": "assets/waves.png",
-      "normalMap": ""
+      "url": "assets/waves.png"
     },
     {
       "type": "image",
@@ -47,6 +44,11 @@
       "type": "image",
       "key": "cloud",
       "url": "assets/cloud.png"
+    },
+    {
+      "type": "image",
+      "key": "redfish",
+      "url": "assets/redfish.png"
     },
     {
       "type": "audio",
