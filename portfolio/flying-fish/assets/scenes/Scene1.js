@@ -80,7 +80,7 @@ class Scene1 extends Phaser.Scene {
 
 		var rand = 0;
 		var yPos = 0;
-		for(var g = 0; g<100; g++) { // 99 rooms
+		for(var g = 0; g<=75; g++) { // create the "rooms"
 			rand = Phaser.Math.Between(1,4);
 			yPos = g*-640 - 1024;
 			
@@ -306,7 +306,15 @@ class Scene1 extends Phaser.Scene {
 				if(this.player.y>1100) {
 					this.lose(true);
 				} else if(this.player.y < -50000) {
+					this.player.y = -50_000;
+					this.player.setVelocityX(0);
+					this.player.setVelocityY(0);
+					this.score = -50_000;
+					if(!this.gameEverInvalidated) {
+						localStorage.setItem("highscore", 50_000);
+					}
 					alert("You win!" + (this.gameEverInvalidated ? " (But, you disabled death!)" : ""));
+					this.lose(true);
 				}
 			}
 			
