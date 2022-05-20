@@ -195,12 +195,18 @@ class Scene1 extends Phaser.Scene {
 				this.restart();
 			}
 		});
+		const skins = [["fish"], ["shark"], ["redfish", 5000]];
+		let skinsI = 0;
 		this.input.keyboard.on("keydown-F", (event)=>{
-			if(this.player.texture.key === "fish") {
-				this.player.setTexture("shark");
-			} else {
-				this.player.setTexture("fish");
+			skinsI++;
+			if(skinsI >= skins.length) skinsI = 0;
+
+			while(skins[skinsI][1] > this.highScore) {
+				skinsI++;
+				if(skinsI >= skins.length) skinsI = 0;
 			}
+
+			this.player.setTexture(skins[skinsI][0]);
 		});
 
 		this.highScore = parseInt(localStorage.getItem("highscore")) || 0;
@@ -429,47 +435,25 @@ class Scene1 extends Phaser.Scene {
 		const x = this.add.text(boxLeft+22, 500-(height/2), "⤫", {fontSize: '65px', fill: '#f00', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 5 }).setOrigin(0, 0).setDepth(102).setScrollFactor(0).setInteractive();
 		x.input.cursor = "pointer";
 
-		// TODO: refactor this
-
 		const skins = [];
 		const updateSkin = (newSkin)=>{
 			this.playerSkin = newSkin;
 			this.player.setTexture(newSkin);
 			for(const skin of skins) {
 				const key = skin[0];
-				skin[1].clear();
+				if(skin[3]) {
+					skin[1].clear();
+				}
 				if(newSkin === key) {
 					skin[1].fillStyle(0, 0.1);
-					skin[1].fillRect(boxLeft+60+skin[2], 580, 142, 162).setDepth(102);
+					skin[1].fillRect(skin[2], 580, 142, 162).setDepth(102);
 				}
 			}
 		}
 
-		const defaultButtonClickRect = this.add.rectangle(boxLeft+60, 580, 142, 162).setDepth(102).setScrollFactor(0).setOrigin(0);
-		const defaultButton = this.add.graphics().setDepth(102).setScrollFactor(0);
-		defaultButton.setInteractive(defaultButtonClickRect, (_clickRect, x, y)=>{
-			return x >= defaultButtonClickRect.getTopLeft().x && x <= defaultButtonClickRect.getTopRight().x
-					&& y <= defaultButtonClickRect.getBottomLeft().y && y >= defaultButtonClickRect.getTopLeft().y;
-		});
-		defaultButton.input.cursor = "pointer";
-		defaultButton.on("pointerup", (_p, _x, _y, event)=>{
-			updateSkin("fish");
-			event.stopPropagation();
-		});
-		skins.push(["fish", defaultButton, 0]);
-
-		const sharkButtonClickRect = this.add.rectangle(boxLeft+260, 580, 142, 162).setDepth(102).setScrollFactor(0).setOrigin(0);
-		const sharkButton = this.add.graphics().setDepth(102).setScrollFactor(0);
-		sharkButton.setInteractive(sharkButtonClickRect, (_clickRect, x, y)=>{
-			return x >= sharkButtonClickRect.getTopLeft().x && x <= sharkButtonClickRect.getTopRight().x
-					&& y <= sharkButtonClickRect.getBottomLeft().y && y >= sharkButtonClickRect.getTopLeft().y;
-		});
-		sharkButton.input.cursor = "pointer";
-		sharkButton.on("pointerup", (_p, _x, _y, event)=>{
-			updateSkin("shark");
-			event.stopPropagation();
-		});
-		skins.push(["shark", sharkButton, 200]);
+		this.addSkinButton("fish", "Default", 0, null, skins, boxLeft, updateSkin);
+		this.addSkinButton("shark", "Shark", 1, null, skins, boxLeft, updateSkin);
+		this.addSkinButton("redfish", "Snapper", 2, 5000, skins, boxLeft, updateSkin);
 		
 		updateSkin(this.playerSkin);
 
@@ -479,14 +463,6 @@ class Scene1 extends Phaser.Scene {
 			deathEnabler,
 			clickDoubler,
 			this.add.text(boxLeft+30, 530, "Choose Skin:", {fontSize: '33px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 4 }).setOrigin(0).setDepth(102).setScrollFactor(0),
-			this.add.image(boxLeft+130, 640, "fish").setScale(1.2).setAngle(-50).setOrigin(0.5).setDepth(102).setScrollFactor(0),
-			this.add.image(boxLeft+330, 640, "shark").setScale(1.2).setAngle(-50).setOrigin(0.5).setDepth(102).setScrollFactor(0),
-			this.add.text(boxLeft+126, 725, "Default", {fontSize: '25px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 3 }).setOrigin(0.5).setDepth(102).setScrollFactor(0),
-			this.add.text(boxLeft+330, 725, "Shark", {fontSize: '25px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 3 }).setOrigin(0.5).setDepth(102).setScrollFactor(0),
-			defaultButton,
-			defaultButtonClickRect,
-			sharkButton,
-			sharkButtonClickRect
 		);
 	}
 
@@ -497,6 +473,48 @@ class Scene1 extends Phaser.Scene {
 		}
 		this.matter.resume();
 		this.settingsShown = false;
+	}
+
+	addSkinButton(skinName, prettyName, index, scoreRequired, skins, boxLeft, updateSkin) {
+		const y = 579;
+		const initOffset = 29;
+		const imageOffset = initOffset+70;
+		const width = 142;
+		const height = 162;
+		const totalWidth = 142;
+		const buttonClickRectX = boxLeft+initOffset+(index*totalWidth);
+
+		const defaultButtonClickRect = this.add.rectangle(buttonClickRectX, y, width, height).setDepth(102).setScrollFactor(0).setOrigin(0);
+		const defaultButton = this.add.graphics().setDepth(102).setScrollFactor(0);
+		defaultButton.setInteractive(defaultButtonClickRect, (_clickRect, x, y)=>{
+			return x >= defaultButtonClickRect.getTopLeft().x && x <= defaultButtonClickRect.getTopRight().x
+					&& y <= defaultButtonClickRect.getBottomLeft().y && y >= defaultButtonClickRect.getTopLeft().y;
+		});
+		defaultButton.input.cursor = "pointer";
+		let canUse = true;
+		
+		if(scoreRequired && this.highScore < scoreRequired) {
+			defaultButton.input.cursor = "not-allowed";
+			canUse = false;
+			defaultButton.fillStyle(0xff0000, 0.2);
+			defaultButton.fillRect(buttonClickRectX, 580, width, height).setDepth(102);
+			this.settingsItems.push(this.add.text(buttonClickRectX+(width/2), y+52, `${scoreRequired}+`, {fontSize: '35px', fill: '#f00', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 5 }).setOrigin(0.5, 0).setDepth(103).setScrollFactor(0));
+		}
+		defaultButton.on("pointerup", (_p, _x, _y, event)=>{
+			event.stopPropagation();
+			if(!canUse) {
+				alert("You must have a highscore of "+scoreRequired+" or more to use this skin!");
+				return;
+			}
+
+			updateSkin(skinName);
+		});
+		skins.push([skinName, defaultButton, buttonClickRectX, canUse]);
+
+		const fishImg = this.add.image(boxLeft+imageOffset+(index*totalWidth), y+60, skinName).setScale(1.2).setAngle(-50).setOrigin(0.5).setDepth(102).setScrollFactor(0);
+		const text = this.add.text(buttonClickRectX+(width/2), y+129, prettyName, {fontSize: '25px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 3 }).setOrigin(0.5, 0).setDepth(102).setScrollFactor(0);
+
+		this.settingsItems.push(defaultButton, defaultButtonClickRect, fishImg, text);
 	}
 
 
