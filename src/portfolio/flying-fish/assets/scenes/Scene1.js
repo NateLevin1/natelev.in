@@ -195,12 +195,18 @@ class Scene1 extends Phaser.Scene {
 				this.restart();
 			}
 		});
+		const skins = [["fish"], ["shark"], ["redfish", 5000]];
+		let skinsI = 0;
 		this.input.keyboard.on("keydown-F", (event)=>{
-			if(this.player.texture.key === "fish") {
-				this.player.setTexture("shark");
-			} else {
-				this.player.setTexture("fish");
+			skinsI++;
+			if(skinsI >= skins.length) skinsI = 0;
+
+			while(skins[skinsI][1] > this.highScore) {
+				skinsI++;
+				if(skinsI >= skins.length) skinsI = 0;
 			}
+
+			this.player.setTexture(skins[skinsI][0]);
 		});
 
 		this.highScore = parseInt(localStorage.getItem("highscore")) || 0;
@@ -435,7 +441,9 @@ class Scene1 extends Phaser.Scene {
 			this.player.setTexture(newSkin);
 			for(const skin of skins) {
 				const key = skin[0];
-				skin[1].clear();
+				if(skin[3]) {
+					skin[1].clear();
+				}
 				if(newSkin === key) {
 					skin[1].fillStyle(0, 0.1);
 					skin[1].fillRect(skin[2], 580, 142, 162).setDepth(102);
@@ -443,9 +451,9 @@ class Scene1 extends Phaser.Scene {
 			}
 		}
 
-		this.addSkinButton("fish", "Default", 0, skins, boxLeft, updateSkin);
-		this.addSkinButton("shark", "Shark", 1, skins, boxLeft, updateSkin);
-		this.addSkinButton("redfish", "Snapper", 2, skins, boxLeft, updateSkin);
+		this.addSkinButton("fish", "Default", 0, null, skins, boxLeft, updateSkin);
+		this.addSkinButton("shark", "Shark", 1, null, skins, boxLeft, updateSkin);
+		this.addSkinButton("redfish", "Snapper", 2, 5000, skins, boxLeft, updateSkin);
 		
 		updateSkin(this.playerSkin);
 
@@ -467,7 +475,7 @@ class Scene1 extends Phaser.Scene {
 		this.settingsShown = false;
 	}
 
-	addSkinButton(skinName, prettyName, index, skins, boxLeft, updateSkin) {
+	addSkinButton(skinName, prettyName, index, scoreRequired, skins, boxLeft, updateSkin) {
 		const y = 579;
 		const initOffset = 29;
 		const imageOffset = initOffset+70;
@@ -483,11 +491,25 @@ class Scene1 extends Phaser.Scene {
 					&& y <= defaultButtonClickRect.getBottomLeft().y && y >= defaultButtonClickRect.getTopLeft().y;
 		});
 		defaultButton.input.cursor = "pointer";
+		let canUse = true;
+		
+		if(scoreRequired && this.highScore < scoreRequired) {
+			defaultButton.input.cursor = "not-allowed";
+			canUse = false;
+			defaultButton.fillStyle(0xff0000, 0.2);
+			defaultButton.fillRect(buttonClickRectX, 580, width, height).setDepth(102);
+			this.settingsItems.push(this.add.text(buttonClickRectX+(width/2), y+52, `${scoreRequired}+`, {fontSize: '35px', fill: '#f00', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 5 }).setOrigin(0.5, 0).setDepth(103).setScrollFactor(0));
+		}
 		defaultButton.on("pointerup", (_p, _x, _y, event)=>{
-			updateSkin(skinName);
 			event.stopPropagation();
+			if(!canUse) {
+				alert("You must have a highscore of "+scoreRequired+" or more to use this skin!");
+				return;
+			}
+
+			updateSkin(skinName);
 		});
-		skins.push([skinName, defaultButton, buttonClickRectX]);
+		skins.push([skinName, defaultButton, buttonClickRectX, canUse]);
 
 		const fishImg = this.add.image(boxLeft+imageOffset+(index*totalWidth), y+60, skinName).setScale(1.2).setAngle(-50).setOrigin(0.5).setDepth(102).setScrollFactor(0);
 		const text = this.add.text(buttonClickRectX+(width/2), y+129, prettyName, {fontSize: '25px', fill: '#fff', fontFamily: '"Arial"', stroke: "#000", strokeThickness: 3 }).setOrigin(0.5, 0).setDepth(102).setScrollFactor(0);
