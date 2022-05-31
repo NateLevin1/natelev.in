@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/portfolio/study-bio-final/static/css/main.bfe30696.css",
+    "main.js": "/portfolio/study-bio-final/static/js/main.e6f9048c.js",
+    "static/js/787.c32f815a.chunk.js": "/portfolio/study-bio-final/static/js/787.c32f815a.chunk.js",
+    "index.html": "/portfolio/study-bio-final/index.html",
+    "main.bfe30696.css.map": "/portfolio/study-bio-final/static/css/main.bfe30696.css.map",
+    "main.e6f9048c.js.map": "/portfolio/study-bio-final/static/js/main.e6f9048c.js.map",
+    "787.c32f815a.chunk.js.map": "/portfolio/study-bio-final/static/js/787.c32f815a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bfe30696.css",
+    "static/js/main.e6f9048c.js"
+  ]
+}
