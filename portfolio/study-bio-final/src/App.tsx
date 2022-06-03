@@ -120,7 +120,7 @@ function App() {
                         onNextQuestion={() => newQuestion()}
                         id={questionId}
                     />
-                    <div className="mt-4 flex flex-col items-center w-full">
+                    <div className="my-4 flex flex-col items-center w-full">
                         <p className="block">
                             Question {modifiedQuestionNumber} /{" "}
                             {questionBank.getTotalQuestionCount()}

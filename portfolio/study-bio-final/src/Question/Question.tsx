@@ -168,7 +168,7 @@ function Question(
 
             {correctShown && isCorrect ? (
                 <button
-                    className="bg-red-200 text-[0.6rem] leading-[0.85rem] rounded-lg px-2 py-0.5 m-auto block mt-4 hover:shadow-sm transition-all border border-red-300 active:border-red-100 active:shadow-inner select-none"
+                    className="text-[0.6rem] leading-[0.85rem] rounded-lg px-2 py-0.5 m-auto block mt-4 hover:shadow-sm transition-all border border-red-200 active:border-red-100 active:shadow-inner select-none"
                     style={{
                         opacity: submitShown ? "1" : "0",
                         visibility: submitShown ? "visible" : "hidden",
