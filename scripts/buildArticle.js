@@ -89,6 +89,9 @@ const renderer = {
         let highlighted = code;
         if(lang === "js") {
             highlighted = prism.highlight(code, prism.languages.javascript, "javascript");
+        } else if(lang === "ts") {
+            loadLanguages(["typescript"]);
+            highlighted = prism.highlight(code, prism.languages.typescript, "typescript");
         } else if(lang === "wat" || lang === "wasm") {
             loadLanguages(["wasm"]);
             highlighted = prism.highlight(code, prism.languages.wasm, "wasm");
