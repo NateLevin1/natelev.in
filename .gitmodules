@@ -5,3 +5,7 @@
 	path = src/portfolio/study-bio-final
 	url = https://github.com/UltimatePro-Grammer/study-bio-final.git
 	branch = build
+[submodule "src/portfolio/ChoanoSim"]
+	path = src/portfolio/ChoanoSim
+	url = https://github.com/UltimatePro-Grammer/ChoanoSim
+	branch = build
