@@ -1,11 +1,11 @@
 [submodule "src/portfolio/spaghetti-script"]
 	path = src/portfolio/spaghetti-script
-	url = https://github.com/UltimatePro-Grammer/spaghetti-script
+	url = https://github.com/NateLevin1/spaghetti-script
 [submodule "src/portfolio/study-bio-final"]
 	path = src/portfolio/study-bio-final
-	url = https://github.com/UltimatePro-Grammer/study-bio-final.git
+	url = https://github.com/NateLevin1/study-bio-final.git
 	branch = build
 [submodule "src/portfolio/ChoanoSim"]
 	path = src/portfolio/ChoanoSim
-	url = https://github.com/UltimatePro-Grammer/ChoanoSim
+	url = https://github.com/NateLevin1/ChoanoSim
 	branch = build

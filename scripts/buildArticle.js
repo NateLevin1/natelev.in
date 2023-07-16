@@ -1,25 +1,28 @@
-const fs = require('fs')
+const fs = require("fs");
 const path = require("path");
 const marked = require("marked");
 const prism = require("prismjs");
-const loadLanguages = require('prismjs/components/');
+const loadLanguages = require("prismjs/components/");
 
 let fileLocation = process.argv[2];
-if(!fileLocation) {
+if (!fileLocation) {
     throw "No file specified";
 }
-if(fs.lstatSync(fileLocation).isDirectory()) {
+if (fs.lstatSync(fileLocation).isDirectory()) {
     // use index.md
-    fileLocation = path.normalize(fileLocation+"/index.md");
+    fileLocation = path.normalize(fileLocation + "/index.md");
 }
-if(!fs.existsSync(fileLocation)) {
-    throw "Input path is not a file or directory containing an index.md file. Instead found "+fileLocation;
+if (!fs.existsSync(fileLocation)) {
+    throw (
+        "Input path is not a file or directory containing an index.md file. Instead found " +
+        fileLocation
+    );
 }
 
 const outIndex = process.argv.indexOf("--out");
 let outFilePath;
-if(outIndex !== -1) {
-    outFilePath = process.argv[outIndex + 1]
+if (outIndex !== -1) {
+    outFilePath = process.argv[outIndex + 1];
 }
 
 // MARKED SETUP
@@ -27,10 +30,10 @@ let suggested = [];
 let title = "";
 let desc = "";
 let headerImg = "";
-let issueLink = "https://github.com/UltimatePro-Grammer/natelev.in/issues";
+let issueLink = "https://github.com/NateLevin1/natelev.in/issues";
 const renderer = {
     heading(text, level, raw, slugger) {
-        if(level === 1) {
+        if (level === 1) {
             // the article title, style it as such
             title = text;
             return `
@@ -40,44 +43,56 @@ const renderer = {
             `;
         } else {
             // a subheading, style it as such
-            const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+            const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
             const uid = slugger.slug(escapedText);
 
             return `
             <h${level} id="${uid}">
                 ${text}
             </h${level}>
-            `
+            `;
         }
     },
     paragraph(text) {
-        if(text.startsWith("<img")) {
+        if (text.startsWith("<img")) {
             // determines if the image is a header: headers are signified with the alt text starting with "HEADER|"
             const isHeader = text.match(/alt="HEADER\|([^"]+)"/);
-            const [match, source, extension] = text.match(/src="([^".]+)\.(\w+)"/);
-            if(isHeader) {
+            const [match, source, extension] = text.match(
+                /src="([^".]+)\.(\w+)"/
+            );
+            if (isHeader) {
                 headerImg = `${source}.${extension}`;
                 // give it the special styles
                 return `
                 <div class="header-image-container">
-                    <img src="${source}.${extension}" style="background-image: url(${source}-low.${extension});" alt="${isHeader[1]}" class="header-image lazy">
+                    <img src="${source}.${extension}" style="background-image: url(${source}-low.${extension});" alt="${
+                    isHeader[1]
+                }" class="header-image lazy">
                 </div>
-                <div class="content"> ${/*This is the start of the content. It is closed at the end of the markdown.*/""}
-                `
+                <div class="content"> ${
+                    /*This is the start of the content. It is closed at the end of the markdown.*/ ""
+                }
+                `;
             } else {
-                return `${text.slice(0, text.length - 1)} class="bleed lazy" style="background-image: url(${source}-low.${extension});">`
+                return `${text.slice(
+                    0,
+                    text.length - 1
+                )} class="bleed lazy" style="background-image: url(${source}-low.${extension});">`;
             }
-        } else if(text.startsWith("SUGGESTED|")) {
-            suggested = text.split("|").slice(1).map(str=>str.split("[t]"));
+        } else if (text.startsWith("SUGGESTED|")) {
+            suggested = text
+                .split("|")
+                .slice(1)
+                .map((str) => str.split("[t]"));
             return "";
-        } else if(text.startsWith("ISSUE|")) {
+        } else if (text.startsWith("ISSUE|")) {
             issueLink = issueLink + "/" + text.split("|")[1];
             return "";
-        } else if(text.startsWith("NOTE:")) {
+        } else if (text.startsWith("NOTE:")) {
             return `<p class="note">${text.slice(6)}</p>`;
         } else {
             // paragraph - don't need custom behavior
-            if(!desc) {
+            if (!desc) {
                 desc = text;
             }
             return `
@@ -87,32 +102,47 @@ const renderer = {
     },
     code(code, lang) {
         let highlighted = code;
-        if(lang === "js") {
-            highlighted = prism.highlight(code, prism.languages.javascript, "javascript");
-        } else if(lang === "ts") {
+        if (lang === "js") {
+            highlighted = prism.highlight(
+                code,
+                prism.languages.javascript,
+                "javascript"
+            );
+        } else if (lang === "ts") {
             loadLanguages(["typescript"]);
-            highlighted = prism.highlight(code, prism.languages.typescript, "typescript");
-        } else if(lang === "wat" || lang === "wasm") {
+            highlighted = prism.highlight(
+                code,
+                prism.languages.typescript,
+                "typescript"
+            );
+        } else if (lang === "wat" || lang === "wasm") {
             loadLanguages(["wasm"]);
             highlighted = prism.highlight(code, prism.languages.wasm, "wasm");
-        } else if(lang === "css") {
+        } else if (lang === "css") {
             highlighted = prism.highlight(code, prism.languages.css, "css");
-        } else if(lang === "html") {
+        } else if (lang === "html") {
             highlighted = prism.highlight(code, prism.languages.markup, "html");
         }
         // make links clickable
-        highlighted = highlighted.replace(/(?:https?:\/\/)(\w+)\.(\w+)(?:\/(.+))?/g, (link)=>`<a href="${link}" class="custom-color" target="_blank" rel="noopener noreferrer">${link}</a>`)
+        highlighted = highlighted.replace(
+            /(?:https?:\/\/)(\w+)\.(\w+)(?:\/(.+))?/g,
+            (link) =>
+                `<a href="${link}" class="custom-color" target="_blank" rel="noopener noreferrer">${link}</a>`
+        );
         return `<pre class="code"><code class="language-${lang}">${highlighted}</code></pre>`;
-    }
+    },
 };
 marked.use({ renderer });
 
-fs.readFile(fileLocation, 'utf8' , (err, markdown) => {
+fs.readFile(fileLocation, "utf8", (err, markdown) => {
     if (err) {
         throw err;
     }
     const mdHTML = marked(markdown);
-    let txtDesc = desc.replace(/<(\w+)[^>]*>(.+)<\/\1>/g, (match, tag, inside)=>inside);
+    let txtDesc = desc.replace(
+        /<(\w+)[^>]*>(.+)<\/\1>/g,
+        (match, tag, inside) => inside
+    );
     let outHTML = `<!DOCTYPE html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
@@ -127,10 +157,14 @@ fs.readFile(fileLocation, 'utf8' , (err, markdown) => {
 
     <!-- meta tags for social media -->
     <meta property="og:site_name" content="Nate Levin">
-    <meta property="og:url" content="http://natelev.in/${fileLocation.replace(".md", ".html").replace("src/", "")}">
+    <meta property="og:url" content="http://natelev.in/${fileLocation
+        .replace(".md", ".html")
+        .replace("src/", "")}">
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${txtDesc}">
-    <meta property="og:image" content="http://natelev.in/${(outFilePath || "").replace("src/", "").replace("index.html", "")}${headerImg}">
+    <meta property="og:image" content="http://natelev.in/${(outFilePath || "")
+        .replace("src/", "")
+        .replace("index.html", "")}${headerImg}">
     <meta property="og:type" content="article">
     <meta name="theme-color" content="#FB3640">
     <meta name="twitter:card" content="summary_large_image">
@@ -180,16 +214,18 @@ fs.readFile(fileLocation, 'utf8' , (err, markdown) => {
                 <span>or</span>
                 <h3>Read more like this</h3>
         </div>
-        </div> ${/*This is the 'content' div from the header image*/""}
+        </div> ${/*This is the 'content' div from the header image*/ ""}
         <div class="similar" id="similar">
-${suggested.map(([path, title])=>{
-                return `                    <article>
+${suggested
+    .map(([path, title]) => {
+        return `                    <article>
                     <a href="${path}" class="no-underline article-anchor">
                         <img src="${path}images/header.jpg" style="background-image: url(${path}images/header-low.jpg);" alt="Article thumbnail" class="similar-thumb lazy">
                         <h1 class="similar-title">${title}</h1>
                     </a>
                 </article>`;
-            }).join("\n")}
+    })
+    .join("\n")}
         </div>
         <div class="connect">
             <h2>Connect with me</h2>
@@ -202,7 +238,7 @@ ${suggested.map(([path, title])=>{
                     <span class="iconify" data-inline="false" data-icon="ant-design:twitter-circle-filled"
                         style="color: #1da1f2; font-size: 4.125em;"></span>
                 </a>
-                <a href="https://github.com/UltimatePro-Grammer" class="no-underline" aria-label="Github">
+                <a href="https://github.com/NateLevin1" class="no-underline" aria-label="Github">
                     <span class="iconify" data-inline="false" data-icon="ant-design:github-filled"
                         style="color: black; font-size: 4.125em;"></span>
                 </a>
@@ -221,11 +257,11 @@ ${suggested.map(([path, title])=>{
 </body>
 </html>
     `;
-    if(outFilePath) {
+    if (outFilePath) {
         // write to file
-        fs.writeFile(outFilePath, outHTML, "utf8", (err)=>{
-            if(err) throw err;
-            console.log("Successfully wrote to file "+outFilePath+"\n");
+        fs.writeFile(outFilePath, outHTML, "utf8", (err) => {
+            if (err) throw err;
+            console.log("Successfully wrote to file " + outFilePath + "\n");
         });
     } else {
         // write to stdout

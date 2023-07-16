@@ -124,9 +124,9 @@
                 <h3 class="latest-games">Latest games <a href="https://ultimateprogrammer.itch.io" rel="noopener" target="_blank">(see more)</a></h3>
                 <div class="games-container">
                     <div class="games">
-                        <iframe title="Play Laser World on Itch.io" class="game" frameborder="0" src="https://itch.io/embed/710524?link_color=FB3640" width="552" height="167"><a href="https://ultimateprogrammer.itch.io/laser-world">Laser World by UltimateProGrammer</a></iframe>
+                        <iframe title="Play Track Control on Itch.io" class="game" frameborder="0" src="https://itch.io/embed/2157009?link_color=FB3640" width="552" height="167"><a href="https://ultimateprogrammer.itch.io/track-control">Track Control! by UltimateProGrammer</a></iframe>
+                        <iframe title="Play Speedrun n' Roll on Itch.io" class="game" frameborder="0" src="https://itch.io/embed/1620251?link_color=FB3640" width="552" height="167"><a href="https://ultimateprogrammer.itch.io/speedrun-n-roll">Speedrun n&#039; ROLL! by UltimateProGrammer</a></iframe>
                         <iframe title="Play Slime Rocket on Itch.io" class="game" frameborder="0" src="https://itch.io/embed/698499?link_color=FB3640" width="552" height="167"><a href="https://ultimateprogrammer.itch.io/slime-rocket">Slime Rocket by UltimateProGrammer</a></iframe>
-                        <iframe title="Play Mage Master on Itch.io" class="game" frameborder="0" src="https://itch.io/embed/692939?link_color=FB3640" width="552" height="167"><a href="https://ultimateprogrammer.itch.io/mage-master">Mage Master by UltimateProGrammer</a></iframe>
                     </div>
                 </div>
 
@@ -136,7 +136,10 @@
     </section>
     <footer>
         <a href="#" class="back-to-top custom-color">back to top</a>
-        <i class="copyright">© Nate Levin 2020</i>
+        <i class="copyright" id="copyright">© Nate Levin 2023</i>
+        <script>
+            document.getElementById("copyright").textContent = "© Nate Levin "+new Date().getFullYear();
+        </script>
     </footer>
 
     <!-- SCRIPTS -->
