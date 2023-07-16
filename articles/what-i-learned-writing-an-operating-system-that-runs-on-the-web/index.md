@@ -62,7 +62,7 @@ The second problem is that this kind of class-based code is not testable. The wa
 ## Bonus lessons!
 
 -   Don't use `<script>` tags. Use ES modules! Handling dependencies is far easier with ES modules and it makes code much easier to read.
--   IndexedDB is awesome, but its actual API is terrible. Use [DexieJS](https://dexie.org) for a JS api or if you already know SQL use my DexieJS wrapper [JSQL](https://github.com/UltimatePro-Grammer/JSQL)
+-   IndexedDB is awesome, but its actual API is terrible. Use [DexieJS](https://dexie.org) for a JS api or if you already know SQL use my DexieJS wrapper [JSQL](https://github.com/NateLevin1/JSQL)
 -   Use [Trello](https://trello.com) or a similar service to keep track of your progress and what you have left to do. Trello also works great in teams!
 
 SUGGESTED|/articles/host-your-site-for-free-on-jamstack/[t]Host Your Site For Free On JAMstack
