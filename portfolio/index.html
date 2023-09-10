@@ -123,7 +123,10 @@
 
     <footer>
         <a href="#" class="back-to-top custom-color">back to top</a>
-        <i class="copyright">© Nate Levin 2020</i>
+        <i class="copyright" id="copyright">© Nate Levin 2023</i>
+        <script>
+            document.getElementById("copyright").textContent = "© Nate Levin " + new Date().getFullYear();
+        </script>
     </footer>
 
     <!-- SCRIPTS -->
