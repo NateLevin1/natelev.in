@@ -5,6 +5,7 @@ import { isStarred, shuffleArray } from "./utils";
 class QuestionBank {
     quizSource = "all";
     bank: QuestionT[] = [];
+    index = 0;
 
     constructor() {
         this.reload();
@@ -17,17 +18,29 @@ class QuestionBank {
         } else {
             this.bank = (allQuestions as any)[quizSource].slice(0);
         }
+        this.index = 0;
         this.updateStarred();
     }
     shuffleBank() {
         this.bank = shuffleArray(this.bank);
+        this.index = 0;
     }
     nextQuestion(): QuestionT | null {
-        const question = this.bank.shift();
-        if (!question) {
+        this.index++;
+        return this.loadCurrentQuestion();
+    }
+    loadQuestion(index: number): QuestionT | null {
+        this.index = index;
+        return this.loadCurrentQuestion();
+    }
+    loadCurrentQuestion(): QuestionT | null {
+        if (this.bank.length === 0) {
+            this.index = 0;
             return null;
         }
-        this.bank.push(question);
+
+        const index = this.index % this.bank.length;
+        const question = this.bank[index];
 
         return question;
     }
@@ -40,6 +53,7 @@ class QuestionBank {
     updateStarred() {
         if (this.starredOnly) {
             this.bank = this.bank.filter((q) => isStarred(q.id));
+            this.index = 0;
         }
     }
     reload() {

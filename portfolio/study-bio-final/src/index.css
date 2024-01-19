@@ -18,6 +18,21 @@ progress[value]::-webkit-progress-value {
     border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
 
+input.no-numbers::-webkit-outer-spin-button,
+input.no-numbers::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input.no-numbers {
+    -moz-appearance: textfield;
+}
+
+.text-right {
+    text-align: right;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
