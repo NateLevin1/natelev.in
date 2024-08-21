@@ -1,0 +1,139 @@
+@font-face {
+    font-family: "Minecraftia";
+    src: url("../images/minecraftia.woff2") format("woff2");
+}
+.custom-tag-container {
+    display: grid;
+    grid-template-columns: 1fr 3.5rem;
+}
+#current-color {
+    width: 3rem;
+    height: 3rem;
+    float: right;
+    margin-right: 2px;
+    border-radius: 12px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+#current-color:hover {
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+#current-color:hover .color-picker-svg {
+    stroke: black;
+    fill: white;
+}
+.color-picker-svg {
+    height: 60%;
+    width: 60%;
+}
+
+#custom-tag-bg {
+    font-family: "Minecraftia", serif;
+    font-size: 1.1rem;
+    height: 3rem;
+    background-image: url("../images/chatbg.webp");
+    background-size: 100%;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid black;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: box-shadow 0.2s;
+}
+#custom-tag-bg:focus-within {
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+    outline: 2px solid rgba(57, 194, 255, 1);
+}
+.custom-tag-bg-bg {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: calc(100% - 1rem);
+    margin: 0.53rem 0;
+    padding-top: 0.05rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.6rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    align-items: center;
+}
+
+#custom-tag {
+    background: none;
+    border: none;
+    margin: 0;
+    outline: 0;
+    color: inherit;
+    font-family: inherit;
+    height: 100%;
+    font-size: 1.1rem;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0 0.1rem;
+    text-transform: uppercase;
+}
+#custom-tag::placeholder {
+    color: inherit;
+}
+#custom-preview-name {
+    margin-left: 0.6rem;
+}
+#custom-tag-color-select {
+    position: relative;
+}
+#color-choices {
+    position: absolute;
+    top: -9rem;
+    width: 12.5rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 8px;
+    padding: 0.2rem 0.25rem;
+    z-index: 1;
+}
+.color-option {
+    height: 2rem;
+    width: 2rem;
+    margin: 0.5rem;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 4px;
+}
+#color-choices p {
+    margin: 0 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+#months-text {
+    font-size: 2.2rem;
+    display: block;
+}
+
+#months {
+    cursor: pointer;
+    padding: 0.75rem 0.75rem;
+    appearance: none;
+    font-size: 1.2rem;
+}
+#months:hover {
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+}
+.months-container {
+    position: relative;
+}
+.months-container::after {
+    content: "";
+    width: 1.2rem;
+    height: 0.9rem;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    position: absolute;
+    right: 0.8rem;
+    top: 1.2rem;
+}

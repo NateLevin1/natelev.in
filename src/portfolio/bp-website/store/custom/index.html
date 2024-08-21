@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/default.css" />
+    <link rel="stylesheet" href="../../css/microtip.css" />
+    <link rel="stylesheet" href="../../css/buy.css" />
+    <link rel="stylesheet" href="../../css/custombuy.css" />
+    <link rel="shortcut icon" href="../../favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <title>Buy a [CUSTOM] Rank | BridgePractice.net Store</title>
+    <meta name="description" content="Buy a Custom rank to get a ton of perks!
+        - CUSTOM COLOR NAME TAG
+        - CUSTOM CHAT PREFIX! (WHATEVER YOU WANT!)
+        - Support the Server GREATLY!
+        - Role in Discord
+        - Access to Devlogs
+        - Announces when you join the server
+        - /fw command ?
+        - /cookie command ?
+        - /rainbow command ?
+        - Diamond Duel Sword ?
+        - Golden GG
+        - Fly in Lobby">
+    <script src="../../js/buy.js" defer></script>
+</head>
+
+<body>
+    <script src="../../js/default.js" defer></script>
+
+    <header class="header">
+        <a href="../../"><img src="../../images/bp.png" class="header-logo" alt="Visit homepage" width="56"
+                height="56" /></a>
+        <span>
+            <a href="../" class="header-text bold">Bridge Practice Store</a>
+        </span>
+    </header>
+    <div class="page-content">
+        <div class="background-1">
+            <section class="glass purchase-container">
+                <object data="../../images/custom.svg" type="image/svg+xml" class="rank-symbol" width="184"
+                    height="150">Custom rank logo</object>
+                <div class="purchase">
+                    <h2 class="text-shadow-md title">Purchase a Custom Rank</h2>
+                    <h3 class="text-shadow-md price">
+                        <span id="price">$10</span>
+                        <span id="months-text">(3 months)</span>
+                    </h3>
+                </div>
+            </section>
+            <section class="glass form-container">
+                <h3 class="payment-details text-shadow-md">Payment Details</h3>
+                <form id="form" action="/stripe/create-checkout-session" method="post">
+                    <label for="mc-username">Minecraft Username:</label>
+                    <div class="mc-username-container">
+                        <input type="text" id="mc-username" class="payment-input" autofocus name="ign">
+                        <img id="mc-username-img" style="display: none;" alt="Your skin">
+                    </div>
+                    <p id="mc-username-invalid" class="invalid text-shadow-md" style="display: none;">That username
+                        doesn't look right!
+                    </p>
+
+                    <label for="custom-tag">Custom Tag: (click to edit)</label>
+                    <div class="custom-tag-container">
+                        <div id="custom-tag-bg" style="color: #FFAA00;">
+                            <div class="custom-tag-bg-bg">
+                                <span>[</span>
+                                <input type="text" id="custom-tag" name="customTag" style="width: calc(6ch + 0.2rem);"
+                                    placeholder="CUSTOM">
+                                <span>]</span>
+                                <span id="custom-preview-name">Username</span>
+                                <span style="color: white">: Hello!</span>
+                            </div>
+                        </div>
+                        <div id="custom-tag-color-select">
+                            <div id="current-color" style="background-color: #FFAA00;">
+                                <!-- https://iconmonstr.com/paintbrush-6-svg/ -->
+                                <svg class="color-picker-svg" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M4 21.832c4.587.38 2.944-4.493 7.188-4.538l1.838 1.534c.458 5.538-6.315 6.773-9.026 3.004zm14.065-7.115c1.427-2.239 5.847-9.749 5.847-9.749.352-.623-.43-1.273-.976-.813 0 0-6.572 5.714-8.511 7.525-1.532 1.432-1.539 2.086-2.035 4.447l1.68 1.4c2.227-.915 2.868-1.039 3.995-2.81zm-11.999 3.876c.666-1.134 1.748-2.977 4.447-3.262.434-2.087.607-3.3 2.547-5.112 1.373-1.282 4.938-4.409 7.021-6.229-1-2.208-4.141-4.023-8.178-3.99-6.624.055-11.956 5.465-11.903 12.092.023 2.911 1.081 5.571 2.82 7.635 1.618.429 2.376.348 3.246-1.134zm6.952-15.835c1.102-.006 2.005.881 2.016 1.983.004 1.103-.882 2.009-1.986 2.016-1.105.009-2.008-.88-2.014-1.984-.013-1.106.876-2.006 1.984-2.015zm-5.997 2.001c1.102-.01 2.008.877 2.012 1.983.012 1.106-.88 2.005-1.98 2.016-1.106.007-2.009-.881-2.016-1.988-.009-1.103.877-2.004 1.984-2.011zm-2.003 5.998c1.106-.007 2.01.882 2.016 1.985.01 1.104-.88 2.008-1.986 2.015-1.105.008-2.005-.88-2.011-1.985-.011-1.105.879-2.004 1.981-2.015zm10.031 8.532c.021 2.239-.882 3.718-1.682 4.587l-.046.044c5.255-.591 9.062-4.304 6.266-7.889-1.373 2.047-2.534 2.442-4.538 3.258z" />
+                                </svg>
+                            </div>
+                            <div id="color-choices" style="display: none;">
+                                <p>Choose a color:</p>
+                                <div id="yellow" style="background-color: #FFFF55;" class="color-option"></div>
+                                <div id="aqua" style="background-color: #55FFFF;" class="color-option"></div>
+                                <div id="light-purple" style="background-color: #FF55FF;" class="color-option"></div>
+                                <div id="white" style="background-color: #FFFFFF;" class="color-option"></div>
+                                <div id="gold" style="background-color: #FFAA00;" class="color-option"></div>
+                                <div id="dark-aqua" style="background-color: #00AAAA;" class="color-option"></div>
+                                <div id="dark-purple" style="background-color: #AA00AA;" class="color-option"></div>
+                                <div id="green" style="background-color: #55FF55;" class="color-option"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="custom-tag-invalid" class="invalid text-shadow-md" style="display: none;">Your custom tag
+                        must be between 2 and 8 characters long and not contain any banned words.
+                    </p>
+                    <p class="explanation">Do not pretend to be a mod or use foul language. All custom tags
+                        must be approved by moderators.
+                    </p>
+
+                    <label for="months">Number of Months:</label>
+                    <div class="months-container">
+                        <select name="months" id="months" class="payment-input">
+                            <option value="1">1 Month</option>
+                            <option value="3" selected>3 Months (1 Month Free!)</option>
+                            <option value="6">6 Months (2 Months Free!)</option>
+                            <option value="12">12 Months (5 Months Free!)</option>
+                        </select>
+                    </div>
+
+
+                    <label for="disc-tag">Discord Tag (optional):</label>
+                    <input type="text" id="disc-tag" class="payment-input" placeholder="Example#1234" name="disc">
+                    <p id="disc-tag-invalid" class="invalid text-shadow-md" style="display: none;">Your Discord
+                        account
+                        doesn't look right. Make sure you include the 4
+                        numbers at the end!</p>
+                    <p class="explanation">Your Discord tag is used to give you access to special Discord
+                        rewards. Not
+                        in our discord? <a href="">Click here to join!</a></p>
+
+                    <input type="hidden" name="type" value="custom" style="display: none;" />
+                    <input type="hidden" name="customColor" id="custom-color" value="gold" style="display: none;" />
+
+                    <input type="submit" value="Go to Checkout" class="checkout-button" id="checkout">
+                </form>
+            </section>
+        </div>
+
+        <div class="background-2">
+            <div class="divider" aria-hidden="true"></div>
+            <section class="rank glass">
+                <h3 class="rank-title">With a Custom rank you'll get...</h3>
+                <ul class="perks perk-ul">
+                    <li class="important">CUSTOM COLOR NAME TAG</li>
+                    <li class="important">CUSTOM CHAT PREFIX! (WHATEVER YOU WANT!)</li>
+                    <li class="important">Support the Server GREATLY!</li>
+                    <li>Role in Discord</li>
+                    <li>Access to Devlogs</li>
+                    <li>Announces when you join the server</li>
+                    <li>
+                        <span data-tooltip="Launches a firework in the lobby!" data-microtip-position="top"
+                            class="tooltip">
+                            /fw command
+                            <span class="help">?</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span data-tooltip="Gives you a *magical* cookie to eat in the lobby!"
+                            data-microtip-position="top" class="tooltip">
+                            /cookie command
+                            <span class="help">?</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span data-tooltip="Make your messages stand out by coloring them with rainbow!"
+                            data-microtip-position="top" class="tooltip">
+                            /rainbow command
+                            <span class="help">?</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span data-tooltip="Click to teleport in the direction you are looking in!"
+                            data-microtip-position="top" class="tooltip">
+                            /telestick command
+                            <span class="help">?</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span data-tooltip="View the stats of other players on the server!" data-microtip-position="top"
+                            class="tooltip">
+                            /stats command
+                            <span class="help">?</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span data-tooltip="Makes the /duel sword in the lobby diamond!" data-microtip-position="top"
+                            class="tooltip">
+                            Diamond Duel Sword
+                            <span class="help">?</span>
+                        </span>
+                    </li>
+                    <li>Golden GG</li>
+                    <li>Fly in Lobby</li>
+                </ul>
+            </section>
+        </div>
+        <footer>
+            <a href="#">Back to Top</a>
+            <a href="">Join the Discord</a>
+            <a href="store">Buy a Rank</a>
+            <span class="c-notice">© Bridge Practice 2022</span>
+        </footer>
+    </div>
+
+</body>
+
+</html>
