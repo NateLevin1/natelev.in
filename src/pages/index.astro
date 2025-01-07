@@ -6,6 +6,7 @@ import WorkHeader from "../components/WorkHeader.astro";
 import WorkLocation from "../components/WorkLocation.astro";
 import WorkDesc from "../components/WorkDesc.astro";
 import WorkSpacer from "../components/WorkSpacer.astro";
+import HeaderLink from "../components/HeaderLink.astro";
 ---
 
 <Layout>
@@ -14,7 +15,7 @@ import WorkSpacer from "../components/WorkSpacer.astro";
             class="h-[calc(89vh-5rem)] font-title flex justify-center flex-col gap-12"
         >
             <h1
-                class="text-[15vw] sm:text-[7rem] md:text-[8rem] leading-[6rem] sm:leading-[8rem] animate-in"
+                class="text-[17vw] sm:text-[7rem] md:text-[8rem] leading-[6rem] sm:leading-[8rem] animate-in"
             >
                 Nate Levin
             </h1>
@@ -26,13 +27,13 @@ import WorkSpacer from "../components/WorkSpacer.astro";
                 <span class="xl:block">Motivated by impact.</span>
             </p>
             <div
-                class="flex gap-4 items-center text-2xl animate-in animation-delay-150 opacity-0"
+                class="flex gap-4 sm:items-center text-2xl animate-in animation-delay-150 opacity-0 flex-col sm:flex-row"
             >
-                <Link href="#my-story">My Story</Link>
-                <div class="bg-black w-[5px] h-[5px] rounded-full"></div>
-                <Link href="#my-work">My Work</Link>
-                <div class="bg-black w-[5px] h-[5px] rounded-full"></div>
-                <Link href="mailto:natelevindev@gmail.com">Contact</Link>
+                <HeaderLink href="#my-story">My Story</HeaderLink>
+                <div class="bg-black w-[5px] h-[5px] rounded-full hidden sm:block"></div>
+                <HeaderLink href="#my-work">My Work</Link>
+                <div class="bg-black w-[5px] h-[5px] rounded-full hidden sm:block"></div>
+                <HeaderLink href="mailto:natelevindev@gmail.com">Contact</Link>
             </div>
         </div>
         <Header id="my-story" class="animate-in animation-delay-300 opacity-0"
