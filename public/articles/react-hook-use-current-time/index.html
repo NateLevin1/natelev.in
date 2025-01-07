@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Hook: useCurrentTime</title>
+    <meta name="description" content="Here is a neat little TypeScript React hook I created today that returns a live-updating Date representing the current time.">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/links.css">
+    <link rel="stylesheet" href="/css/lazy-images.css">
+    <link rel="stylesheet" href="/css/article.css">
+
+    <!-- meta tags for social media -->
+    <meta property="og:site_name" content="Nate Levin">
+    <meta property="og:url" content="http://natelev.in/articles/react-hook-use-current-time/index.html">
+    <meta property="og:title" content="React Hook: useCurrentTime">
+    <meta property="og:description" content="Here is a neat little TypeScript React hook I created today that returns a live-updating Date representing the current time.">
+    <meta property="og:image" content="http://natelev.in/articles/react-hook-use-current-time/images/header.jpg">
+    <meta property="og:type" content="article">
+    <meta name="theme-color" content="#FB3640">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@NateLevin1">
+
+    <!-- Async-ly Loaded Code Block CSS -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css"
+      media="print"
+      onload="this.media='all'; this.onload=null;">
+    <noscript>
+        <link rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.min.css">
+
+        <style>
+            .lazy {
+                filter: unset;
+            }
+        </style>
+    </noscript>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <input type="checkbox" id="hamburger-check">
+    <label for="hamburger-check" class="hamburger-container" role="button" aria-label="Open/Close navigation menu"><div class="hamburger"></div></label>
+    <div class="open-hamburger">
+        <div class="hamburger-content">
+            <a href="/portfolio/" class="hamburger-link custom-color">portfolio</a>
+            <a href="/articles/" class="hamburger-link custom-color">articles</a>
+            <a href="/contact/" class="hamburger-link custom-color">contact</a>
+        </div>
+    </div>
+    
+    <h1 class="title"><a href="/" class="custom-color" style="text-decoration: unset;">nate levin</a></h1>
+    <div class="red-bg"></div>
+
+    <article class="main-article">
+        
+            <div class="article-title-bg">
+                <h1 class="article-title" id="title">React Hook: useCurrentTime</h1>
+            </div>
+            
+                <div class="header-image-container">
+                    <img src="images/header.jpg" style="background-image: url(images/header-low.jpg);" alt="React Hook: useCurrentTime graphic" class="header-image lazy">
+                </div>
+                <div class="content"> 
+                
+            <p>Here is a neat little TypeScript React hook I created today that returns a live-updating <code>Date</code> representing the current time.</p>
+            <pre class="code"><code class="language-ts"><span class="token keyword">function</span> <span class="token function">useCurrentTime</span><span class="token punctuation">(</span>msBetweenUpdates<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">1_000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>curTime<span class="token punctuation">,</span> setCurTime<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> intervalId <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            <span class="token function">setCurTime</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> msBetweenUpdates<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">clearInterval</span><span class="token punctuation">(</span>intervalId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>msBetweenUpdates<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> curTime<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>Usage examples:</p>
+            <pre class="code"><code class="language-ts"><span class="token comment">// updated every second</span>
+<span class="token keyword">const</span> curTime <span class="token operator">=</span> <span class="token function">useCurrentTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// updated every 30 seconds</span>
+<span class="token keyword">const</span> delayedTime <span class="token operator">=</span> <span class="token function">useCurrentTime</span><span class="token punctuation">(</span><span class="token number">30</span> <span class="token operator">*</span> <span class="token number">1_000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>It <em>will</em> cause your component to re-render — if you don&#39;t want this behavior, just set a variable equal to <code>new Date()</code>.</p>
+            <!-- Compile with "npm run build-article src/articles/react-hook-use-current-time/ -- --out src/articles/react-hook-use-current-time/index.html" -->
+
+        <div class="torm">
+                <h3>Talk about this article <a href="https://github.com/NateLevin1/natelev.in/issues/3">on Github</a></h3>
+                <span>or</span>
+                <h3>Read more like this</h3>
+        </div>
+        </div> 
+        <div class="similar" id="similar">
+                    <article>
+                    <a href="/articles/host-your-site-for-free-on-jamstack/" class="no-underline article-anchor">
+                        <img src="/articles/host-your-site-for-free-on-jamstack/images/header.jpg" style="background-image: url(/articles/host-your-site-for-free-on-jamstack/images/header-low.jpg);" alt="Article thumbnail" class="similar-thumb lazy">
+                        <h1 class="similar-title">Host Your Site For Free On JAMstack</h1>
+                    </a>
+                </article>
+        </div>
+        <div class="connect">
+            <h2>Connect with me</h2>
+            <div class="logos">
+                <a href="/contact/" class="no-underline" aria-label="Contact">
+                    <span class="iconify" data-inline="false" data-icon="clarity:email-line"
+                        style="color: #fb3640; font-size: 4.125em;"></span>
+                </a>
+                <a href="https://twitter.com/NateLevin1" class="no-underline" aria-label="Twitter">
+                    <span class="iconify" data-inline="false" data-icon="ant-design:twitter-circle-filled"
+                        style="color: #1da1f2; font-size: 4.125em;"></span>
+                </a>
+                <a href="https://github.com/NateLevin1" class="no-underline" aria-label="Github">
+                    <span class="iconify" data-inline="false" data-icon="ant-design:github-filled"
+                        style="color: black; font-size: 4.125em;"></span>
+                </a>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <a href="#" class="back-to-top custom-color">back to top</a>
+        <i class="copyright" id="copyright">© Nate Levin 2023</i>
+        <script>
+            document.getElementById("copyright").textContent = "© Nate Levin "+new Date().getFullYear();
+        </script>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="/js/lazy-images.js" defer></script>
+    <script src="/js/links.js" defer></script>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js" defer></script>
+</body>
+</html>
+    

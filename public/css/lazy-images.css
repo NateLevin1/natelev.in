@@ -1,0 +1,7 @@
+/* Don't forget to also include a <noscript> tag that disables the filter */
+/* So images still work with scripting turned off */
+.lazy {
+    filter: blur(4px);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

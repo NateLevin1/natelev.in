@@ -1,9 +1,0 @@
-var graphics;
-var path;
-var box;
-var follower;
-var arrowKeys;
-var cursors;
-var player;
-var random;
-var previewOrange;
