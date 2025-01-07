@@ -1,6 +1,183 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Link from "../components/Link.astro";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import WorkHeader from "../components/WorkHeader.astro";
+import WorkLocation from "../components/WorkLocation.astro";
+import WorkDesc from "../components/WorkDesc.astro";
+import WorkSpacer from "../components/WorkSpacer.astro";
 ---
 
 <Layout>
-</Layout>
+    <div class="mx-[10vw]">
+        <div
+            class="h-[calc(89vh-5rem)] font-title flex justify-center flex-col gap-12"
+        >
+            <h1
+                class="text-[15vw] sm:text-[7rem] md:text-[8rem] leading-[6rem] sm:leading-[8rem] animate-in"
+            >
+                Nate Levin
+            </h1>
+            <p
+                class="text-3xl md:w-2/3 lg:w-1/2 animate-in animation-delay-150 opacity-0"
+            >
+                Software engineer.
+                <span class="lg:inline block">Driven to create.</span>
+                <span class="xl:block">Motivated by impact.</span>
+            </p>
+            <div
+                class="flex gap-4 items-center text-2xl animate-in animation-delay-150 opacity-0"
+            >
+                <Link href="#my-story">My Story</Link>
+                <div class="bg-black w-[5px] h-[5px] rounded-full"></div>
+                <Link href="#my-work">My Work</Link>
+                <div class="bg-black w-[5px] h-[5px] rounded-full"></div>
+                <Link href="mailto:natelevindev@gmail.com">Contact</Link>
+            </div>
+        </div>
+        <Header id="my-story" class="animate-in animation-delay-300 opacity-0"
+            >My Story</Header
+        >
+        <div
+            class="font-body max-w-[60ch] space-y-10 text-lg animate-in animation-delay-500 opacity-0 text-pretty"
+        >
+            <p>
+                I created my first program when I was seven years old, with
+                nothing but a school-issued iPad and a restless imagination.
+                From the moment I started, I was hooked by the near-total
+                freedom programming gave me to explore my creative visions.
+            </p>
+
+            <p>
+                By middle school, both my skills and ambitions had increased. I
+                learned some electrical engineering, but the limiting nature of
+                physical materials led me to focus on my favorite part all
+                along: writing software. I spent most of my free time writing
+                code. Coding had become more than just a hobby; it was an
+                integral part of my identity.
+            </p>
+
+            <p>
+                Entering high school, I was already certain that I wanted to
+                major in computer science. I was the only freshman in my AP
+                Computer Science class, and I spent over 120 hours sophomore and
+                junior years busing to a different high school to take
+                dual-enrolled CS courses.
+            </p>
+
+            <p>
+                When I got my first taste of the heavily theoretical math behind
+                computer science, I loved it. Creativity, not rote memorization,
+                was key to solving the class’s difficult problems.
+            </p>
+
+            <p>
+                Over the past two years of performing research with CS
+                professors, PhD candidates, and masters students, it’s become
+                obvious: these are my people. A CS degree will allow me to
+                expand my passion and pursue a rewarding career doing what I
+                love.
+            </p>
+        </div>
+        <Header id="my-work">My Work</Header>
+        <div class="max-w-[45rem]">
+            <WorkHeader>Computer Science Research Intern</WorkHeader>
+            <WorkLocation>
+                at the SEAR Lab, George Mason University Department of Computer
+                Science
+            </WorkLocation>
+            <WorkDesc>
+                <p>
+                    Invented new algorithm and technique, ~8x better than
+                    existing solutions. Wrote and submitted paper to the 2025
+                    International Conference on Software Engineering. Led the
+                    project, directed work of team.
+                </p>
+            </WorkDesc>
+
+            <WorkSpacer />
+
+            <WorkHeader>Software Developer & Cofounder</WorkHeader>
+            <WorkLocation
+                >at Independence Education (
+                <Link href="https://independenceed.com" target="_blank">
+                    independenceed.com
+                </Link>
+                )</WorkLocation
+            >
+            <WorkDesc>
+                <p>
+                    Created flagship web app underlying software & student
+                    coaching business, driving thousands in annual revenue. Work
+                    with customers and industry professionals.
+                </p>
+            </WorkDesc>
+
+            <WorkSpacer />
+
+            <WorkHeader>Founder, Community Manager & Lead Developer</WorkHeader>
+            <WorkLocation
+                >at BridgePractice (Online Game Server and Discord Community)</WorkLocation
+            >
+            <WorkDesc>
+                <p>
+                    Coded new Minecraft server & games. Over 125,000 unique
+                    players. Hired 12 moderators, handled disputes, added
+                    monetization. Sold business in early '23.
+                </p>
+            </WorkDesc>
+
+            <WorkSpacer />
+
+            <WorkHeader>Leader, Founder of the Computer Science Club</WorkHeader
+            >
+            <WorkLocation>at Yorktown High School (Arlington, VA)</WorkLocation>
+            <WorkDesc>
+                <p>
+                    Lead weekly meetings for over 40 members. Create weekly
+                    challenges, help CS students, organize teams, and
+                    participate in 5 competitive programming events.
+                </p>
+            </WorkDesc>
+
+            <WorkSpacer />
+
+            <WorkHeader>DJ & Business Operator</WorkHeader>
+            <WorkLocation>
+                at Nate Levin DJ (
+                <Link href="https://natelevindj.com" target="_blank">
+                    natelevindj.com</Link
+                >
+                )
+            </WorkLocation>
+            <WorkDesc>
+                <p>
+                    Over 5 years DJing 50+ local events, with consistently
+                    outstanding reviews. Manage client relationships with
+                    businesses, nonprofits, and private parties.
+                </p>
+            </WorkDesc>
+
+            <WorkSpacer />
+
+            <WorkHeader>Board Member (Student Representative)</WorkHeader>
+            <WorkLocation>
+                at the Career, Technical, and Adult Education (CTAE) Board,
+                Arlington Public Schools
+            </WorkLocation>
+            <WorkDesc>
+                <p>
+                    Sole student representative to school district's CTAE
+                    advisory board. Vote, propose, and comment on technical
+                    programs for future students.
+                </p>
+            </WorkDesc>
+        </div>
+        <Header id="contact">Contact</Header>
+        <p class="font-body">
+            Please email me at <Link href="mailto:natelevindev@gmail.com"
+                >natelevindev@gmail.com</Link
+            > with any inquiries.
+        </p>
+    </div></Layout
+>

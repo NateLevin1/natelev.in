@@ -1,0 +1,7 @@
+---
+const { href, target, ...props } = Astro.props;
+---
+
+<a href={href} target={target} class="underline text-link" {...props}>
+    <slot />
+</a>
