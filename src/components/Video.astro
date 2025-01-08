@@ -4,7 +4,7 @@ const { src, caption, class: className } = Astro.props;
 ---
 
 <Captioned caption={caption} class={className}>
-    <video autoplay muted src={src} class="w-full captioned-video" loop />
+    <video autoplay muted src={src} class="w-full captioned-video" loop playsinline />
 </Captioned>
 
 <script>
