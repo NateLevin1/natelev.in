@@ -14,14 +14,14 @@ import { Content as MyStory } from "./my-story.md";
 ---
 
 <Layout>
-	<ScrollNavbar />
+    <ScrollNavbar />
     <div class="px-[10vw] max-w-[calc(20vw+900px)] mx-auto">
         <div
             class="h-[calc(85vh-5rem)] font-title flex justify-center flex-col gap-12"
         >
             <h1
                 class="text-[17vw] sm:text-[7rem] md:text-[calc(8rem+1vw)] leading-[6rem] sm:leading-[8rem] animate-in"
-				id="name"
+                id="name"
             >
                 Nate Levin
             </h1>
@@ -36,15 +36,23 @@ import { Content as MyStory } from "./my-story.md";
                 class="flex gap-4 sm:items-center text-2xl animate-in animation-delay-150 opacity-0 flex-col sm:flex-row"
             >
                 <HeaderLink href="#my-story">My Story</HeaderLink>
-                <div class="bg-black w-[5px] h-[5px] rounded-full hidden sm:block"></div>
-                <HeaderLink href="#my-work">My Work</Link>
-                <div class="bg-black w-[5px] h-[5px] rounded-full hidden sm:block"></div>
-                <HeaderLink href="mailto:natelevindev@gmail.com">Contact</Link>
+                <div
+                    class="bg-black w-[5px] h-[5px] rounded-full hidden sm:block"
+                >
+                </div>
+                <HeaderLink href="#my-work">My Work</HeaderLink>
+                <div
+                    class="bg-black w-[5px] h-[5px] rounded-full hidden sm:block"
+                >
+                </div>
+                <HeaderLink href="mailto:natelevindev@gmail.com"
+                    >Contact</HeaderLink
+                >
             </div>
         </div>
         <Header id="my-story" class="animate-in animation-delay-300 opacity-0">
-			My Story
-		</Header>
+            My Story
+        </Header>
         <div
             class="font-body max-w-[60ch] flex flex-col gap-10 text-lg animate-in animation-delay-500 opacity-0 text-pretty"
         >
@@ -66,12 +74,24 @@ import { Content as MyStory } from "./my-story.md";
                 </p>
             </WorkDesc>
 
-			<div class="grid grid-cols-2 gap-8 sm:w-4/5 lg:w-2/3 mx-auto">
-				<Image src="/images/takuan-abstract.webp" caption="Takuan's abstract summary" />
-				<Image src="/images/takuan-paper.webp" caption="The first page of the Takuan research paper" />
-				<Image src="/images/sear-lab.webp" caption="Attending a presentation during the summer of 2023 (gray shirt, middle-left)" />
-				<Image src="/images/assip-presentation.webp" caption="Research poster at the 2024 ASSIP presentation day" />
-			</div>
+            <div class="grid grid-cols-2 gap-8 sm:w-4/5 lg:w-2/3 mx-auto">
+                <Image
+                    src="/images/takuan-abstract.webp"
+                    caption="Takuan's abstract summary"
+                />
+                <Image
+                    src="/images/takuan-paper.webp"
+                    caption="The first page of the Takuan research paper"
+                />
+                <Image
+                    src="/images/sear-lab.webp"
+                    caption="Attending a presentation during the summer of 2023"
+                />
+                <Image
+                    src="/images/assip-presentation.webp"
+                    caption="Research poster at the 2024 ASSIP presentation day"
+                />
+            </div>
 
             <WorkSpacer />
 
@@ -91,16 +111,19 @@ import { Content as MyStory } from "./my-story.md";
                 </p>
             </WorkDesc>
 
-			<div class="sm:w-4/5 lg:w-2/3 mx-auto">
-				<Video src="/images/independence-education-demo.mp4" caption="A short demo of the Independence Education web application" />
-			</div>
+            <div class="sm:w-4/5 lg:w-2/3 mx-auto">
+                <Video
+                    src="/images/independence-education-demo.mp4"
+                    caption="A short demo of the Independence Education web application"
+                />
+            </div>
 
             <WorkSpacer />
 
             <WorkHeader>Founder, Community Manager & Lead Developer</WorkHeader>
             <WorkLocation>
-				at BridgePractice (Online Game Server and Discord Community)
-			</WorkLocation>
+                at BridgePractice (Online Game Server and Discord Community)
+            </WorkLocation>
             <WorkDesc>
                 <p>
                     Coded new Minecraft server & games. Over 125,000 unique
@@ -109,19 +132,28 @@ import { Content as MyStory } from "./my-story.md";
                 </p>
             </WorkDesc>
 
-			<div class="sm:w-4/5 lg:w-2/3 mx-auto">
-				<Video src="/images/bridge-practice-demo.mp4" caption="A trailer for the BridgePractice Minecraft server (produced in 2023)" />
-				<div class="grid grid-cols-2 mt-6 gap-8 items-center">
-					<Image src="/images/bp-website.webp" caption="The BridgePractice website" />
-					<Image src="/images/bp-leaderboard.webp" caption="A screenshot of the in-game leaderboard" />
-				</div>
-			</div>
+            <div class="sm:w-4/5 lg:w-2/3 mx-auto">
+                <Video
+                    src="/images/bridge-practice-demo.mp4"
+                    caption="A trailer for the BridgePractice Minecraft server (produced in 2023)"
+                />
+                <div class="grid grid-cols-2 mt-6 gap-8 items-center">
+                    <Image
+                        src="/images/bp-website.webp"
+                        caption="The BridgePractice website"
+                    />
+                    <Image
+                        src="/images/bp-leaderboard.webp"
+                        caption="A screenshot of the in-game leaderboard"
+                    />
+                </div>
+            </div>
 
             <WorkSpacer />
 
             <WorkHeader>
-				Leader, Founder of the Computer Science Club
-			</WorkHeader>
+                Leader, Founder of the Computer Science Club
+            </WorkHeader>
             <WorkLocation>at Yorktown High School (Arlington, VA)</WorkLocation>
             <WorkDesc>
                 <p>
@@ -131,9 +163,12 @@ import { Content as MyStory } from "./my-story.md";
                 </p>
             </WorkDesc>
 
-			<div class="sm:w-4/5 lg:w-2/3 mx-auto">
-				<Image src="/images/yhs-csc.webp" caption="The Computer Science Club's homepage I developed" />
-			</div>
+            <div class="sm:w-4/5 lg:w-2/3 mx-auto">
+                <Image
+                    src="/images/yhs-csc.webp"
+                    caption="The Computer Science Club's homepage I developed"
+                />
+            </div>
 
             <WorkSpacer />
 
@@ -153,9 +188,12 @@ import { Content as MyStory } from "./my-story.md";
                 </p>
             </WorkDesc>
 
-			<div class="sm:w-4/5 lg:w-2/3 mx-auto">
-				<Image src="/images/natelevindj.webp" caption="The promotional site I created for my DJing business" />
-			</div>
+            <div class="sm:w-4/5 lg:w-2/3 mx-auto">
+                <Image
+                    src="/images/natelevindj.webp"
+                    caption="The promotional site I created for my DJing business"
+                />
+            </div>
 
             <WorkSpacer />
 
