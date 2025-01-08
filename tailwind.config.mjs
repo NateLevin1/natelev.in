@@ -5,6 +5,7 @@ export default {
         extend: {
             colors: {
                 link: "#02375B",
+                background: "#FFFDF9",
             },
             fontFamily: {
                 title: ["'Crimson Text'", "serif"],
@@ -16,7 +17,14 @@ export default {
 
             keyframes: () => ({
                 in: {
-                    "0%": { opacity: 0, transform: "translateY(1rem)" },
+                    "0%": {
+                        opacity: 0,
+                        transform: "translateY(1rem)",
+                        filter: "blur(16px)",
+                    },
+                    "50%": {
+                        filter: "blur(0px)",
+                    },
                     "100%": { opacity: 1 },
                 },
             }),

@@ -2,17 +2,18 @@
 const { id, class: className } = Astro.props;
 ---
 
-<h2
-    class:list={[
-        "font-title text-5xl italic relative inline-block pr-14 mb-6 mt-20",
-        className,
-    ]}
-    id={id}
->
-    <slot />
-    <div class="blur absolute inset-0 -left-6 opacity-10">
-        <div class="absolute bottom-0 left-0 right-0 h-2 bg-black"></div>
-        <div class="absolute bottom-0 right-0 w-10 h-3 mb-4 rotate-45 bg-black">
+<div id={id} class="mt-6">
+    <h2
+        class:list={[
+            "font-title text-5xl italic relative inline-block pr-14 mb-6 mt-14",
+            className,
+        ]}
+    >
+        <slot />
+        <div class="blur absolute inset-0 -left-6 opacity-10 pointer-events-none">
+            <div class="absolute bottom-0 left-0 right-0 h-2 bg-black"></div>
+            <div class="absolute bottom-0 right-0 w-10 h-3 mb-4 rotate-45 bg-black">
+            </div>
         </div>
-    </div>
-</h2>
+    </h2>
+</div>

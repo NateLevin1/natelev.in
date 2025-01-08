@@ -7,15 +7,18 @@ import WorkLocation from "../components/WorkLocation.astro";
 import WorkDesc from "../components/WorkDesc.astro";
 import WorkSpacer from "../components/WorkSpacer.astro";
 import HeaderLink from "../components/HeaderLink.astro";
+import ScrollNavbar from "../components/ScrollNavbar.astro";
 ---
 
 <Layout>
+	<ScrollNavbar />
     <div class="mx-[10vw]">
         <div
             class="h-[calc(89vh-5rem)] font-title flex justify-center flex-col gap-12"
         >
             <h1
                 class="text-[17vw] sm:text-[7rem] md:text-[8rem] leading-[6rem] sm:leading-[8rem] animate-in"
+				id="name"
             >
                 Nate Levin
             </h1>
@@ -145,7 +148,7 @@ import HeaderLink from "../components/HeaderLink.astro";
 
             <WorkHeader>DJ & Business Operator</WorkHeader>
             <WorkLocation>
-                at Nate Levin DJ (
+                of Nate Levin DJ (
                 <Link href="https://natelevindj.com" target="_blank">
                     natelevindj.com</Link
                 >
@@ -175,7 +178,7 @@ import HeaderLink from "../components/HeaderLink.astro";
             </WorkDesc>
         </div>
         <Header id="contact">Contact</Header>
-        <p class="font-body">
+        <p class="font-body text-xl">
             Please email me at <Link href="mailto:natelevindev@gmail.com"
                 >natelevindev@gmail.com</Link
             > with any inquiries.
