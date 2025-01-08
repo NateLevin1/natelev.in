@@ -1,0 +1,25 @@
+---
+import Captioned from "./Captioned.astro";
+const { src, caption, class: className } = Astro.props;
+---
+
+<Captioned caption={caption} class={className}>
+    <video autoplay muted src={src} class="w-full captioned-video" loop />
+</Captioned>
+
+<script>
+    const videos = document.querySelectorAll(".captioned-video");
+    let timeout: number|null = null;
+  
+    videos.forEach((video) => {
+      video.addEventListener("mouseenter", () => {
+        timeout = setTimeout(() => {
+          (video as HTMLVideoElement).controls = true;
+        }, 400);
+      });
+      video.addEventListener("mouseleave", () => {
+        if(timeout) clearTimeout(timeout);
+        (video as HTMLVideoElement).controls = false;
+      });
+    });
+  </script>

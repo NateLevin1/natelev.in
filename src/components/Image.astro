@@ -1,0 +1,8 @@
+---
+import Captioned from "./Captioned.astro";
+const { src, caption, class: className } = Astro.props;
+---
+
+<Captioned caption={caption} class={className}>
+    <img src={src} alt="" class="w-full" loading="lazy" />
+</Captioned>

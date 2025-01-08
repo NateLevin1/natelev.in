@@ -1,0 +1,12 @@
+---
+const { caption, class: className } = Astro.props;
+---
+
+<figure class:list={["group hover:scale-[1.12] transition-transform duration-300 bg-background",className]}>
+    <div class="border-2 p-0.5 border-black group-hover:shadow-lg transition-shadow">
+        <div class="border-2 p-0.5 border-black">
+            <slot />
+        </div>
+    </div>
+    <figcaption class="text-center text-sm mt-2 font-body text-pretty">{caption}</>
+</figure>

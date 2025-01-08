@@ -8,6 +8,9 @@ import WorkDesc from "../components/WorkDesc.astro";
 import WorkSpacer from "../components/WorkSpacer.astro";
 import HeaderLink from "../components/HeaderLink.astro";
 import ScrollNavbar from "../components/ScrollNavbar.astro";
+import Image from "../components/Image.astro";
+import Video from "../components/Video.astro";
+import { Content as MyStory } from "./my-story.md";
 ---
 
 <Layout>
@@ -17,7 +20,7 @@ import ScrollNavbar from "../components/ScrollNavbar.astro";
             class="h-[calc(89vh-5rem)] font-title flex justify-center flex-col gap-12"
         >
             <h1
-                class="text-[17vw] sm:text-[7rem] md:text-[8rem] leading-[6rem] sm:leading-[8rem] animate-in"
+                class="text-[17vw] sm:text-[7rem] md:text-[calc(8rem+1vw)] leading-[6rem] sm:leading-[8rem] animate-in"
 				id="name"
             >
                 Nate Levin
@@ -39,49 +42,13 @@ import ScrollNavbar from "../components/ScrollNavbar.astro";
                 <HeaderLink href="mailto:natelevindev@gmail.com">Contact</Link>
             </div>
         </div>
-        <Header id="my-story" class="animate-in animation-delay-300 opacity-0"
-            >My Story</Header
-        >
+        <Header id="my-story" class="animate-in animation-delay-300 opacity-0">
+			My Story
+		</Header>
         <div
-            class="font-body max-w-[60ch] space-y-10 text-lg animate-in animation-delay-500 opacity-0 text-pretty"
+            class="font-body max-w-[60ch] flex flex-col gap-10 text-lg animate-in animation-delay-500 opacity-0 text-pretty"
         >
-            <p>
-                I created my first program when I was seven years old, with
-                nothing but a school-issued iPad and a restless imagination.
-                From the moment I started, I was hooked by the near-total
-                freedom programming gave me to explore my creative visions.
-            </p>
-
-            <p>
-                By middle school, both my skills and ambitions had increased. I
-                learned some electrical engineering, but the limiting nature of
-                physical materials led me to focus on my favorite part all
-                along: writing software. I spent most of my free time writing
-                code. Coding had become more than just a hobby; it was an
-                integral part of my identity.
-            </p>
-
-            <p>
-                Entering high school, I was already certain that I wanted to
-                major in computer science. I was the only freshman in my AP
-                Computer Science class, and I spent over 120 hours sophomore and
-                junior years busing to a different high school to take
-                dual-enrolled CS courses.
-            </p>
-
-            <p>
-                When I got my first taste of the heavily theoretical math behind
-                computer science, I loved it. Creativity, not rote memorization,
-                was key to solving the class’s difficult problems.
-            </p>
-
-            <p>
-                Over the past two years of performing research with CS
-                professors, PhD candidates, and masters students, it’s become
-                obvious: these are my people. A CS degree will allow me to
-                expand my passion and pursue a rewarding career doing what I
-                love.
-            </p>
+            <MyStory />
         </div>
         <Header id="my-work">My Work</Header>
         <div class="max-w-[45rem]">
@@ -98,6 +65,13 @@ import ScrollNavbar from "../components/ScrollNavbar.astro";
                     project, directed work of team.
                 </p>
             </WorkDesc>
+
+			<div class="grid grid-cols-2 gap-8 sm:w-4/5 lg:w-2/3 mx-auto">
+				<Image src="/images/takuan-abstract.webp" caption="Takuan's abstract summary" />
+				<Image src="/images/takuan-paper.webp" caption="The first page of the Takuan research paper" />
+				<Image src="/images/sear-lab.webp" caption="Attending a presentation during the summer of 2023 (gray shirt, middle-left)" />
+				<Image src="/images/assip-presentation.webp" caption="Research poster at the 2024 ASSIP presentation day" />
+			</div>
 
             <WorkSpacer />
 
@@ -117,12 +91,16 @@ import ScrollNavbar from "../components/ScrollNavbar.astro";
                 </p>
             </WorkDesc>
 
+			<div class="sm:w-4/5 lg:w-2/3 mx-auto">
+				<Video src="/images/independence-education-demo.mp4" caption="A short demo of the Independence Education web application" />
+			</div>
+
             <WorkSpacer />
 
             <WorkHeader>Founder, Community Manager & Lead Developer</WorkHeader>
-            <WorkLocation
-                >at BridgePractice (Online Game Server and Discord Community)</WorkLocation
-            >
+            <WorkLocation>
+				at BridgePractice (Online Game Server and Discord Community)
+			</WorkLocation>
             <WorkDesc>
                 <p>
                     Coded new Minecraft server & games. Over 125,000 unique
@@ -131,10 +109,19 @@ import ScrollNavbar from "../components/ScrollNavbar.astro";
                 </p>
             </WorkDesc>
 
+			<div class="sm:w-4/5 lg:w-2/3 mx-auto">
+				<Video src="/images/bridge-practice-demo.mp4" caption="A trailer for the BridgePractice Minecraft server (produced in 2023)" />
+				<div class="grid grid-cols-2 mt-6 gap-8 items-center">
+					<Image src="/images/bp-website.webp" caption="The BridgePractice website" />
+					<Image src="/images/bp-leaderboard.webp" caption="A screenshot of the in-game leaderboard" />
+				</div>
+			</div>
+
             <WorkSpacer />
 
-            <WorkHeader>Leader, Founder of the Computer Science Club</WorkHeader
-            >
+            <WorkHeader>
+				Leader, Founder of the Computer Science Club
+			</WorkHeader>
             <WorkLocation>at Yorktown High School (Arlington, VA)</WorkLocation>
             <WorkDesc>
                 <p>
@@ -143,6 +130,10 @@ import ScrollNavbar from "../components/ScrollNavbar.astro";
                     participate in 5 competitive programming events.
                 </p>
             </WorkDesc>
+
+			<div class="sm:w-4/5 lg:w-2/3 mx-auto">
+				<Image src="/images/yhs-csc.webp" caption="The Computer Science Club's homepage I developed" />
+			</div>
 
             <WorkSpacer />
 
@@ -161,6 +152,10 @@ import ScrollNavbar from "../components/ScrollNavbar.astro";
                     businesses, nonprofits, and private parties.
                 </p>
             </WorkDesc>
+
+			<div class="sm:w-4/5 lg:w-2/3 mx-auto">
+				<Image src="/images/natelevindj.webp" caption="The promotional site I created for my DJing business" />
+			</div>
 
             <WorkSpacer />
 
@@ -183,5 +178,5 @@ import ScrollNavbar from "../components/ScrollNavbar.astro";
                 >natelevindev@gmail.com</Link
             > with any inquiries.
         </p>
-    </div></Layout
->
+    </div>
+</Layout>
