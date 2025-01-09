@@ -8,4 +8,9 @@ export default defineConfig({
     site: "https://natelev.in/",
     integrations: [tailwind()],
     output: "static",
+    redirects: {
+        "/portfolio": "/#my-work",
+        "/gh": "https://github.com/NateLevin1/",
+        "/github": "https://github.com/NateLevin1/",
+    },
 });
