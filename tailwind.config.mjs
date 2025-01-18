@@ -13,6 +13,7 @@ export default {
             },
             animation: {
                 in: "in 0.4s ease-out forwards",
+                "signature-in": "signature-in 1s ease-out forwards",
             },
 
             keyframes: () => ({
@@ -21,6 +22,17 @@ export default {
                         opacity: 0,
                         transform: "translateY(1rem)",
                         filter: "blur(16px)",
+                    },
+                    "50%": {
+                        filter: "blur(0px)",
+                    },
+                    "100%": { opacity: 1 },
+                },
+                "signature-in": {
+                    "0%": {
+                        opacity: 0,
+                        filter: "blur(16px)",
+                        transform: "scale(1.1)",
                     },
                     "50%": {
                         filter: "blur(0px)",

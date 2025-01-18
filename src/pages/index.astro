@@ -19,12 +19,24 @@ import { Content as MyStory } from "./my-story.md";
         <div
             class="h-[calc(85vh-5rem)] font-title flex justify-center flex-col gap-12"
         >
-            <h1
-                class="text-[17vw] sm:text-[7rem] md:text-[calc(8rem+1vw)] leading-[6rem] sm:leading-[8rem] animate-in"
+            <div
+                class="text-[17vw] sm:text-[7rem] md:text-[calc(8rem+1vw)] leading-[6rem] sm:leading-[8rem] animate-in relative w-max"
                 id="name"
             >
-                Nate Levin
-            </h1>
+                <div class="absolute inset-0 -z-10 pointer-events-none">
+                    <div
+                        class="w-full h-full scale-125 flex items-center justify-center animate-signature-in animation-delay-800 opacity-0"
+                    >
+                        <img
+                            src="/images/signature.svg"
+                            alt=""
+                            class="opacity-10 blur"
+                            draggable="false"
+                        />
+                    </div>
+                </div>
+                <h1>Nate Levin</h1>
+            </div>
             <p
                 class="text-3xl md:w-2/3 lg:w-1/2 animate-in animation-delay-150 opacity-0"
             >
