@@ -45,6 +45,19 @@ const { caption, class: className } = Astro.props;
                     </div>
                 </div>
             `;
+
+            const remove = () => {
+                modal.animate([{ opacity: 1 }, { opacity: 0 }], {
+                    duration: 180,
+                    fill: "forwards",
+                    easing: "ease-out",
+                });
+                setTimeout(() => {
+                    modal.remove();
+                }, 200);
+                document.removeEventListener("keydown", keydownListener);
+            };
+
             modal.addEventListener("click", (event) => {
                 // allow video to be clicked
                 if (
@@ -54,15 +67,16 @@ const { caption, class: className } = Astro.props;
                 )
                     return;
 
-                modal.animate([{ opacity: 1 }, { opacity: 0 }], {
-                    duration: 180,
-                    fill: "forwards",
-                    easing: "ease-out",
-                });
-                setTimeout(() => {
-                    modal.remove();
-                }, 200);
+                remove();
             });
+            // accessibility: on ESC key press, close modal
+            const keydownListener = (event: KeyboardEvent) => {
+                if (event.key === "Escape") {
+                    remove();
+                    event.preventDefault();
+                }
+            };
+            document.addEventListener("keydown", keydownListener);
             document.body.appendChild(modal);
 
             modal.animate([{ opacity: 0 }, { opacity: 1 }], {
