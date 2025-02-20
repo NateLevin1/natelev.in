@@ -6,4 +6,4 @@ Entering high school, I was already certain that I wanted to major in computer s
 
 When I got my first taste of the heavily theoretical math behind computer science, I loved it. Creativity, not rote memorization, was key to solving the class’s difficult problems.
 
-Over the past two years of performing research with CS professors, PhD candidates, and masters students, it’s become obvious: these are my people. A CS degree will allow me to expand my passion and pursue a rewarding career doing what I love.
+Over the past two years of building businesses and performing research with CS professors, PhD candidates, and masters students, it’s become obvious: these are my people.
