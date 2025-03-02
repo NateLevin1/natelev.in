@@ -1,0 +1,93 @@
+---
+
+---
+
+<code class="contents" id="computer-text"> </code>
+
+<script>
+    const computerText = document.getElementById("computer-text")!;
+    const lines = [
+        1000,
+        "$ ",
+        1000,
+        "$ curl -X GET natelev.in/about.json",
+        1300,
+        "{",
+        10,
+        '&nbsp;&nbsp;"name": "Nate Levin",',
+        40,
+        '&nbsp;&nbsp;"title": "Software Engineer",',
+        40,
+        '&nbsp;&nbsp;"location": "Washington, D.C.",',
+        40,
+        "}",
+        "$ ",
+        1000,
+        "$ git clone https://github.com/NateLevin1/natelev.in",
+        400,
+        "Cloning into 'natelev.in'...",
+        800,
+        "remote: Enumerating objects: 1592, done.",
+        200,
+        "remote: Counting objects: 100% (233/233), done.",
+        100,
+        "remote: Compressing objects: 100% (158/158), done.",
+        650,
+        "remote: Total 1592 (delta 99), reused 194 (delta 64), pack-reused 1359 (from 2)",
+        100,
+        "Receiving objects: 100% (1592/1592), 141.95 MiB | 5.93 MiB/s, done.",
+        400,
+        "Resolving deltas: 100% (768/768), done.",
+        200,
+        "Updating files: 100% (375/375), done.",
+        600,
+        "$ ",
+        1000,
+        "$ cd natelev.in",
+        70,
+        "$ ",
+        3000,
+        "$ cd .. && rm -rf natelev.in",
+        4000,
+    ];
+    const timeout = (ms: number) =>
+        new Promise((resolve) => setTimeout(resolve, ms));
+    const runAnimation = async () => {
+        let lineNumber = -1;
+        while (true) {
+            lineNumber = (lineNumber + 1) % lines.length;
+
+            let line = lines[lineNumber];
+            if (typeof line === "number") {
+                await timeout(line);
+                continue;
+            }
+            if (computerText.lastElementChild?.classList.contains("temp")) {
+                const oldLine = computerText.lastElementChild as HTMLDivElement;
+                oldLine.classList.remove("temp");
+                oldLine.removeChild(oldLine.lastChild!);
+                // type in the new line, letter by letter
+                for (let i = 2; i < line.length; i++) {
+                    await timeout(Math.random() * 30 + 20);
+                    oldLine.innerHTML += line[i];
+                }
+            } else {
+                const newLine = document.createElement("div");
+                if (line === "$ ") {
+                    line = `<span class="text-green-700 select-none">$ </span><span class='animate-pulse'>▊</span>`;
+                    newLine.classList.add("temp");
+                } else if (line.startsWith("$ ")) {
+                    line = `<span class="text-green-700 select-none">$ </span>${line.slice(2)}`;
+                }
+
+                newLine.classList.add("animate-in");
+                computerText.appendChild(newLine);
+                newLine.innerHTML = line;
+                computerText.appendChild(document.createElement("br"));
+                computerText.parentElement!.scrollTop += newLine.clientHeight;
+                computerText.removeChild(computerText.lastElementChild!);
+            }
+        }
+    };
+    runAnimation();
+</script>
