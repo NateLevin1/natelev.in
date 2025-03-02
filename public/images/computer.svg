@@ -1,0 +1,25 @@
+<svg width="581" height="646" viewBox="0 0 581 646" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f_19_10)">
+<g opacity="0.4">
+<rect x="25" y="25" width="667.466" height="420.131" rx="30" fill="black" fill-opacity="0.05"/>
+<rect x="28.5" y="28.5" width="660.466" height="413.131" rx="26.5" stroke="black" stroke-opacity="0.3" stroke-width="7"/>
+</g>
+<g opacity="0.2">
+<rect width="382.678" height="89.5628" rx="18" transform="matrix(1 0 0 -1 122.705 621)" fill="black" fill-opacity="0.05"/>
+<rect x="3.5" y="-3.5" width="375.678" height="82.5628" rx="14.5" transform="matrix(1 0 0 -1 122.705 614)" stroke="black" stroke-opacity="0.3" stroke-width="7"/>
+</g>
+<g opacity="0.2">
+<rect x="606.344" y="621" width="71.6503" height="89.5628" rx="18" transform="rotate(180 606.344 621)" fill="black" fill-opacity="0.05"/>
+<rect x="602.844" y="617.5" width="64.6503" height="82.5628" rx="14.5" transform="rotate(180 602.844 617.5)" stroke="black" stroke-opacity="0.3" stroke-width="7"/>
+</g>
+<rect opacity="0.3" x="350.556" y="445.259" width="15.3203" height="53.3324" fill="black" fill-opacity="0.3"/>
+<rect opacity="0.3" width="276.678" height="14.6557" rx="7.32787" transform="matrix(1 0 0 -1 220.394 513.525)" fill="black" fill-opacity="0.3"/>
+</g>
+<defs>
+<filter id="filter0_f_19_10" x="0.799999" y="0.799999" width="715.866" height="644.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="8" result="effect1_foregroundBlur_19_10"/>
+</filter>
+</defs>
+</svg>

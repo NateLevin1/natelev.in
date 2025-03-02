@@ -15,9 +15,11 @@ import { Content as MyStory } from "./my-story.md";
 
 <Layout>
     <ScrollNavbar />
-    <div class="px-[10vw] max-w-[calc(20vw+900px)] mx-auto">
+    <div
+        class="px-[10vw] max-w-[calc(20vw+900px)] md:px-[15vw] lg:px-[10vw] mx-auto"
+    >
         <div
-            class="h-[calc(85vh-5rem)] font-title flex justify-center flex-col gap-12"
+            class="h-[calc(85vh-5rem)] font-title flex justify-center flex-col gap-12 relative"
         >
             <div
                 class="text-[17vw] sm:text-[7rem] md:text-[calc(8rem+1vw)] leading-[6rem] sm:leading-[8rem] animate-in relative w-max"
@@ -25,7 +27,7 @@ import { Content as MyStory } from "./my-story.md";
             >
                 <div class="absolute inset-0 -z-10 pointer-events-none">
                     <div
-                        class="w-full h-full scale-125 flex items-center justify-center animate-signature-in animation-delay-800 opacity-0"
+                        class="w-full h-full scale-125 flex items-center justify-center animate-signature-in animation-delay-400 opacity-0"
                     >
                         <img
                             src="/images/signature.svg"
@@ -36,6 +38,15 @@ import { Content as MyStory } from "./my-story.md";
                     </div>
                 </div>
                 <h1>Nate Levin</h1>
+            </div>
+            <div
+                class="absolute left-full top-0 w-max h-full animate-computer-in animation-delay-800 opacity-0 origin-left hidden xl:block"
+            >
+                <img
+                    src="/images/computer.svg"
+                    alt=""
+                    class="h-full translate-y-20 -translate-x-10 2xl:translate-x-10 scale-110 opacity-30"
+                />
             </div>
             <p
                 class="text-3xl md:w-2/3 lg:w-1/2 animate-in animation-delay-150 opacity-0"
