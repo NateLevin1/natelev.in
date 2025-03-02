@@ -7,9 +7,9 @@
 <script>
     const computerText = document.getElementById("computer-text")!;
     const lines = [
-        1000,
+        1200,
         "$ ",
-        1000,
+        1500,
         "$ curl -X GET natelev.in/about.json",
         1300,
         "{",
@@ -22,7 +22,7 @@
         40,
         "}",
         "$ ",
-        1000,
+        1500,
         "$ git clone https://github.com/NateLevin1/natelev.in",
         400,
         "Cloning into 'natelev.in'...",
@@ -48,7 +48,7 @@
         "$ ",
         3000,
         "$ cd .. && rm -rf natelev.in",
-        4000,
+        3000,
     ];
     const timeout = (ms: number) =>
         new Promise((resolve) => setTimeout(resolve, ms));
@@ -74,7 +74,7 @@
             } else {
                 const newLine = document.createElement("div");
                 if (line === "$ ") {
-                    line = `<span class="text-green-700 select-none">$ </span><span class='animate-pulse'>▊</span>`;
+                    line = `<span class="text-green-700 select-none">$ </span><span class="animate-pulse">▊</span>`;
                     newLine.classList.add("temp");
                 } else if (line.startsWith("$ ")) {
                     line = `<span class="text-green-700 select-none">$ </span>${line.slice(2)}`;
