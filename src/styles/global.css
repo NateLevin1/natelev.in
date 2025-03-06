@@ -1,2 +1,72 @@
 @import "tailwindcss";
-@import "tailwindcss-animation-delay/tailwindcss-v4.css";
+@plugin 'tailwindcss-animation-delay';
+
+@theme {
+    --color-link: #02375b;
+    --color-background: #fffdf9;
+
+    --font-title: "Crimson Text", serif;
+    --font-body: "Source Serif 4", serif;
+
+    --animate-in: in 0.4s ease-out forwards;
+    --animate-signature-in: signature-in 1s ease-out forwards;
+    --animate-computer-in: computer-in 1s ease-out forwards;
+}
+
+@keyframes in {
+    0% {
+        opacity: 0;
+        transform: translateY(1rem);
+        filter: blur(16px);
+    }
+    50% {
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes signature-in {
+    0% {
+        opacity: 0;
+        filter: blur(16px);
+        transform: scale(1.1);
+    }
+    50% {
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes computer-in {
+    0% {
+        opacity: 0;
+        filter: blur(16px);
+        transform: translateX(2rem);
+    }
+    50% {
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
