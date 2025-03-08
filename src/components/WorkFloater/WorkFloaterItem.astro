@@ -1,0 +1,39 @@
+---
+const { href } = Astro.props;
+---
+
+<a
+    href={href}
+    class="work-floater-item pl-12 data-[active='true']:text-black text-black/50 relative flex items-center group transition-colors duration-500"
+>
+    <div
+        class="bg-work-floater-bg w-6 h-1 absolute -left-2.5 flex items-center justify-center rounded-full mt-0.5"
+        aria-hidden="true"
+    >
+        <div
+            class="w-6 h-6 rounded-full bg-black scale-0 transition-transform group-[[data-active='true']]:scale-100 ease-out duration-500"
+        >
+        </div>
+    </div>
+    <slot />
+</a>
+
+<script>
+    const anchors = [...document.querySelectorAll(".work-header-anchor")];
+    document.addEventListener("scroll", () => {
+        for (const anchor of anchors) {
+            const top = anchor.getBoundingClientRect().top;
+            if (Math.abs(top) < window.innerHeight / 4) {
+                const active = document.querySelector(
+                    `.work-floater-item[href="#${anchor.id}"]`
+                ) as HTMLElement;
+                document
+                    .querySelectorAll(".work-floater-item")
+                    .forEach((item) => {
+                        (item as HTMLElement).dataset.active = "false";
+                    });
+                active.dataset.active = "true";
+            }
+        }
+    });
+</script>

@@ -12,6 +12,7 @@ import Image from "../components/Image.astro";
 import Video from "../components/Video.astro";
 import { Content as MyStory } from "./my-story.md";
 import ComputerText from "../components/ComputerText.astro";
+import WorkFloater from "../components/WorkFloater/WorkFloater.astro";
 ---
 
 <Layout>
@@ -95,188 +96,196 @@ import ComputerText from "../components/ComputerText.astro";
         >
             <MyStory />
         </div>
-        <Header id="my-work">My Work</Header>
-        <div class="max-w-[45rem]">
-            <WorkHeader>Computer Science Research Intern</WorkHeader>
-            <WorkLocation>
-                at the SEAR Lab, George Mason University Department of Computer
-                Science
-            </WorkLocation>
-            <WorkDesc>
-                <p>
-                    Invented new algorithm and technique, ~8x better than
-                    existing solutions. Wrote paper, accepted to the 2025
-                    International Conference on Software Engineering (<Link
-                        target="_blank"
-                        href="https://conf.researchr.org/track/icse-2025/icse-2025-nier#Accepted-Papers"
-                        >ICSE</Link
-                    >). Led the project, directed work of team.
-                </p>
-            </WorkDesc>
-
-            <div class="grid grid-cols-2 gap-8 sm:w-4/5 lg:w-2/3 mx-auto">
-                <Image
-                    src="/images/takuan-abstract.webp"
-                    caption="Takuan's abstract summary"
-                />
-                <Image
-                    src="/images/takuan-paper.webp"
-                    caption="The first page of the Takuan research paper"
-                />
-                <Image
-                    src="/images/sear-lab.webp"
-                    caption="Attending a presentation during the summer of 2023"
-                />
-                <Image
-                    src="/images/assip-presentation.webp"
-                    caption="Research poster at the 2024 ASSIP presentation day"
-                />
-            </div>
-
-            <WorkSpacer />
-
-            <WorkHeader>Software Developer & Cofounder</WorkHeader>
-            <WorkLocation
-                >at Independence Education (<Link
-                    href="https://independenceed.com"
-                    target="_blank">independenceed.com</Link
-                >)
-            </WorkLocation>
-            <WorkDesc>
-                <p>
-                    Created flagship web app underlying software & student
-                    coaching business, driving thousands in annual revenue. Work
-                    with customers and industry professionals.
-                </p>
-            </WorkDesc>
-
-            <div class="sm:w-4/5 lg:w-2/3 mx-auto">
-                <Video
-                    src="/images/independence-education-demo.mp4"
-                    caption="A short demo of the Independence Education web application"
-                />
-            </div>
-
-            <WorkSpacer />
-
-            <WorkHeader>Founder, Community Manager & Lead Developer</WorkHeader>
-            <WorkLocation>
-                at BridgePractice (Online Game Server and Discord Community)
-            </WorkLocation>
-            <WorkDesc>
-                <p>
-                    Coded new Minecraft server & games. Over 125,000 unique
-                    players. Hired 12 moderators, handled disputes, added
-                    monetization. Sold business in early '23.
-                </p>
-            </WorkDesc>
-
-            <div class="sm:w-4/5 lg:w-2/3 mx-auto">
-                <Video
-                    src="/images/bridge-practice-demo.mp4"
-                    caption="A trailer for the BridgePractice Minecraft server (produced in 2023)"
-                />
-                <div class="grid grid-cols-2 mt-6 gap-8 items-center">
-                    <Image
-                        src="/images/bp-website.webp"
-                        caption="The BridgePractice website"
-                    />
-                    <Image
-                        src="/images/bp-leaderboard.webp"
-                        caption="A screenshot of the in-game leaderboard"
-                    />
+        <div class="flex">
+            <div>
+                <Header id="my-work">My Work</Header>
+                <div class="max-w-[45rem]">
+                    <WorkHeader id="cs-research">
+                        Computer Science Research Intern
+                    </WorkHeader>
+                    <WorkLocation>
+                        at the SEAR Lab, George Mason University Department of
+                        Computer Science
+                    </WorkLocation>
+                    <WorkDesc>
+                        <p>
+                            Invented new algorithm and technique, ~8x better
+                            than existing solutions. Wrote paper, accepted to
+                            the 2025 International Conference on Software
+                            Engineering (<Link
+                                target="_blank"
+                                href="https://conf.researchr.org/track/icse-2025/icse-2025-nier#Accepted-Papers"
+                                >ICSE</Link
+                            >). Led the project, directed work of team.
+                        </p>
+                    </WorkDesc>
+                    <div
+                        class="grid grid-cols-2 gap-8 sm:w-4/5 lg:w-2/3 mx-auto"
+                    >
+                        <Image
+                            src="/images/takuan-abstract.webp"
+                            caption="Takuan's abstract summary"
+                        />
+                        <Image
+                            src="/images/takuan-paper.webp"
+                            caption="The first page of the Takuan research paper"
+                        />
+                        <Image
+                            src="/images/sear-lab.webp"
+                            caption="Attending a presentation during the summer of 2023"
+                        />
+                        <Image
+                            src="/images/assip-presentation.webp"
+                            caption="Research poster at the 2024 ASSIP presentation day"
+                        />
+                    </div>
+                    <WorkSpacer />
+                    <WorkHeader id="independence-ed">
+                        Software Developer & Cofounder
+                    </WorkHeader>
+                    <WorkLocation
+                        >at Independence Education (<Link
+                            href="https://independenceed.com"
+                            target="_blank">independenceed.com</Link
+                        >)
+                    </WorkLocation>
+                    <WorkDesc>
+                        <p>
+                            Created flagship web app underlying software &
+                            student coaching business, driving thousands in
+                            annual revenue. Work with customers and industry
+                            professionals.
+                        </p>
+                    </WorkDesc>
+                    <div class="sm:w-4/5 lg:w-2/3 mx-auto">
+                        <Video
+                            src="/images/independence-education-demo.mp4"
+                            caption="A short demo of the Independence Education web application"
+                        />
+                    </div>
+                    <WorkSpacer />
+                    <WorkHeader id="bridge-practice">
+                        Founder, Community Manager & Lead Developer
+                    </WorkHeader>
+                    <WorkLocation>
+                        at BridgePractice (Online Game Server and Discord
+                        Community)
+                    </WorkLocation>
+                    <WorkDesc>
+                        <p>
+                            Coded new Minecraft server & games. Over 125,000
+                            unique players. Hired 12 moderators, handled
+                            disputes, added monetization. Sold business in early
+                            '23.
+                        </p>
+                    </WorkDesc>
+                    <div class="sm:w-4/5 lg:w-2/3 mx-auto">
+                        <Video
+                            src="/images/bridge-practice-demo.mp4"
+                            caption="A trailer for the BridgePractice Minecraft server (produced in 2023)"
+                        />
+                        <div class="grid grid-cols-2 mt-6 gap-8 items-center">
+                            <Image
+                                src="/images/bp-website.webp"
+                                caption="The BridgePractice website"
+                            />
+                            <Image
+                                src="/images/bp-leaderboard.webp"
+                                caption="A screenshot of the in-game leaderboard"
+                            />
+                        </div>
+                    </div>
+                    <WorkSpacer />
+                    <WorkHeader id="cs-club">
+                        Leader, Founder of the Computer Science Club
+                    </WorkHeader>
+                    <WorkLocation
+                        >at Yorktown High School (Arlington, VA)</WorkLocation
+                    >
+                    <WorkDesc>
+                        <p>
+                            Lead weekly meetings for over 40 members. Create
+                            weekly challenges, help CS students, organize teams,
+                            and participate in 5 competitive programming events.
+                        </p>
+                    </WorkDesc>
+                    <div class="sm:w-4/5 lg:w-2/3 mx-auto">
+                        <Image
+                            src="/images/yhs-csc.webp"
+                            caption="The Computer Science Club's homepage I developed"
+                        />
+                    </div>
+                    <WorkSpacer />
+                    <WorkHeader id="dj-business">
+                        DJ & Business Operator
+                    </WorkHeader>
+                    <WorkLocation>
+                        of Nate Levin DJ (<Link
+                            href="https://natelevindj.com"
+                            target="_blank">natelevindj.com</Link
+                        >)
+                    </WorkLocation>
+                    <WorkDesc>
+                        <p>
+                            Over 5 years DJing 50+ local events, with
+                            consistently outstanding reviews. Manage client
+                            relationships with businesses, nonprofits, and
+                            private parties.
+                        </p>
+                    </WorkDesc>
+                    <div class="sm:w-4/5 lg:w-2/3 mx-auto">
+                        <Image
+                            src="/images/natelevindj.webp"
+                            caption="The promotional site I created for my DJing business"
+                        />
+                    </div>
+                    <WorkSpacer />
+                    <WorkHeader id="aps-hspc">
+                        Co-Chair Organizer, APS HSPC
+                    </WorkHeader>
+                    <WorkLocation>
+                        for the Arlington Public Schools Middle & High School
+                        Programming Competition (<Link
+                            href="https://aps-hspc.pages.dev"
+                            target="_blank">site</Link
+                        >)
+                    </WorkLocation>
+                    <WorkDesc>
+                        <p>
+                            Founded and co-led a middle and high school
+                            programming contest for Arlington students,
+                            organizing logistics, marketing, funding, and
+                            problem design for the successful 5-hour event with
+                            nearly 60 participants, earning <Link
+                                href="https://www.arlnow.com/2025/01/27/youth-led-coding-competition-debuts-at-arlington-career-center/"
+                                target="_blank">local media recognition</Link
+                            >.
+                        </p>
+                    </WorkDesc>
+                    <div class="sm:w-4/5 lg:w-2/3 mx-auto">
+                        <Image
+                            src="/images/aps-hspc.webp"
+                            caption="Me, my co-organizers, and the 6 winning teams at the 2025 APS HSPC"
+                        />
+                    </div>
+                    <WorkSpacer />
+                    <WorkHeader id="ctae-board">
+                        Board Member, Student Representative
+                    </WorkHeader>
+                    <WorkLocation>
+                        at the Career, Technical, and Adult Education (CTAE)
+                        Board, Arlington Public Schools
+                    </WorkLocation>
+                    <WorkDesc>
+                        <p>
+                            Sole student representative to school district's
+                            CTAE advisory board. Vote, propose, and comment on
+                            technical programs for future students.
+                        </p>
+                    </WorkDesc>
                 </div>
             </div>
-
-            <WorkSpacer />
-
-            <WorkHeader>
-                Leader, Founder of the Computer Science Club
-            </WorkHeader>
-            <WorkLocation>at Yorktown High School (Arlington, VA)</WorkLocation>
-            <WorkDesc>
-                <p>
-                    Lead weekly meetings for over 40 members. Create weekly
-                    challenges, help CS students, organize teams, and
-                    participate in 5 competitive programming events.
-                </p>
-            </WorkDesc>
-
-            <div class="sm:w-4/5 lg:w-2/3 mx-auto">
-                <Image
-                    src="/images/yhs-csc.webp"
-                    caption="The Computer Science Club's homepage I developed"
-                />
-            </div>
-
-            <WorkSpacer />
-
-            <WorkHeader>DJ & Business Operator</WorkHeader>
-            <WorkLocation>
-                of Nate Levin DJ (<Link
-                    href="https://natelevindj.com"
-                    target="_blank">natelevindj.com</Link
-                >)
-            </WorkLocation>
-            <WorkDesc>
-                <p>
-                    Over 5 years DJing 50+ local events, with consistently
-                    outstanding reviews. Manage client relationships with
-                    businesses, nonprofits, and private parties.
-                </p>
-            </WorkDesc>
-
-            <div class="sm:w-4/5 lg:w-2/3 mx-auto">
-                <Image
-                    src="/images/natelevindj.webp"
-                    caption="The promotional site I created for my DJing business"
-                />
-            </div>
-
-            <WorkSpacer />
-
-            <WorkHeader>Co-Chair Organizer, APS HSPC</WorkHeader>
-            <WorkLocation>
-                for the Arlington Public Schools Middle & High School
-                Programming Competition (<Link
-                    href="https://aps-hspc.pages.dev"
-                    target="_blank">site</Link
-                >)
-            </WorkLocation>
-
-            <WorkDesc>
-                <p>
-                    Founded and co-led a middle and high school programming
-                    contest for Arlington students, organizing logistics,
-                    marketing, funding, and problem design for the successful
-                    5-hour event with nearly 60 participants, earning <Link
-                        href="https://www.arlnow.com/2025/01/27/youth-led-coding-competition-debuts-at-arlington-career-center/"
-                        target="_blank">local media recognition</Link
-                    >.
-                </p>
-            </WorkDesc>
-
-            <div class="sm:w-4/5 lg:w-2/3 mx-auto">
-                <Image
-                    src="/images/aps-hspc.webp"
-                    caption="Me, my co-organizers, and the 6 winning teams at the 2025 APS HSPC"
-                />
-            </div>
-
-            <WorkSpacer />
-
-            <WorkHeader>Board Member, Student Representative</WorkHeader>
-            <WorkLocation>
-                at the Career, Technical, and Adult Education (CTAE) Board,
-                Arlington Public Schools
-            </WorkLocation>
-            <WorkDesc>
-                <p>
-                    Sole student representative to school district's CTAE
-                    advisory board. Vote, propose, and comment on technical
-                    programs for future students.
-                </p>
-            </WorkDesc>
+            <WorkFloater />
         </div>
         <Header id="contact">Contact</Header>
         <p class="font-body text-xl">

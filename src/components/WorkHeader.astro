@@ -1,7 +1,10 @@
 ---
-
+const { id } = Astro.props;
 ---
 
 <h3 class="font-title text-4xl sm:text-5xl mt-4 text-balance">
+    <div id={id} class="-translate-y-12 work-header-anchor">
+        <!-- hack to give correct padding when scrolling to a work header -->
+    </div>
     <slot />
 </h3>
