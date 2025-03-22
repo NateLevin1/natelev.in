@@ -27,6 +27,7 @@ const { href } = Astro.props;
                 const active = document.querySelector(
                     `.work-floater-item[href="#${anchor.id}"]`
                 ) as HTMLElement;
+                if (!active) return;
                 document
                     .querySelectorAll(".work-floater-item")
                     .forEach((item) => {

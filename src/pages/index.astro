@@ -13,6 +13,7 @@ import Video from "../components/Video.astro";
 import { Content as MyStory } from "./my-story.md";
 import ComputerText from "../components/ComputerText.astro";
 import WorkFloater from "../components/WorkFloater/WorkFloater.astro";
+import AdditionalProject from "../components/AdditionalProject.astro";
 ---
 
 <Layout>
@@ -282,6 +283,89 @@ import WorkFloater from "../components/WorkFloater/WorkFloater.astro";
                             CTAE advisory board. Vote, propose, and comment on
                             technical programs for future students.
                         </p>
+                    </WorkDesc>
+
+                    <!-- temporary spacer div while we have no images for the CTAE board -->
+                    <div class="mt-16"></div>
+
+                    <WorkHeader id="additional-projects">
+                        Additional Projects
+                    </WorkHeader>
+                    <WorkDesc>
+                        <ul class="list-disc pl-4 space-y-6">
+                            <AdditionalProject
+                                title="Track Control"
+                                url="/portfolio/track-control/index.html"
+                                desc="Control the track to bring your racecar to first place!"
+                                year="2023"
+                            />
+                            <AdditionalProject
+                                title="BridgePractice Website"
+                                url="/portfolio/bp-website/index.html"
+                                desc="Archive of the BridgePractice website."
+                                year="2023"
+                            />
+                            <AdditionalProject
+                                title="Flying Fish"
+                                url="/portfolio/flying-fish/index.html"
+                                desc="Soar to ever-increasing heights in this arcade-style obstacle-avoidance game!"
+                                year="Released 2020, updated 2022"
+                            />
+                            <AdditionalProject
+                                title="SpaghettiScript Interpreter"
+                                url="/portfolio/spaghetti-script/index.html"
+                                desc="An interpreter for the SpaghettiScript esolang."
+                                year="Released 2020, updated 2022"
+                            />
+                            <AdditionalProject
+                                title="Speedrun n' ROLL!"
+                                url="/portfolio/speedrun-n-roll/index.html"
+                                desc="Roll the dice and win gold in this fast-paced speedrunning game!"
+                                year="2022"
+                            />
+                            <AdditionalProject
+                                title="ChoanoSim"
+                                url="/portfolio/ChoanoSim/index.html"
+                                desc="Simulation of the evolution of Choanoflagellate-like unicellular organisms."
+                                year="2022"
+                            />
+                            <AdditionalProject
+                                title="WebSystem"
+                                url="https://websystem.natelev.in/"
+                                desc="Web-based operating system leveraging new tech."
+                                year="2021"
+                            />
+                            <AdditionalProject
+                                title="Slime Rocket"
+                                url="https://ultimateprogrammer.itch.io/slime-rocket"
+                                desc="Control a rocket-powered slime through ten puzzles!"
+                                year="2020"
+                            />
+                            <AdditionalProject
+                                title="Laser World"
+                                url="https://ultimateprogrammer.itch.io/laser-world"
+                                desc="Gather materials to upgrade your ship in this Galaga-esque roguelike!"
+                                year="2020"
+                            />
+                            <AdditionalProject
+                                title="Finger Dance"
+                                url="https://ultimateprogrammer.itch.io/finger-dance"
+                                desc="Rhythm game played entirely on the keyboard."
+                                year="2020"
+                            />
+                            <AdditionalProject
+                                title="City Buildr"
+                                url="/portfolio/city-buildr/index.html"
+                                desc="Drop building blocks to reach towering heights!"
+                                year="2020"
+                            />
+                            <AdditionalProject
+                                title="Juicer"
+                                url="/portfolio/juicer/index.html"
+                                desc="Chuck oranges into a juicer in this tiny speedrunning game!"
+                                year="2020"
+                            />
+                        </ul>
                     </WorkDesc>
                 </div>
             </div>

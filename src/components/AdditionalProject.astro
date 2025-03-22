@@ -1,0 +1,16 @@
+---
+import Link from "./Link.astro";
+
+const { title, url, desc, year } = Astro.props;
+---
+
+<!-- <li>
+    <Link href="https://websystem.natelev.in/"
+        >WebSystem</Link
+    >: Web-based operating system leveraging
+    bleeding edge web technologies. (2021)
+</li> -->
+<li>
+    <Link href={url}>{title}</Link>: {desc}
+    <span class="text-black/75">({year})</span>
+</li>
