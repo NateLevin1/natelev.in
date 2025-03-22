@@ -1,0 +1,322 @@
+{
+  "section1": {"files": [
+    {
+      "type": "sceneFile",
+      "key": "Scene1",
+      "url": "assets/scenes/Scene1.js"
+    },
+    {
+      "type": "image",
+      "key": "bar",
+      "url": "assets/images/bar.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "logo",
+      "url": "assets/images/logo.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "bg",
+      "url": "assets/images/bg.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "mail",
+      "url": "assets/images/mail.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "notification",
+      "url": "assets/images/notification.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "browser",
+      "url": "assets/images/browser.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "folder",
+      "url": "assets/images/folder.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "close",
+      "url": "assets/images/close.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "hide",
+      "url": "assets/images/hide.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "fileBg",
+      "url": "assets/images/fileBg.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "mailBg",
+      "url": "assets/images/mailBg.png",
+      "normalMap": ""
+    },
+    {
+      "type": "bitmapFont",
+      "key": "arial",
+      "textureURL": "assets/fonts/arial.png",
+      "fontDataURL": "assets/fonts/arial.fnt"
+    },
+    {
+      "type": "bitmapFont",
+      "key": "arialBold",
+      "textureURL": "assets/fonts/arialBold.png",
+      "fontDataURL": "assets/fonts/arialBold.fnt"
+    },
+    {
+      "type": "image",
+      "key": "pdf",
+      "url": "assets/images/pdf.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "censusCommentary",
+      "url": "assets/pdfs/censusCommentary.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "scrollBar",
+      "url": "assets/pdfs/scrollBar.png",
+      "normalMap": ""
+    },
+    {
+      "type": "audio",
+      "key": "discover",
+      "url": ["assets/audio/discover.wav"]
+    },
+    {
+      "type": "image",
+      "key": "notification2",
+      "url": "assets/images/notification2.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "search",
+      "url": "assets/images/search.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "searchBg",
+      "url": "assets/images/searchBg.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "searchOption",
+      "url": "assets/images/searchOption.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "searchOptionOver",
+      "url": "assets/images/searchOptionOver.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "searchedBg",
+      "url": "assets/images/searchedBg.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "back",
+      "url": "assets/images/back.png",
+      "normalMap": ""
+    },
+    {
+      "type": "audio",
+      "key": "key1",
+      "url": ["assets/audio/key1.wav"]
+    },
+    {
+      "type": "audio",
+      "key": "key4",
+      "url": ["assets/audio/key4.wav"]
+    },
+    {
+      "type": "audio",
+      "key": "key2",
+      "url": ["assets/audio/key2.wav"]
+    },
+    {
+      "type": "audio",
+      "key": "key3",
+      "url": ["assets/audio/key3.wav"]
+    },
+    {
+      "type": "image",
+      "key": "sent",
+      "url": "assets/images/sent.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "birdNotes",
+      "url": "assets/images/birdNotes.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "birdsite",
+      "url": "assets/images/birdsite.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "login",
+      "url": "assets/images/login.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "denied",
+      "url": "assets/images/denied.png",
+      "normalMap": ""
+    },
+    {
+      "type": "audio",
+      "key": "mistake",
+      "url": ["assets/audio/mistake.wav"]
+    },
+    {
+      "type": "bitmapFont",
+      "key": "arialNumbers",
+      "textureURL": "assets/fonts/arialNumbers.png",
+      "fontDataURL": "assets/fonts/arialNumbers.fnt"
+    },
+    {
+      "type": "audio",
+      "key": "notification1",
+      "url": ["assets/audio/notification.wav"]
+    },
+    {
+      "type": "image",
+      "key": "openTerminal",
+      "url": "assets/images/openTerminal.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "sleep",
+      "url": "assets/images/sleep.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "openFiles",
+      "url": "assets/images/openFiles.png",
+      "normalMap": ""
+    },
+    {
+      "type": "audio",
+      "key": "alarm",
+      "url": ["assets/audio/alarm.wav"]
+    },
+    {
+      "type": "image",
+      "key": "terminalIcon",
+      "url": "assets/images/terminalIcon.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "birdPrivateSite",
+      "url": "assets/images/birdPrivateSite.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "failedPrivateLogin",
+      "url": "assets/images/failedPrivateLogin.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "privateLogin",
+      "url": "assets/images/privateLogin.png",
+      "normalMap": ""
+    },
+    {
+      "type": "bitmapFont",
+      "key": "console",
+      "textureURL": "assets/fonts/console.png",
+      "fontDataURL": "assets/fonts/console.fnt"
+    },
+    {
+      "type": "audio",
+      "key": "open",
+      "url": ["assets/audio/open.wav"]
+    },
+    {
+      "type": "audio",
+      "key": "sleep2",
+      "url": ["assets/audio/sleep2.wav"]
+    },
+    {
+      "type": "image",
+      "key": "done2",
+      "url": "assets/images/done2.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "info",
+      "url": "assets/images/info.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "info-data-check",
+      "url": "assets/images/info-data-check.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "birdGroup-Email-Diagnostics",
+      "url": "assets/images/birdGroup-Email-Diagnostics.png",
+      "normalMap": ""
+    },
+    {
+      "type": "image",
+      "key": "mp3",
+      "url": "assets/images/mp3.png"
+    },
+    {
+      "type": "audio",
+      "key": "speech",
+      "url": ["assets/audio/speech.wav"]
+    }
+  ]},
+  "meta": {
+    "generated": "1586903982009",
+    "app": "Phaser Editor 2D - Asset Pack Editor - 2.1.6",
+    "contentType": "Phaser v3 Asset Pack",
+    "url": "https://phasereditor2d.com",
+    "version": "2"
+  }
+}

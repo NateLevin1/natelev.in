@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>A Lonely Life; Diary of Soul</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser.js"></script>
+    <style>
+        body {
+            margin: auto;
+            background-color:black;
+        }
+        a, div {
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    
+<script type ="module" src="game.js"></script>
+
+<div id='gameDiv'></div>
+
+<script>
+    var config;
+    var game;
+    var player;
+    var arrows;
+    var cursors
+    var pointer;
+    var cam;
+    var talkbox;
+    var talkText;
+    var playerDir = "";
+    var text;
+    var oldText = "";
+    var gameBody;
+    var tree;
+    var bLadder;
+    var dark;
+    var gamePlug;
+    var gameSwitch;
+    var gameOS;
+    var section;
+    var cross;
+   
+    function kill(object) {
+        object.destroy();
+    }
+    
+    function twoSeconds() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve('resolved');
+            }, 3000);
+        });
+    }
+    
+    function oneSeconds() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve('resolved');
+            }, 1000);
+        });
+    }
+    
+    function fourSeconds() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve('resolved');
+            }, 5000);
+        });
+    }
+    
+    async function talk(str) {
+        talkbox.x = player.x +40;
+        talkbox.y = 180;
+        talkText.x = talkbox.x-22;
+        talkText.y = talkbox.y-7;
+        talkbox.setVisible(true);
+        talkText.setVisible(true);
+        
+        talkText.text = str;
+        if(str.length<5) {
+            talkText.fontSize = 9;
+        } else if(str.length<10) {
+            talkText.fontSize = 7;
+        } else {
+            talkText.fontSize = 5;
+        }
+        await twoSeconds();
+        talkbox.setVisible(false);
+        talkText.setVisible(false);
+    }
+    
+    
+        
+</script>
+</html>

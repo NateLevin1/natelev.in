@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dungeon of Color</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.22.0/dist/phaser.js"></script>
+    <style>
+        body {
+            margin: auto;
+            background-color:black;
+        }
+        a, div {
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    
+<script type ="module" src="game.js"></script>
+<script>
+    var config;
+    var game;
+    // controls
+    var cursors;
+    var arrowKeys;
+    var joysticks;
+    var pointer;
+    var cam;
+    var sword;
+    var attackable;
+    var target;
+    var sHitbox;
+    var redEnemies;
+    var player;
+    var rooms;
+    var movable = true;
+    var bow;
+    var arrows;
+    var walls;
+    var numArrows = 6;
+    var numArrowsText;
+    var playerHealth = 1;
+    var blueEnemies;
+    var damageOverlay;
+    var openSword;
+    var swordY;
+    var swordX;
+    var kills = 0;
+        function kill(object) {
+            object.destroy();
+        }
+        
+</script>
+</html>
