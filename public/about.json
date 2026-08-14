@@ -1,5 +1,10 @@
 {
     "name": "Nate Levin",
     "title": "Software Engineer",
-    "university": "Georgia Tech"
+    "university": "Georgia Tech",
+    "major": "Computer Science",
+    "concentration": [
+        "Artificial Intelligence",
+        "Information Internetworks"
+    ]
 }
